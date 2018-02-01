@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Izendegia</string>
+    <string name="title_activity_welcome">Euskal izenak</string>
+
+    <!-- Intro 1 -->
+    <string name="slide_1_title">Idioma</string>
+    <string name="slide_1_desc">Selecciona tu idioma</string>
+
+    <!-- Intro 3 -->
+    <string name="slide_3_title">Nombres vascos</string>
+    <string name="slide_3_desc1">Buscar un nombre para nuestros/as pequeños/as es una tarea complicada pero a la vez interesante. Disfruta descubriendo el significado de los nombres</string>
+    <string name="slide_3_desc2">La lista de nombres que encontrarás a continuación son los oficiales de Euskaltzaindia</string>
+
+    <string name="gaztelania">Gaztelania</string>
+    <string name="euskara">Euskara</string>
+
+    <!-- NAV -->
+    <string name="nav_popular">Popular</string>
+    <string name="nav_boys">Chico</string>
+    <string name="nav_girls">Chica</string>
+    <string name="nav_favs">Favoritos</string>
+    <string name="nav_settings">Preferencias</string>
+    <string name="nav_about">Información</string>
+
+    <string name="neskak">Niña</string>
+    <string name="mutilak">Niño</string>
+    <string name="guztiak">Todos/as</string>
+    <string name="gogokoak">Favoritos</string>
+
+    <!-- actions -->
+    <string name="action_search">Buscar</string>
+    <string name="next">SIGUIENTE</string>
+    <string name="start">ENTENDIDO</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Cerrar</string>
+
+    <string name="add_fav">Anadido a favoritos</string>
+    <string name="rm_fav">Eliminado de favoritos</string>
+
+    <string name="izena">Nombre</string>
+    <string name="izena_descripcion">Descripcion</string>
+    <string name="izena_languages">En otros idiomas</string>
+
+    <!-- preferences -->
+    <string name="preferences">Preferencias</string>
+    <string name="preferences_language">Idioma</string>
+</resources>

@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="eus.arabyte.android.izenpedia.activity.IzenaActivity">
+    <item
+        android:checkable="true"
+        android:id="@+id/action_star"
+        android:orderInCategory="1"
+        android:title="star"
+        app:actionLayout="@layout/action_menu_star"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_share"
+        android:orderInCategory="2"
+        android:title="share"
+        android:icon="@android:drawable/ic_menu_share"
+        app:showAsAction="ifRoom"/>
+</menu>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_popular"
+            android:icon="@drawable/fire"
+            android:title="@string/nav_popular" />
+        <item
+            android:id="@+id/nav_boys"
+            android:icon="@drawable/gender_male"
+            android:title="@string/nav_boys" />
+        <item
+            android:id="@+id/nav_girls"
+            android:icon="@drawable/gender_female"
+            android:title="@string/nav_girls" />
+        <item
+            android:id="@+id/nav_favs"
+            android:icon="@drawable/heart"
+            android:title="@string/nav_favs" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/account_settings_variant"
+            android:title="@string/nav_settings" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/information_outline"
+            android:title="@string/nav_about" />
+    </group>
+
+</menu>

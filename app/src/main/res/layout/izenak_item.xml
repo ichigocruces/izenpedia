@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#C5CAE9"
+    android:foreground="?attr/selectableItemBackground"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/holder_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/borobila"
+            android:fontFamily="sans-serif-thin"
+            android:gravity="center"
+            android:text="A"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="#FFF"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/holder_izena"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/holder_icon"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="Izena"
+            android:textColor="#000000"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/holder_sexua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/holder_izena"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/holder_icon"
+            android:textColor="#000000"
+            android:ellipsize="end"
+            android:paddingLeft="5dp"
+            android:singleLine="true"
+            android:text="Sexua"
+            android:textSize="14sp" />
+
+        <CheckBox
+            android:id="@+id/holder_gogokoa"
+            android:button="@drawable/check_star"
+            android:foregroundGravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!--style="?android:attr/starStyle"-->
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

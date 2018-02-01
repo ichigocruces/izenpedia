@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:background="@color/bg_screen1">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/intro1"
+            android:layout_width="300dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logo_euskaltzaindia" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/slide_1_title"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/slide_title"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="@dimen/desc_padding"
+            android:paddingRight="@dimen/desc_padding"
+            android:text="@string/slide_1_desc"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/slide_desc" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_below="@id/linearLayout"
+        android:id="@+id/linearLayout2">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/intro_language"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/btn_EUS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="click_EUS"
+                android:padding="10dp"
+                android:text="Euskera"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/btn_ES"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="click_ES"
+                android:padding="10dp"
+                android:text="Castellano"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+</RelativeLayout>

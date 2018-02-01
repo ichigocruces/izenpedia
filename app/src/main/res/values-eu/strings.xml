@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Izendegia</string>
+    <string name="title_activity_welcome">Euskal izenak</string>
+
+    <!-- Intro -->
+    <!-- Intro 1 -->
+    <string name="slide_1_title">Hizkuntza</string>
+    <string name="slide_1_desc">Zure hizkuntza aukeratu</string>
+
+    <!-- Intro 3 -->
+    <string name="slide_3_title">Euskal izenak</string>
+    <string name="slide_3_desc1">Gure umeentzat izen bat bilatzea zeregin zaila eta interesgarria da. </string>
+    <string name="slide_3_desc2">Ondoren ikusiko duzun izenen zerrenda Euskaltzaindiak ofizialki baimentzen dituenak dira</string>
+
+    <string name="gaztelania">Castellano</string>
+    <string name="euskara">Euskara</string>
+
+    <!-- NAV -->
+    <string name="nav_popular">Popular</string>
+    <string name="nav_boys">Mutila</string>
+    <string name="nav_girls">Neska</string>
+    <string name="nav_favs">Gogokoak</string>
+    <string name="nav_settings">Maitasun</string>
+    <string name="nav_about">Informazio</string>
+
+
+    <string name="mutilak">Mutila</string>
+    <string name="neskak">Neska</string>
+    <string name="guztiak">Guztiak</string>
+    <string name="gogokoak">Gogokoak</string>
+
+    <!-- actions -->
+    <string name="action_search">Bilatu</string>
+    <string name="next">HURRENGOA</string>
+    <string name="start">ULERTUTA</string>
+    <string name="navigation_drawer_open">Ireki</string>
+    <string name="navigation_drawer_close">Itxi</string>
+
+    <!-- Preferencias -->
+    <string name="preferences">eu_Preferencias</string>
+    <string name="preferences_language">Hizkuntza</string>
+    <string name="add_fav">eu_Anyadido a favoritos</string>
+    <string name="rm_fav">eu_Eliminado de favoritos</string>
+    <string name="izena">Izena</string>
+    <string name="izena_descripcion">Deskribapena</string>
+    <string name="izena_languages">eu_en otros idiomas</string>
+
+</resources>
