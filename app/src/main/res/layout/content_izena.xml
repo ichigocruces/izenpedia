@@ -135,9 +135,9 @@
 
                     <ImageView
                         android:id="@+id/icon_info78dfg"
-                        android:layout_width="24.0dip"
-                        android:layout_height="24.0dip"
-                        android:src="@drawable/spain_flat_32x32" />
+                        android:layout_width="48.0dip"
+                        android:layout_height="48.0dip"
+                        android:src="@drawable/es_icon" />
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -169,9 +169,9 @@
 
                     <ImageView
                         android:id="@+id/icon_france"
-                        android:layout_width="24.0dip"
-                        android:layout_height="24.0dip"
-                        android:src="@drawable/france_flat_32x32" />
+                        android:layout_width="48.0dip"
+                        android:layout_height="48.0dip"
+                        android:src="@drawable/fr_icon" />
 
                     <LinearLayout
                         android:layout_width="fill_parent"
