@@ -36,11 +36,11 @@ public interface IzenaDAO {
     /**
      * Returns the object 'Izena' of the 'name' given
      *
-     * @param id Integer
+     * @param name String
      *
      * @return Izena
      */
-    Izena getIzena(Integer id);
+    Izena getIzena(String name);
 
     /**
      * Update de value of 'gogokoa' for the 'izena' given

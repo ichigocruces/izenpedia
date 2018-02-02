@@ -71,15 +71,13 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         //dependiendo del tipo de fragmento mostraremos la primera letra o el ranking
         switch (this.listType){
             case POPULAR:
-                holder.holderIcon.setText(String.valueOf(izena.getEustat()));
+
+                holder.holderIcon.setText(String.valueOf(position + 1));
                 break;
             default:
                 holder.holderIcon.setText(String.valueOf(izena.getIzena().charAt(0)).toUpperCase());
                 break;
         }
-
-        // usamos el tag como hidden del identificador
-        holder.holderIzena.setTag(izena.getId());
 
         //izena
         holder.holderIzena.setText(izena.getIzena());

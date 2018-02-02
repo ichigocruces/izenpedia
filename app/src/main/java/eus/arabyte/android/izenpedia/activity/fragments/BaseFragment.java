@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.IzenaActivity;
@@ -89,7 +90,7 @@ public abstract class BaseFragment extends Fragment {
 //            transaction.replace(R.id.content_frame, izenaFragment);
 //            transaction.commit();
 
-            Integer idIzena = (Integer)(view.findViewById(R.id.holder_izena)).getTag();
+            String idIzena = ((TextView)view.findViewById(R.id.holder_izena)).getText().toString();
 
             Intent izenaIntent = new Intent(view.getContext(), IzenaActivity.class);
 

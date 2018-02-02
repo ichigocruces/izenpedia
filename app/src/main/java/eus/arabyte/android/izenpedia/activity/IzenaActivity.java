@@ -39,9 +39,9 @@ public class IzenaActivity extends AppCompatActivity {
 
         // cargar los datos
         Bundle args = getIntent().getExtras();
-        Integer argIzena = null;
+        String argIzena = null;
         if(args!=null) {
-            argIzena = args.getInt(ARG_IZENA);
+            argIzena = args.getString(ARG_IZENA);
         }
 
         izenaDAO = new IzenaDAOImpl(this);
@@ -69,7 +69,6 @@ public class IzenaActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // FIXME: no actualiza el check
         MenuItem menuItem = menu.findItem(R.id.action_star);
         final CheckBox starMenu = (CheckBox)menuItem.getActionView();
 

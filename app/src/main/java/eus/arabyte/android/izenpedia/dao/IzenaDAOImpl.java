@@ -37,30 +37,29 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
     public List<Izena> getPopularIzenak() {
         StringBuilder sb = new StringBuilder();
         /*
-        SELECT _ID, IZENA, SEXUA, AZALPENA_EU, AZALPENA_ES, GOGOKOA
+        SELECT IZENA, SEXUA, GOGOKOA
         FROM IZENAK
         WHERE EUSTAT <= '100'
         ORDER BY EUSTAT;
          */
 
         sb.append(SELECT)
-                .append(IzenaEskema.ID).append(COMA)
                 .append(IzenaEskema.IZENA).append(COMA)
                 .append(IzenaEskema.SEXUA).append(COMA)
-                .append(IzenaEskema.AZALPENA_EU).append(COMA)
-                .append(IzenaEskema.AZALPENA_ES).append(COMA)
-                .append(IzenaEskema.GOGOKOA).append(COMA)
-                .append(IzenaEskema.EUSTAT);
+                .append(IzenaEskema.GOGOKOA);
 
         sb.append(FROM)
                 .append(IzenaEskema.TABLE_NAME);
 
-        sb.append(WHERE)
-                .append(IzenaEskema.EUSTAT).append(MENOR_IGUAL).append(Constants.POPULAR_MAX);
+        //TODO: falta la query de verdad
+//        sb.append(WHERE)
+//                .append(IzenaEskema.EUSTAT).append(MENOR_IGUAL).append(Constants.POPULAR_MAX);
 
-        sb.append(ORDER_BY).append(IzenaEskema.EUSTAT);
+//        sb.append(ORDER_BY).append(IzenaEskema.EUSTAT);
 
-        return this.getListIzenak(sb.toString());
+        sb.append(" LIMIT ").append(100);
+
+        return this.selecetListIzenak(sb.toString());
     }
 
     /**
@@ -74,31 +73,32 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
     public List<Izena> getListIzenakByGender(String sex) {
         StringBuilder sb = new StringBuilder();
         /*
-        SELECT _ID, IZENA, SEXUA, AZALPENA_EU, AZALPENA_ES, GOGOKOA
+        SELECT IZENA, GOGOKOA
         FROM IZENAK
-        WHERE EUSTAT <= '100'
-        ORDER BY EUSTAT;
+        ORDER BY IZENA;
          */
 
+        String tableName = IzenaEskema.TABLE_NAME;
+
+        if(sex!=null && !"".equals(sex.trim())){
+            if(Constants.EMAKUME.equals(sex)){
+                tableName=IzenaEskema.VIEW_EMAKUMEAK;
+            }else{
+                tableName=IzenaEskema.VIEW_GIZONAK;
+            }
+
+        }
+
         sb.append(SELECT)
-                .append(IzenaEskema.ID).append(COMA)
                 .append(IzenaEskema.IZENA).append(COMA)
-                .append(IzenaEskema.SEXUA).append(COMA)
-                .append(IzenaEskema.AZALPENA_EU).append(COMA)
-                .append(IzenaEskema.AZALPENA_ES).append(COMA)
-                .append(IzenaEskema.GOGOKOA).append(COMA)
-                .append(IzenaEskema.EUSTAT);
+                .append(IzenaEskema.GOGOKOA);
 
         sb.append(FROM)
-                .append(IzenaEskema.TABLE_NAME);
-
-        sb.append(WHERE)
-                .append(IzenaEskema.SEXUA).append(IGUAL)
-                .append(COMILLA_SIMPLE).append(sex).append(COMILLA_SIMPLE);
+                .append(tableName);
 
         sb.append(ORDER_BY).append(IzenaEskema.IZENA);
 
-        return this.getListIzenak(sb.toString());
+        return this.selecetListIzenak(sb.toString(), sex);
     }
 
     /**
@@ -110,22 +110,19 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
     public List<Izena> getStartedIzenak() {
         StringBuilder sb = new StringBuilder();
         /*
-        SELECT _ID, IZENA, SEXUA, AZALPENA_EU, AZALPENA_ES, GOGOKOA
+        SELECT IZENA, SEXUA, GOGOKOA
         FROM IZENAK
-        WHERE GOGOKOA = '1':
+        WHERE GOGOKOA = '1'
+        ORDER BY IZENA:
          */
 
         sb.append(SELECT)
-                .append(IzenaEskema.ID).append(COMA)
                 .append(IzenaEskema.IZENA).append(COMA)
                 .append(IzenaEskema.SEXUA).append(COMA)
-                .append(IzenaEskema.AZALPENA_EU).append(COMA)
-                .append(IzenaEskema.AZALPENA_ES).append(COMA)
-                .append(IzenaEskema.GOGOKOA).append(COMA)
-                .append(IzenaEskema.EUSTAT);
+                .append(IzenaEskema.GOGOKOA);
 
         sb.append(FROM)
-                .append(IzenaEskema.TABLE_NAME);
+                .append(IzenaEskema.VIEW_GOGOKOAK);
 
         sb.append(WHERE)
                 .append(IzenaEskema.GOGOKOA).append(IGUAL)
@@ -133,48 +130,41 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
 
         sb.append(ORDER_BY).append(IzenaEskema.IZENA);
 
-        return this.getListIzenak(sb.toString());
+        return this.selecetListIzenak(sb.toString());
     }
 
     /**
      * Returns the object 'Izena' of the 'name' given
      *
-     * @param id Integer
+     * @param name String
      *
      * @return Izena
      */
     @Override
-    public Izena getIzena(Integer id) {
+    public Izena getIzena(String name) {
         StringBuilder sb = new StringBuilder();
 
         /*
-        SELECT _ID, IZENA, SEXUA, AZALPENA_EU, AZALPENA_ES, GOGOKOA
+        SELECT IZENA, SEXUA, AZALPENA_EU, AZALPENA_ES, GOGOKOA
         FROM IZENAK
         WHERE IZENA = ?:
          */
 
         sb.append(SELECT)
-                .append(IzenaEskema.ID).append(COMA)
                 .append(IzenaEskema.IZENA).append(COMA)
                 .append(IzenaEskema.SEXUA).append(COMA)
                 .append(IzenaEskema.AZALPENA_EU).append(COMA)
                 .append(IzenaEskema.AZALPENA_ES).append(COMA)
-                .append(IzenaEskema.GOGOKOA).append(COMA)
-                .append(IzenaEskema.EUSTAT);
+                .append(IzenaEskema.GOGOKOA);
 
         sb.append(FROM)
                 .append(IzenaEskema.TABLE_NAME);
 
         sb.append(WHERE)
-                .append(IzenaEskema.ID).append(IGUAL)
-                .append(COMILLA_SIMPLE).append(id).append(COMILLA_SIMPLE);
+                .append(IzenaEskema.IZENA).append(IGUAL)
+                .append(COMILLA_SIMPLE).append(name).append(COMILLA_SIMPLE);
 
-        List<Izena> izenaList = this.getListIzenak(sb.toString());
-        if(izenaList!=null && !izenaList.isEmpty()){
-            return izenaList.get(0);
-        }
-
-        return null;
+        return this.selecetIzenak(sb.toString());
     }
 
     /**
@@ -189,12 +179,12 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
 
         sb.append(UPDATE).append(IzenaEskema.TABLE_NAME).append(ESPACIO);
         sb.append(SET).append(IzenaEskema.GOGOKOA).append(IGUAL).append(izena.getGogokoa());
-        sb.append(WHERE).append(IzenaEskema._ID).append(IGUAL).append(izena.getId());
+        sb.append(WHERE).append(IzenaEskema.IZENA).append(IGUAL).append(COMILLA_SIMPLE).append(izena.getIzena()).append(COMILLA_SIMPLE);
 
         bd.execSQL(sb.toString());
     }
 
-    private List<Izena> getListIzenak(String sql){
+    private Izena selecetIzenak(String sql){
         List<Izena> izenaList = new ArrayList<Izena>();
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -204,20 +194,79 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
         if (cursor.moveToFirst()) {
             do {
                 Izena izena = new Izena();
-                izena.setId(Integer.valueOf(cursor.getInt(0)));
-                izena.setIzena(cursor.getString(1));
-                izena.setSexua(cursor.getString(2));
-                izena.setAzalpenaEu(cursor.getString(3));
-                izena.setAzalpenaEs(cursor.getString(4));
+                izena.setIzena(cursor.getString(0));
+                izena.setSexua(cursor.getString(1));
+                izena.setAzalpenaEu(cursor.getString(2));
+                izena.setAzalpenaEs(cursor.getString(3));
+
                 //Gogokoa
-                if (cursor.getString(5) == null) {
+                if (cursor.getString(4) == null) {
                     izena.setGogokoa(0);
                 }
                 else {
-                    izena.setGogokoa(Integer.valueOf(cursor.getString(5)));
+                    izena.setGogokoa(Integer.valueOf(cursor.getString(4)));
                 }
 
-                izena.setEustat(cursor.getInt(6));
+                izenaList.add(izena);
+            } while (cursor.moveToNext());
+        }
+
+        if(izenaList!=null && !izenaList.isEmpty()){
+            return izenaList.get(0);
+        }
+
+        return null;
+    }
+
+    private List<Izena> selecetListIzenak(String sql){
+        List<Izena> izenaList = new ArrayList<Izena>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Izena izena = new Izena();
+                izena.setIzena(cursor.getString(0));
+                izena.setSexua(cursor.getString(1));
+
+                //Gogokoa
+                if (cursor.getString(2) == null) {
+                    izena.setGogokoa(0);
+                }
+                else {
+                    izena.setGogokoa(Integer.valueOf(cursor.getString(2)));
+                }
+
+                izenaList.add(izena);
+            } while (cursor.moveToNext());
+        }
+
+        return izenaList;
+    }
+
+    private List<Izena> selecetListIzenak(String sql, String sexua){
+        List<Izena> izenaList = new ArrayList<Izena>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Izena izena = new Izena();
+                izena.setIzena(cursor.getString(0));
+                izena.setSexua(sexua);
+
+                //Gogokoa
+                if (cursor.getString(1) == null) {
+                    izena.setGogokoa(0);
+                }
+                else {
+                    izena.setGogokoa(Integer.valueOf(cursor.getString(1)));
+                }
 
                 izenaList.add(izena);
             } while (cursor.moveToNext());
