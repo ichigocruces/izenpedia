@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_izenkidea"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#C5CAE9"
+    android:foreground="?attr/selectableItemBackground"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/holder_hizkuntza"
+            android:layout_width="48.0dip"
+            android:layout_height="48.0dip"
+            android:src="@drawable/es_icon" />
+
+        <TextView
+            android:id="@+id/holder_izenkidea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/holder_hizkuntza"
+            android:layout_marginLeft="5dp"
+            android:hint="en castellano"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            tools:textColor="@color/colorPrimaryText" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

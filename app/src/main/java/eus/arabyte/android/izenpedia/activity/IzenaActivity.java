@@ -4,17 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
 
 import eus.arabyte.android.izenpedia.R;
+import eus.arabyte.android.izenpedia.adapter.IzenkideaAdapter;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
 import eus.arabyte.android.izenpedia.dao.IzenkideaDAO;
@@ -33,6 +37,8 @@ public class IzenaActivity extends AppCompatActivity {
 
     private Preferences preferences;
     private Izena izena;
+
+    private IzenkideaAdapter izenkediaAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +71,12 @@ public class IzenaActivity extends AppCompatActivity {
 
         izenkideaDAO = new IzenkideaDAOImpl(this);
         List<Izenkidea> izenkideaList = izenkideaDAO.getListIzenkidea(izena);
-        System.out.println(izenkideaList.isEmpty());
 
-        System.out.println(izenkideaList.size());
+        izenkediaAdapter = new IzenkideaAdapter(izenkideaList);
+        RecyclerView listIzenkideakView = this.findViewById(R.id.list_izenkideak);
+        listIzenkideakView.setAdapter(izenkediaAdapter);
+        listIzenkideakView.setLayoutManager(new LinearLayoutManager(this));
+
 
     }
 
