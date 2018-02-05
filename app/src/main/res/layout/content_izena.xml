@@ -46,7 +46,7 @@
                             android:paddingLeft="8.0dip"
                             android:paddingRight="8.0dip"
                             android:paddingTop="8.0dip"
-                            android:text="Description"
+                            android:text="@string/izena_descripcion"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
                     </LinearLayout>
@@ -72,7 +72,6 @@
                             android:paddingLeft="8.0dip"
                             android:paddingRight="8.0dip"
                             android:paddingTop="8.0dip"
-                            android:text="@string/izena_descripcion"
                             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                     </LinearLayout>
