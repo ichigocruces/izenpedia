@@ -12,10 +12,15 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import java.util.List;
+
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
+import eus.arabyte.android.izenpedia.dao.IzenkideaDAO;
+import eus.arabyte.android.izenpedia.dao.IzenkideaDAOImpl;
 import eus.arabyte.android.izenpedia.model.Izena;
+import eus.arabyte.android.izenpedia.model.Izenkidea;
 import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.Preferences;
 
@@ -24,6 +29,8 @@ public class IzenaActivity extends AppCompatActivity {
     public static final String ARG_IZENA = "izena";
 
     private IzenaDAO izenaDAO;
+    private IzenkideaDAO izenkideaDAO;
+
     private Preferences preferences;
     private Izena izena;
 
@@ -56,6 +63,11 @@ public class IzenaActivity extends AppCompatActivity {
         ((TextView)this.findViewById(R.id.izena_description))
                 .setText(Html.fromHtml(description));
 
+        izenkideaDAO = new IzenkideaDAOImpl(this);
+        List<Izenkidea> izenkideaList = izenkideaDAO.getListIzenkidea(izena);
+        System.out.println(izenkideaList.isEmpty());
+
+        System.out.println(izenkideaList.size());
 
     }
 
