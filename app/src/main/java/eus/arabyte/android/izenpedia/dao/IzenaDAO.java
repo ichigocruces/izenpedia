@@ -42,10 +42,4 @@ public interface IzenaDAO {
      */
     Izena getIzena(String name);
 
-    /**
-     * Update de value of 'gogokoa' for the 'izena' given
-     *
-     * @param izena Izena
-     */
-    void updateIzenaFav(Izena izena);
 }

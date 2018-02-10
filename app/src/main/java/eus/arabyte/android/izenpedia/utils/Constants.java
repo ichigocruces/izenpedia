@@ -16,4 +16,7 @@ public class Constants {
     public static final Locale LOCALE_ES = new Locale(Constants.ES);
 
     public static final int POPULAR_MAX = 100;
+
+    public static final int FAV_SI = 1;
+    public static final int FAV_NO = 0;
 }

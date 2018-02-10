@@ -3,7 +3,7 @@ package eus.arabyte.android.izenpedia.bd.contracts;
 import android.provider.BaseColumns;
 
 /**
- * Created by ianguloc on 23/08/2016.
+ * Created by ichigo on 11/01/18.
  */
 public abstract class IzenkideaEskema implements BaseColumns {
     public static final String TABLE_NAME ="izenkideak";

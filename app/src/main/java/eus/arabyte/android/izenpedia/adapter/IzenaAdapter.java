@@ -15,10 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import eus.arabyte.android.izenpedia.R;
-import eus.arabyte.android.izenpedia.bd.Constants;
+import eus.arabyte.android.izenpedia.dao.GogokoaDAO;
+import eus.arabyte.android.izenpedia.dao.GogokoaDAOImpl;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
 import eus.arabyte.android.izenpedia.model.Izena;
+import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.ListType;
 
 /**
@@ -27,6 +29,7 @@ import eus.arabyte.android.izenpedia.utils.ListType;
 
 public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHolder> implements Filterable{
     private IzenaDAO izenaDAO;
+    private GogokoaDAO gogokoaDAO;
 
     private List<Izena> mDataSet;
     private List<Izena> mFileterdDataSet;
@@ -60,6 +63,7 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         v.setOnClickListener(onClickListener);
 
         izenaDAO = new IzenaDAOImpl(parent.getContext());
+        gogokoaDAO = new GogokoaDAOImpl(parent.getContext());
 
         return izenaViewHolder;
     }
@@ -68,10 +72,11 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
     public void onBindViewHolder(IzenaViewHolder holder, int position) {
         final Izena izena = mFileterdDataSet.get(position);
 
+
         //dependiendo del tipo de fragmento mostraremos la primera letra o el ranking
         switch (this.listType){
             case POPULAR:
-
+                //FIXME: poner el valor del EUSTAT
                 holder.holderIcon.setText(String.valueOf(position + 1));
                 break;
             default:
@@ -81,9 +86,6 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
 
         //izena
         holder.holderIzena.setText(izena.getIzena());
-
-        //Sexua
-        holder.holderSexua.setText(izena.getSexua());
 
         //Gogokoa
         if (izena.getGogokoa() == Constants.FAV_SI) {
@@ -101,12 +103,12 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
                 if(((CheckBox)view).isChecked()){
                     izena.setGogokoa(Constants.FAV_SI);
                     message=R.string.add_fav;
+                    gogokoaDAO.addGogokoa(izena);
                 }else{
                     izena.setGogokoa(Constants.FAV_NO);
                     message=R.string.rm_fav;
+                    gogokoaDAO.removeGogokoa(izena);
                 }
-
-                izenaDAO.updateIzenaFav(izena);
 
                 Snackbar snackbar = Snackbar
                         .make(view, message, Snackbar.LENGTH_LONG)
@@ -157,7 +159,7 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
      */
     public static class IzenaViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
-        TextView holderIzena, holderSexua, holderIcon;
+        TextView holderIzena, holderIcon;
         CheckBox img_Gogokoa;
 
         IzenaViewHolder(View itemView) {
@@ -165,7 +167,6 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
             cardView = itemView.findViewById(R.id.card_view);
             holderIcon = itemView.findViewById(R.id.holder_icon);
             holderIzena = itemView.findViewById(R.id.holder_izena);
-            holderSexua = itemView.findViewById(R.id.holder_sexua);
             img_Gogokoa = itemView.findViewById(R.id.holder_gogokoa);
         }
     }

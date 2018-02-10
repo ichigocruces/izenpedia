@@ -14,6 +14,10 @@ public interface Constants {
     String UPDATE = " UPDATE ";
     String SET = " SET ";
 
+    String INSERT = " INSERT ";
+    String INTO = " INTO ";
+    String VALUES = " VALUES ";
+
     String DELETE = " DELETE ";
 
     String CREATE_TABLE = " CREATE TABLE ";
@@ -30,28 +34,11 @@ public interface Constants {
     String PARENTESIS_ABRIR = " ( ";
     String PARENTESIS_CERRAR = " ) ";
     String COMA = " , ";
-    String ESPACIO = " ";
+    String SPACE = " ";
     String IGUAL = " = ";
     String MAYOR_IGUAL = " >= ";
     String MENOR_IGUAL = " <= ";
-    String INTERROGACION = " ? ";
+    String QUESTION_MARK = " ? ";
     String COMILLA_SIMPLE = "'";
-
-    int FAV_SI = 1;
-    int FAV_NO = 0;
-
-    enum ColumnType{
-        TEXT("TEXT"),NUMERIC("NUMERIC"),INTEGER("INTEGER"),REAL("REAL");
-
-        private final String valor;
-
-        ColumnType(String valor) {
-            this.valor = valor;
-        }
-
-        public String getValor() {
-            return valor;
-        }
-    }
 
 }

@@ -25,9 +25,4 @@ public class DataBaseHelper extends SQLiteAssetHelper {
 
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
-    }
-
 }

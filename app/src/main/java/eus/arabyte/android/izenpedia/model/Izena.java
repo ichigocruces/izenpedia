@@ -13,6 +13,9 @@ public class Izena implements Serializable{
     private Integer id;
     private String izena, sexua, azalpenaEs, azalpenaEu;
     private Integer gogokoa;
+    private Double batazbeste;
+    private Integer Eustat;
+    private Double total;
 
     public Integer getId() {
         return id;
@@ -62,6 +65,30 @@ public class Izena implements Serializable{
         this.gogokoa = gogokoa;
     }
 
+    public Double getBatazbeste() {
+        return batazbeste;
+    }
+
+    public void setBatazbeste(Double batazbeste) {
+        this.batazbeste = batazbeste;
+    }
+
+    public Integer getEustat() {
+        return Eustat;
+    }
+
+    public void setEustat(Integer eustat) {
+        Eustat = eustat;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
         return "Izena{" +
@@ -71,6 +98,9 @@ public class Izena implements Serializable{
                 ", azalpenaEs='" + azalpenaEs + '\'' +
                 ", azalpenaEu='" + azalpenaEu + '\'' +
                 ", gogokoa=" + gogokoa +
+                ", batazbeste=" + batazbeste +
+                ", Eustat=" + Eustat +
+                ", total=" + total +
                 '}';
     }
 }

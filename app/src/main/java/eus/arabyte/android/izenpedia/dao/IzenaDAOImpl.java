@@ -49,13 +49,13 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 .append(IzenaEskema.GOGOKOA);
 
         sb.append(FROM)
-                .append(IzenaEskema.TABLE_NAME);
+                .append(IzenaEskema.VIEW_DATUAK);
 
         //TODO: falta la query de verdad
 //        sb.append(WHERE)
 //                .append(IzenaEskema.EUSTAT).append(MENOR_IGUAL).append(Constants.POPULAR_MAX);
 
-//        sb.append(ORDER_BY).append(IzenaEskema.EUSTAT);
+        sb.append(ORDER_BY).append(IzenaEskema.EUSTAT);
 
         sb.append(" LIMIT ").append(100);
 
@@ -126,7 +126,7 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
 
         sb.append(WHERE)
                 .append(IzenaEskema.GOGOKOA).append(IGUAL)
-                .append(COMILLA_SIMPLE).append(FAV_SI).append(COMILLA_SIMPLE);
+                .append(COMILLA_SIMPLE).append(Constants.FAV_SI).append(COMILLA_SIMPLE);
 
         sb.append(ORDER_BY).append(IzenaEskema.IZENA);
 
@@ -145,8 +145,8 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
         StringBuilder sb = new StringBuilder();
 
         /*
-        SELECT IZENA, SEXUA, AZALPENA_EU, AZALPENA_ES, GOGOKOA
-        FROM IZENAK
+        SELECT IZENA, SEXUA, AZALPENA_EU, AZALPENA_ES, GOGOKOA, Batazbeste, Eustat, Total
+        FROM V_DATUAK
         WHERE IZENA = ?:
          */
 
@@ -155,33 +155,19 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 .append(IzenaEskema.SEXUA).append(COMA)
                 .append(IzenaEskema.AZALPENA_EU).append(COMA)
                 .append(IzenaEskema.AZALPENA_ES).append(COMA)
-                .append(IzenaEskema.GOGOKOA);
+                .append(IzenaEskema.GOGOKOA).append(COMA)
+                .append(IzenaEskema.BATAZBESTE).append(COMA)
+                .append(IzenaEskema.EUSTAT).append(COMA)
+                .append(IzenaEskema.TOTAL);
 
         sb.append(FROM)
-                .append(IzenaEskema.TABLE_NAME);
+                .append(IzenaEskema.VIEW_DATUAK);
 
         sb.append(WHERE)
                 .append(IzenaEskema.IZENA).append(IGUAL)
                 .append(COMILLA_SIMPLE).append(name).append(COMILLA_SIMPLE);
 
         return this.selecetIzenak(sb.toString());
-    }
-
-    /**
-     * Update de value of 'gogokoa' for the 'izena' given
-     *
-     * @param izena Izena
-     */
-    @Override
-    public void updateIzenaFav(Izena izena){
-        SQLiteDatabase bd = getWritableDatabase();
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(UPDATE).append(IzenaEskema.TABLE_NAME).append(ESPACIO);
-        sb.append(SET).append(IzenaEskema.GOGOKOA).append(IGUAL).append(izena.getGogokoa());
-        sb.append(WHERE).append(IzenaEskema.IZENA).append(IGUAL).append(COMILLA_SIMPLE).append(izena.getIzena()).append(COMILLA_SIMPLE);
-
-        bd.execSQL(sb.toString());
     }
 
     private Izena selecetIzenak(String sql){
@@ -206,6 +192,10 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 else {
                     izena.setGogokoa(Integer.valueOf(cursor.getString(4)));
                 }
+
+                izena.setBatazbeste(cursor.getString(5)!=null?Double.valueOf(cursor.getString(5)):null);
+                izena.setEustat(cursor.getString(6)!=null?Integer.valueOf(cursor.getString(6)):null);
+                izena.setTotal(cursor.getString(7)!=null?Double.valueOf(cursor.getString(7)):null);
 
                 izenaList.add(izena);
             } while (cursor.moveToNext());

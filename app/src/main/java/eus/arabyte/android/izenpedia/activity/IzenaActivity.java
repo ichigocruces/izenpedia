@@ -11,7 +11,6 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -19,6 +18,8 @@ import java.util.List;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.adapter.IzenkideaAdapter;
+import eus.arabyte.android.izenpedia.dao.GogokoaDAO;
+import eus.arabyte.android.izenpedia.dao.GogokoaDAOImpl;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
 import eus.arabyte.android.izenpedia.dao.IzenkideaDAO;
@@ -34,6 +35,7 @@ public class IzenaActivity extends AppCompatActivity {
 
     private IzenaDAO izenaDAO;
     private IzenkideaDAO izenkideaDAO;
+    private GogokoaDAO gogokoaDAO;
 
     private Preferences preferences;
     private Izena izena;
@@ -46,7 +48,6 @@ public class IzenaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_izena);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         preferences = Preferences.getInstance(this);
 
@@ -78,6 +79,7 @@ public class IzenaActivity extends AppCompatActivity {
         listIzenkideakView.setLayoutManager(new LinearLayoutManager(this));
 
 
+        gogokoaDAO = new GogokoaDAOImpl(this);
     }
 
     @Override
@@ -93,7 +95,7 @@ public class IzenaActivity extends AppCompatActivity {
         MenuItem menuItem = menu.findItem(R.id.action_star);
         final CheckBox starMenu = (CheckBox)menuItem.getActionView();
 
-        if(eus.arabyte.android.izenpedia.bd.Constants.FAV_SI == izena.getGogokoa()) {
+        if(Constants.FAV_SI == izena.getGogokoa()) {
 
             starMenu.setChecked(true);
         }else{
@@ -106,13 +108,11 @@ public class IzenaActivity extends AppCompatActivity {
                 int message;
                 if(starMenu.isChecked()){
                     message=R.string.add_fav;
-                    izena.setGogokoa(eus.arabyte.android.izenpedia.bd.Constants.FAV_SI);
+                    gogokoaDAO.addGogokoa(izena);
                 }else{
                     message=R.string.rm_fav;
-                    izena.setGogokoa(eus.arabyte.android.izenpedia.bd.Constants.FAV_NO);
+                    gogokoaDAO.removeGogokoa(izena);
                 }
-
-                izenaDAO.updateIzenaFav(izena);
 
                 Snackbar snackbar = Snackbar
                         .make(view, message, Snackbar.LENGTH_LONG);

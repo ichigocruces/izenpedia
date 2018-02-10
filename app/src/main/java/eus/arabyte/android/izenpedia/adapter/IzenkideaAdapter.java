@@ -20,7 +20,6 @@ import eus.arabyte.android.izenpedia.model.Izenkidea;
 public class IzenkideaAdapter extends RecyclerView.Adapter<IzenkideaAdapter.IzenkideaViewHolder>{
     private List<Izenkidea> mDataSet;
 
-
     public IzenkideaAdapter(List<Izenkidea> data) {
         super();
         this.mDataSet = data;
@@ -52,6 +51,7 @@ public class IzenkideaAdapter extends RecyclerView.Adapter<IzenkideaAdapter.Izen
 
         //izenkidea
         holder.holderIzenkidea.setText(izenkidea.getIzenkidea());
+        System.out.println(izenkidea.getHizkuntza().getHizkuntza() + ": " + izenkidea.getIzenkidea());
     }
 
     @Override
@@ -59,11 +59,6 @@ public class IzenkideaAdapter extends RecyclerView.Adapter<IzenkideaAdapter.Izen
         return mDataSet.size();
     }
 
-
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-    }
 
     /**
      * Implementation of a holder for the adapter
