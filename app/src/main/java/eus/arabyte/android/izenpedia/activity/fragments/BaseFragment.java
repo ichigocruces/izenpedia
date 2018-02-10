@@ -20,6 +20,7 @@ import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.IzenaActivity;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
+import eus.arabyte.android.izenpedia.model.Izena;
 
 /**
  * Created by ichigo on 23/01/18.
@@ -46,7 +47,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(this._layout, container, false);
+        View rootView =  inflater.inflate(this._layout, container, false);
         RecyclerView listIzenakView = rootView.findViewById(R.id.list_izenak);
 
         izenaAdapter.setOnClickListener(new BaseFragment.IzenaOnClickListener());
@@ -76,26 +77,26 @@ public abstract class BaseFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            IzenaFragment izenaFragment = new IzenaFragment();
-
-            String izena = ((TextView) view.findViewById(R.id.holder_izena)).getText().toString();
-
-            Bundle args = new Bundle();
-            args.putString(IzenaFragment.ARG_IZENA, izena);
-            izenaFragment.setArguments(args);
-
-
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.content_frame, izenaFragment);
-            transaction.commit();
-
-//            String idIzena = ((TextView)view.findViewById(R.id.holder_izena)).getText().toString();
+//            IzenaFragment izenaFragment = new IzenaFragment();
 //
-//            Intent izenaIntent = new Intent(view.getContext(), IzenaActivity.class);
+//            Integer idIzena = (Integer)(view.findViewById(R.id.holder_izena)).getTag();
 //
-//            izenaIntent.putExtra(IzenaActivity.ARG_IZENA, idIzena);
+//            Bundle args = new Bundle();
+//            args.putInt(IzenaFragment.ARG_IZENA, idIzena);
+//            izenaFragment.setArguments(args);
 //
-//            startActivity(izenaIntent);
+//
+//            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//            transaction.replace(R.id.content_frame, izenaFragment);
+//            transaction.commit();
+
+            String idIzena = ((TextView)view.findViewById(R.id.holder_izena)).getText().toString();
+
+            Intent izenaIntent = new Intent(view.getContext(), IzenaActivity.class);
+
+            izenaIntent.putExtra(IzenaActivity.ARG_IZENA, idIzena);
+
+            startActivity(izenaIntent);
         }
     }
 
@@ -111,7 +112,7 @@ public abstract class BaseFragment extends Fragment {
         // creamos el menu con el icono de buscar y le asignamos las acciones
         inflater.inflate(R.menu.menu_list, menu);
         MenuItem item = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) item.getActionView();
+        final  SearchView searchView = (SearchView) item.getActionView();
 
         item.setActionView(searchView);
 
@@ -125,7 +126,7 @@ public abstract class BaseFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 //si el texto es vacio limpiamos el filtro
-                if (newText == null || newText.trim().isEmpty()) {
+                if (newText==null || newText.trim().isEmpty()){
                     izenaAdapter.clearFilter();
                     return false;
                 }
