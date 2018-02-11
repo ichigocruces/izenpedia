@@ -1,13 +1,10 @@
 package eus.arabyte.android.izenpedia.activity.fragments;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,7 +18,6 @@ import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.IzenaActivity;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
-import eus.arabyte.android.izenpedia.model.Izena;
 import in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
 
 /**
@@ -132,6 +128,19 @@ public abstract class BaseFragment extends Fragment {
         final  SearchView searchView = (SearchView) item.getActionView();
 
         item.setActionView(searchView);
+
+        // to hide or show the bar depending if the focus is in the searchview or not
+//        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+//
+//            @Override
+//            public void onFocusChange(View view, boolean hasFocus) {
+//                if(hasFocus){
+//                    listIzenakView.setIndexBarVisibility(false);
+//                }else{
+//                    listIzenakView.setIndexBarVisibility(true);
+//                }
+//            }
+//        });
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
