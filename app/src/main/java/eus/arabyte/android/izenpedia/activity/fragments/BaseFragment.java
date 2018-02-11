@@ -64,7 +64,7 @@ public abstract class BaseFragment extends Fragment {
 //        listIzenakView.setIndexBarColor("#33334c");
         listIzenakView.setIndexBarCornerRadius(0);
         listIzenakView.setIndexBarTransparentValue((float) 0.4);
-//        listIzenakView.setIndexbarMargin(4);
+        listIzenakView.setIndexbarMargin(0);
 //        listIzenakView.setIndexbarWidth(40);
 //        listIzenakView.setPreviewPadding(0);
 //        listIzenakView.setIndexBarTextColor("#FFFFFF");
