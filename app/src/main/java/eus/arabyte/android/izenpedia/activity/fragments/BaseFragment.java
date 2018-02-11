@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.IzenaActivity;
+import eus.arabyte.android.izenpedia.activity.listeners.IzenaOnClickListener;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
@@ -50,7 +51,7 @@ public abstract class BaseFragment extends Fragment {
         View rootView =  inflater.inflate(this._layout, container, false);
         listIzenakView = rootView.findViewById(R.id.list_izenak);
 
-        izenaAdapter.setOnClickListener(new BaseFragment.IzenaOnClickListener());
+        izenaAdapter.setOnClickListener(new IzenaOnClickListener());
 
 
         listIzenakView.setAdapter(izenaAdapter);
@@ -85,34 +86,6 @@ public abstract class BaseFragment extends Fragment {
         // La lista debe refrescarse en el caso de que desmarque algun favorito
 
     }
-
-    private class IzenaOnClickListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View view) {
-//            IzenaFragment izenaFragment = new IzenaFragment();
-//
-//            Integer idIzena = (Integer)(view.findViewById(R.id.holder_izena)).getTag();
-//
-//            Bundle args = new Bundle();
-//            args.putInt(IzenaFragment.ARG_IZENA, idIzena);
-//            izenaFragment.setArguments(args);
-//
-//
-//            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//            transaction.replace(R.id.content_frame, izenaFragment);
-//            transaction.commit();
-
-            String idIzena = ((TextView)view.findViewById(R.id.holder_izena)).getText().toString();
-
-            Intent izenaIntent = new Intent(view.getContext(), IzenaActivity.class);
-
-            izenaIntent.putExtra(IzenaActivity.ARG_IZENA, idIzena);
-
-            startActivity(izenaIntent);
-        }
-    }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

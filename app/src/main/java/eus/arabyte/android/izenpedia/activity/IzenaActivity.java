@@ -67,8 +67,10 @@ public class IzenaActivity extends AppCompatActivity {
             description = izena.getAzalpenaEs();
         }
 
-        ((TextView)this.findViewById(R.id.izena_description))
-                .setText(Html.fromHtml(description));
+        if(description!=null && !"".equals(description.trim())){
+            ((TextView)this.findViewById(R.id.izena_description))
+                    .setText(Html.fromHtml(description));
+        }
 
         izenkideaDAO = new IzenkideaDAOImpl(this);
         List<Izenkidea> izenkideaList = izenkideaDAO.getListIzenkidea(izena);
