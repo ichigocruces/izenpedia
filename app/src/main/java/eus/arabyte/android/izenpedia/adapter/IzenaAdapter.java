@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,22 +23,26 @@ import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
 import eus.arabyte.android.izenpedia.model.Izena;
 import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.ListType;
+import in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
 
 /**
  * Created by ichigo on 14/01/18.
  */
 
-public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHolder> implements Filterable{
+public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHolder> implements Filterable, SectionIndexer {
     private IzenaDAO izenaDAO;
     private GogokoaDAO gogokoaDAO;
 
     private List<Izena> mDataSet;
     private List<Izena> mFileterdDataSet;
+    private ArrayList<Integer> mSectionPositions;
 
     private View.OnClickListener onClickListener;
     private IzenaFilter mFilter = new IzenaFilter();
 
     private ListType listType;
+
+    private IndexFastScrollRecyclerView indexFastScrollRecyclerView;
 
     public IzenaAdapter(List<Izena> data) {
         super();
@@ -122,6 +127,8 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
 
                 snackbar.show();
 
+                notifyDataSetChanged();
+
             }
         });
 
@@ -137,6 +144,9 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+
+        this.indexFastScrollRecyclerView = (IndexFastScrollRecyclerView) recyclerView;
+
     }
 
     public void setOnClickListener(View.OnClickListener onClickListener){
@@ -146,13 +156,46 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
     public void clearFilter(){
         mFileterdDataSet.clear();
         mFileterdDataSet.addAll(mDataSet);
+
+        this.indexFastScrollRecyclerView.setIndexBarVisibility(true);
         notifyDataSetChanged();
     }
 
     @Override
     public Filter getFilter() {
+        this.indexFastScrollRecyclerView.setIndexBarVisibility(false);
         return mFilter;
     }
+
+    /**
+     * Section Index
+     */
+
+    @Override
+    public int getSectionForPosition(int position) {
+        return 0;
+    }
+
+    @Override
+    public Object[] getSections() {
+        List<String> sections = new ArrayList<>(26);
+        mSectionPositions = new ArrayList<>(26);
+        for (int i = 0, size = mFileterdDataSet.size(); i < size; i++) {
+            String izena = mFileterdDataSet.get(i).getIzena();
+            String section = String.valueOf(izena.charAt(0)).toUpperCase();
+            if (!sections.contains(section)) {
+                sections.add(section);
+                mSectionPositions.add(i);
+            }
+        }
+        return sections.toArray(new String[0]);
+    }
+
+    @Override
+    public int getPositionForSection(int sectionIndex) {
+        return mSectionPositions.get(sectionIndex);
+    }
+
 
     /**
      * Implementation of a holder for the adapter

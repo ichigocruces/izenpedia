@@ -5,6 +5,8 @@
     android:layout_height="60dp"
     android:background="#C5CAE9"
     android:foreground="?attr/selectableItemBackground">
+
+    <!-- //FIXME: change to Linear Layout -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:gravity="center"

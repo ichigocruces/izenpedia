@@ -1,6 +1,7 @@
 package eus.arabyte.android.izenpedia.activity.fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import eus.arabyte.android.izenpedia.activity.IzenaActivity;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import eus.arabyte.android.izenpedia.model.Izena;
+import in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
 
 /**
  * Created by ichigo on 23/01/18.
@@ -32,6 +34,8 @@ public abstract class BaseFragment extends Fragment {
     protected IzenaDAO izenaDAO;
     protected int _layout;
     protected int _title;
+
+    protected IndexFastScrollRecyclerView listIzenakView;
 
 
     public BaseFragment() {
@@ -48,13 +52,26 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView =  inflater.inflate(this._layout, container, false);
-        RecyclerView listIzenakView = rootView.findViewById(R.id.list_izenak);
+        listIzenakView = rootView.findViewById(R.id.list_izenak);
 
         izenaAdapter.setOnClickListener(new BaseFragment.IzenaOnClickListener());
 
 
         listIzenakView.setAdapter(izenaAdapter);
         listIzenakView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+//        listIzenakView.setIndexTextSize(12);
+//        listIzenakView.setIndexBarColor("#33334c");
+        listIzenakView.setIndexBarCornerRadius(0);
+        listIzenakView.setIndexBarTransparentValue((float) 0.4);
+//        listIzenakView.setIndexbarMargin(4);
+//        listIzenakView.setIndexbarWidth(40);
+//        listIzenakView.setPreviewPadding(0);
+//        listIzenakView.setIndexBarTextColor("#FFFFFF");
+
+//        listIzenakView.setIndexBarVisibility(true);
+//        listIzenakView.setIndexbarHighLateTextColor("#33334c");
+//        listIzenakView.setIndexBarHighLateTextVisibility(true);
 
         return rootView;
     }
@@ -147,5 +164,18 @@ public abstract class BaseFragment extends Fragment {
             }
         });
 
+    }
+
+    // from the link above
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Checks whether a hardware keyboard is available
+        // FIXME: doesn't work
+        if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
+            listIzenakView.setIndexBarVisibility(true);
+        } else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
+            listIzenakView.setIndexBarVisibility(false);
+        }
     }
 }
