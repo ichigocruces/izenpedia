@@ -165,17 +165,4 @@ public abstract class BaseFragment extends Fragment {
         });
 
     }
-
-    // from the link above
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // Checks whether a hardware keyboard is available
-        // FIXME: doesn't work
-        if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
-            listIzenakView.setIndexBarVisibility(true);
-        } else if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_YES) {
-            listIzenakView.setIndexBarVisibility(false);
-        }
-    }
 }

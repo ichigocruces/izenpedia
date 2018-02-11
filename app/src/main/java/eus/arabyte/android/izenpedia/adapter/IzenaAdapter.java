@@ -18,8 +18,6 @@ import java.util.List;
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.dao.GogokoaDAO;
 import eus.arabyte.android.izenpedia.dao.GogokoaDAOImpl;
-import eus.arabyte.android.izenpedia.dao.IzenaDAO;
-import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
 import eus.arabyte.android.izenpedia.model.Izena;
 import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.ListType;
@@ -30,11 +28,10 @@ import in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
  */
 
 public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHolder> implements Filterable, SectionIndexer {
-    private IzenaDAO izenaDAO;
     private GogokoaDAO gogokoaDAO;
 
-    private List<Izena> mDataSet;
-    private List<Izena> mFileterdDataSet;
+    private List<Izena> mDataSet= new ArrayList<>();
+    private List<Izena> mFileterdDataSet= new ArrayList<>();
     private ArrayList<Integer> mSectionPositions;
 
     private View.OnClickListener onClickListener;
@@ -46,8 +43,8 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
 
     public IzenaAdapter(List<Izena> data) {
         super();
-        this.mDataSet = data;
-        this.mFileterdDataSet = data;
+        this.mDataSet.addAll(data);
+        this.mFileterdDataSet.addAll(data);
 
     }
 
@@ -67,7 +64,6 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         IzenaViewHolder izenaViewHolder = new IzenaViewHolder(v);
         v.setOnClickListener(onClickListener);
 
-        izenaDAO = new IzenaDAOImpl(parent.getContext());
         gogokoaDAO = new GogokoaDAOImpl(parent.getContext());
 
         return izenaViewHolder;
