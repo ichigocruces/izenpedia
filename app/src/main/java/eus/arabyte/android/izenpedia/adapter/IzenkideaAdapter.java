@@ -40,11 +40,11 @@ public class IzenkideaAdapter extends RecyclerView.Adapter<IzenkideaAdapter.Izen
         //dependiendo del idioma, mostramos un icono
         switch (izenkidea.getHizkuntza()){
             case ES:
-                holder.holderHizkuntza.setImageResource(R.drawable.es_icon);
+                holder.holderHizkuntza.setImageResource(R.drawable.es_icon1);
                 break;
 
             case FR:
-                holder.holderHizkuntza.setImageResource(R.drawable.fr_icon);
+                holder.holderHizkuntza.setImageResource(R.drawable.fr_icon1);
                 break;
 
         }

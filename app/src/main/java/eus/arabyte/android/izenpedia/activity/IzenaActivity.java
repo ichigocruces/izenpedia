@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -75,11 +76,15 @@ public class IzenaActivity extends AppCompatActivity {
         izenkideaDAO = new IzenkideaDAOImpl(this);
         List<Izenkidea> izenkideaList = izenkideaDAO.getListIzenkidea(izena);
 
-        izenkediaAdapter = new IzenkideaAdapter(izenkideaList);
-        RecyclerView listIzenkideakView = this.findViewById(R.id.list_izenkideak);
-        listIzenkideakView.setAdapter(izenkediaAdapter);
-        listIzenkideakView.setLayoutManager(new LinearLayoutManager(this));
-
+        if(izenkideaList!=null && !izenkideaList.isEmpty()){
+            izenkediaAdapter = new IzenkideaAdapter(izenkideaList);
+            RecyclerView listIzenkideakView = this.findViewById(R.id.list_izenkideak);
+            listIzenkideakView.setAdapter(izenkediaAdapter);
+            listIzenkideakView.setLayoutManager(new LinearLayoutManager(this));
+        }else{
+            CardView cardIzenkideak = this.findViewById(R.id.card_languages);
+            cardIzenkideak.setVisibility(View.INVISIBLE);
+        }
 
         gogokoaDAO = new GogokoaDAOImpl(this);
     }
