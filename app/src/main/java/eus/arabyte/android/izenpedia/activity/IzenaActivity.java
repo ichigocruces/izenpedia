@@ -71,6 +71,9 @@ public class IzenaActivity extends AppCompatActivity {
         if(description!=null && !"".equals(description.trim())){
             ((TextView)this.findViewById(R.id.izena_description))
                     .setText(Html.fromHtml(description));
+        }else{
+            CardView cardDescription = this.findViewById(R.id.card_description);
+            cardDescription.setVisibility(View.GONE);
         }
 
         izenkideaDAO = new IzenkideaDAOImpl(this);
@@ -83,7 +86,7 @@ public class IzenaActivity extends AppCompatActivity {
             listIzenkideakView.setLayoutManager(new LinearLayoutManager(this));
         }else{
             CardView cardIzenkideak = this.findViewById(R.id.card_languages);
-            cardIzenkideak.setVisibility(View.INVISIBLE);
+            cardIzenkideak.setVisibility(View.GONE);
         }
 
         gogokoaDAO = new GogokoaDAOImpl(this);
