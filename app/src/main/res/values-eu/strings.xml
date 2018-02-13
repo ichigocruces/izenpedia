@@ -45,5 +45,9 @@
     <string name="izena">Izena</string>
     <string name="izena_descripcion">Deskribapena</string>
     <string name="izena_languages">eu_en otros idiomas</string>
+    <string name="alert_close_title">eu_Cerrar aplicacion</string>
+    <string name="alert_close_message">eu_Quieres cerrar la aplicacion?</string>
+    <string name="alert_close_ok">Bai</string>
+    <string name="alert_close_no">Ez</string>
 
 </resources>

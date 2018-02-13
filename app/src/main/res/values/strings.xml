@@ -45,4 +45,10 @@
     <!-- preferences -->
     <string name="preferences">Preferencias</string>
     <string name="preferences_language">Idioma</string>
+
+    <!-- alert -->
+    <string name="alert_close_title">Cerrar aplicacion</string>
+    <string name="alert_close_message">Quieres cerrar la aplicacion?</string>
+    <string name="alert_close_ok">Si</string>
+    <string name="alert_close_no">No</string>
 </resources>
