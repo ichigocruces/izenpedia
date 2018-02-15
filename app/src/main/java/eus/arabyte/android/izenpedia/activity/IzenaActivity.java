@@ -105,20 +105,24 @@ public class IzenaActivity extends AppCompatActivity {
             CardView cardDatuak = this.findViewById(R.id.card_datuak);
             cardDatuak.setVisibility(View.GONE);
         }else {
-            if(izena.getBatazbeste()== null){
-                ((TextView) this.findViewById(R.id.izena_media)).setText(Utils.presentDoubleToDecimalFormat(izena.getBatazbeste()));
+            String batazbeste = Utils.presentDoubleToDecimalFormat(izena.getBatazbeste());
+            String eustat = Utils.presentIntegerToString(izena.getEustat());
+            String total = Utils.presentDoubleToDecimalFormat(izena.getTotal());
+
+            if(!Utils.isBlank(batazbeste)){
+                ((TextView) this.findViewById(R.id.izena_media)).setText(batazbeste);
             }else{
                 this.findViewById(R.id.row_media).setVisibility(View.GONE);
             }
 
-            if(izena.getEustat()==null){
-                ((TextView) this.findViewById(R.id.izena_eustat)).setText(Utils.presentIntegerToString(izena.getEustat()));
+            if(!Utils.isBlank(eustat)){
+                ((TextView) this.findViewById(R.id.izena_eustat)).setText(eustat);
             }else{
                 this.findViewById(R.id.row_eustat).setVisibility(View.GONE);
             }
 
-            if(izena.getTotal()==null){
-                ((TextView) this.findViewById(R.id.izena_total)).setText(Utils.presentDoubleToDecimalFormat(izena.getTotal()));
+            if(!Utils.isBlank(total)){
+                ((TextView) this.findViewById(R.id.izena_total)).setText(total);
             }else{
                 this.findViewById(R.id.row_total).setVisibility(View.GONE);
             }
