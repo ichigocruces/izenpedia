@@ -29,6 +29,7 @@ import eus.arabyte.android.izenpedia.model.Izena;
 import eus.arabyte.android.izenpedia.model.Izenkidea;
 import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.Preferences;
+import eus.arabyte.android.izenpedia.utils.Utils;
 
 public class IzenaActivity extends AppCompatActivity {
 
@@ -59,6 +60,7 @@ public class IzenaActivity extends AppCompatActivity {
             argIzena = args.getString(ARG_IZENA);
         }
 
+        gogokoaDAO = new GogokoaDAOImpl(this);
         izenaDAO = new IzenaDAOImpl(this);
         izena = izenaDAO.getIzena(argIzena);
         setTitle(izena.getIzena());
@@ -68,7 +70,8 @@ public class IzenaActivity extends AppCompatActivity {
             description = izena.getAzalpenaEs();
         }
 
-        if(description!=null && !"".equals(description.trim())){
+        // si hay descripcion la pintamos, si no ocultamos el card
+        if(!Utils.isBlank(description)){
             ((TextView)this.findViewById(R.id.izena_description))
                     .setText(Html.fromHtml(description));
         }else{
@@ -79,6 +82,7 @@ public class IzenaActivity extends AppCompatActivity {
         izenkideaDAO = new IzenkideaDAOImpl(this);
         List<Izenkidea> izenkideaList = izenkideaDAO.getListIzenkidea(izena);
 
+        // si hay izenkideak los pintamos, si no ocultamos el card
         if(izenkideaList!=null && !izenkideaList.isEmpty()){
             izenkediaAdapter = new IzenkideaAdapter(izenkideaList);
             RecyclerView listIzenkideakView = this.findViewById(R.id.list_izenkideak);
@@ -89,7 +93,16 @@ public class IzenaActivity extends AppCompatActivity {
             cardIzenkideak.setVisibility(View.GONE);
         }
 
-        gogokoaDAO = new GogokoaDAOImpl(this);
+        // si hay datos los pintamos, si no ocultamos el card
+        if(izena.getBatazbeste()== null && izena.getEustat()==null && izena.getTotal()==null){
+            CardView cardDatuak = this.findViewById(R.id.card_datuak);
+            cardDatuak.setVisibility(View.GONE);
+        }else {
+            ((TextView) this.findViewById(R.id.izena_media)).setText(Utils.presentDoubleToDecimalFormat(izena.getBatazbeste()));
+            ((TextView) this.findViewById(R.id.izena_eustat)).setText(Utils.presentIntegerToString(izena.getEustat()));
+            ((TextView) this.findViewById(R.id.izena_total)).setText(Utils.presentDoubleToDecimalFormat(izena.getTotal()));
+        }
+
     }
 
     @Override
