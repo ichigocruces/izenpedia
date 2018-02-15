@@ -75,8 +75,7 @@ public class IzenaActivity extends AppCompatActivity {
             ((TextView)this.findViewById(R.id.izena_description))
                     .setText(Html.fromHtml(description));
         }else{
-            CardView cardDescription = this.findViewById(R.id.card_description);
-            cardDescription.setVisibility(View.GONE);
+           this.findViewById(R.id.card_description).setVisibility(View.GONE);
         }
 
         izenkideaDAO = new IzenkideaDAOImpl(this);
@@ -89,8 +88,7 @@ public class IzenaActivity extends AppCompatActivity {
             listIzenkideakView.setAdapter(izenkediaAdapter);
             listIzenkideakView.setLayoutManager(new LinearLayoutManager(this));
         }else{
-            CardView cardIzenkideak = this.findViewById(R.id.card_languages);
-            cardIzenkideak.setVisibility(View.GONE);
+            this.findViewById(R.id.card_languages).setVisibility(View.GONE);
         }
 
         // si hay datos los pintamos, si no ocultamos el card
@@ -98,9 +96,24 @@ public class IzenaActivity extends AppCompatActivity {
             CardView cardDatuak = this.findViewById(R.id.card_datuak);
             cardDatuak.setVisibility(View.GONE);
         }else {
-            ((TextView) this.findViewById(R.id.izena_media)).setText(Utils.presentDoubleToDecimalFormat(izena.getBatazbeste()));
-            ((TextView) this.findViewById(R.id.izena_eustat)).setText(Utils.presentIntegerToString(izena.getEustat()));
-            ((TextView) this.findViewById(R.id.izena_total)).setText(Utils.presentDoubleToDecimalFormat(izena.getTotal()));
+            if(izena.getBatazbeste()== null){
+                ((TextView) this.findViewById(R.id.izena_media)).setText(Utils.presentDoubleToDecimalFormat(izena.getBatazbeste()));
+            }else{
+                this.findViewById(R.id.row_media).setVisibility(View.GONE);
+            }
+
+            if(izena.getEustat()==null){
+                ((TextView) this.findViewById(R.id.izena_eustat)).setText(Utils.presentIntegerToString(izena.getEustat()));
+            }else{
+                this.findViewById(R.id.row_eustat).setVisibility(View.GONE);
+            }
+
+            if(izena.getTotal()==null){
+                ((TextView) this.findViewById(R.id.izena_total)).setText(Utils.presentDoubleToDecimalFormat(izena.getTotal()));
+            }else{
+                this.findViewById(R.id.row_total).setVisibility(View.GONE);
+            }
+            
         }
 
     }
