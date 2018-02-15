@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_datuak"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/row_media"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_media"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/contrast"/>
+
+            <TextView
+                android:id="@+id/izena_media"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_toEndOf="@id/image_media"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/row_eustat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row_media">
+
+            <ImageView
+                android:id="@+id/image_eustat"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/fire"/>
+
+            <TextView
+                android:id="@+id/izena_eustat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_toEndOf="@id/image_eustat"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/row_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row_eustat">
+
+            <ImageView
+                android:id="@+id/image_total"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/sigma"/>
+
+            <TextView
+                android:id="@+id/izena_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_toEndOf="@id/image_total"/>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
