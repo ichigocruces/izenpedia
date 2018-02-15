@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/card_languages"
+    android:id="@+id/card_graphics"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -15,19 +14,19 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/languages_title"
+            android:id="@+id/graphics_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/izena_languages"
+            android:text="@string/izena_graphics"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/list_izenkideak"
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_below="@id/graphics_title"
+            android:id="@+id/chart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/languages_title"
-            />
+            android:layout_height="200dp" />
+
+
 
     </RelativeLayout>
-
 </android.support.v7.widget.CardView>

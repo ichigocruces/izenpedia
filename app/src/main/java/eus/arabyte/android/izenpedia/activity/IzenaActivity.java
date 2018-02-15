@@ -15,6 +15,12 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import eus.arabyte.android.izenpedia.R;
@@ -25,8 +31,11 @@ import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
 import eus.arabyte.android.izenpedia.dao.IzenkideaDAO;
 import eus.arabyte.android.izenpedia.dao.IzenkideaDAOImpl;
+import eus.arabyte.android.izenpedia.dao.MetaDAO;
+import eus.arabyte.android.izenpedia.dao.MetaDAOImpl;
 import eus.arabyte.android.izenpedia.model.Izena;
 import eus.arabyte.android.izenpedia.model.Izenkidea;
+import eus.arabyte.android.izenpedia.model.Meta;
 import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.Preferences;
 import eus.arabyte.android.izenpedia.utils.Utils;
@@ -115,6 +124,34 @@ public class IzenaActivity extends AppCompatActivity {
             }
             
         }
+
+        LineChart chart = findViewById(R.id.chart);
+
+        MetaDAO metaDAO = new MetaDAOImpl(this);
+        List<Meta> metaList = metaDAO.getListMeta(izena);
+
+        if(metaList==null || metaList.isEmpty()){
+            this.findViewById(R.id.card_graphics).setVisibility(View.GONE);
+
+        }else{
+
+            List<Entry> entries = new ArrayList<Entry>();
+
+            for (Meta meta : metaList) {
+                // turn your data into Entry objects
+                entries.add(new Entry(meta.getUrtea(), meta.getZenbat()));
+            }
+
+            LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
+//            dataSet.setColor();
+//            dataSet.setValueTextColor();
+
+            LineData lineData = new LineData(dataSet);
+            chart.setData(lineData);
+            chart.invalidate(); // refresh
+
+        }
+
 
     }
 
