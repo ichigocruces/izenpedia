@@ -1,5 +1,7 @@
 package eus.arabyte.android.izenpedia.utils;
 
+import java.text.NumberFormat;
+
 /**
  * Created by ichigo on 13/02/18.
  */
@@ -60,7 +62,7 @@ public class Utils {
         if(isBlank(strInt)){
             return EMPTY_STRING;
         }else{
-            return strInt;
+            return NumberFormat.getNumberInstance(Constants.LOCALE_ES).format(i);
         }
     }
 

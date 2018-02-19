@@ -15,10 +15,12 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,7 @@ import eus.arabyte.android.izenpedia.model.Izena;
 import eus.arabyte.android.izenpedia.model.Izenkidea;
 import eus.arabyte.android.izenpedia.model.Meta;
 import eus.arabyte.android.izenpedia.utils.Constants;
+import eus.arabyte.android.izenpedia.utils.DecimalFormatter;
 import eus.arabyte.android.izenpedia.utils.Preferences;
 import eus.arabyte.android.izenpedia.utils.Utils;
 
@@ -129,7 +132,7 @@ public class IzenaActivity extends AppCompatActivity {
             
         }
 
-        LineChart chart = findViewById(R.id.chart);
+        BarChart chart = findViewById(R.id.chart);
 
         MetaDAO metaDAO = new MetaDAOImpl(this);
         List<Meta> metaList = metaDAO.getListMeta(izena);
@@ -139,19 +142,37 @@ public class IzenaActivity extends AppCompatActivity {
 
         }else{
 
-            List<Entry> entries = new ArrayList<Entry>();
+            List<BarEntry> entries = new ArrayList<>();
 
             for (Meta meta : metaList) {
                 // turn your data into Entry objects
-                entries.add(new Entry(meta.getUrtea(), meta.getZenbat()));
+                entries.add(new BarEntry(meta.getUrtea(), meta.getZenbat()));
             }
 
-            LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
+            BarDataSet dataSet = new BarDataSet(entries, "BarDataSet");
+//            LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
 //            dataSet.setColor();
 //            dataSet.setValueTextColor();
+            dataSet.setValueTextSize(10f);
+            dataSet.setValueFormatter(new DecimalFormatter());
 
-            LineData lineData = new LineData(dataSet);
-            chart.setData(lineData);
+            BarData data = new BarData(dataSet);
+//            LineData lineData = new LineData(dataSet);
+
+            //bar
+            chart.setDrawValueAboveBar(true);
+            chart.setFitBars(true); // make the x-axis fit exactly all bars
+
+            //general
+            XAxis xAxis = chart.getXAxis();
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setValueFormatter(new DecimalFormatter());
+            xAxis.setDrawGridLines(false);
+
+            YAxis yAxis = chart.getAxisLeft();
+            yAxis.setDrawGridLines(false);
+
+            chart.setData(data);
             chart.invalidate(); // refresh
 
         }

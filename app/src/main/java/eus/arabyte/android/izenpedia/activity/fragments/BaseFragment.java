@@ -12,10 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import eus.arabyte.android.izenpedia.R;
-import eus.arabyte.android.izenpedia.activity.IzenaActivity;
 import eus.arabyte.android.izenpedia.activity.listeners.IzenaOnClickListener;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
@@ -58,7 +56,7 @@ public abstract class BaseFragment extends Fragment {
         listIzenakView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 //        listIzenakView.setIndexTextSize(12);
-//        listIzenakView.setIndexBarColor("#33334c");
+//        listIzenakView.setIndexBarColor();
         listIzenakView.setIndexBarCornerRadius(0);
         listIzenakView.setIndexBarTransparentValue((float) 0.4);
         listIzenakView.setIndexbarMargin(0);

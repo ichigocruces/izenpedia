@@ -20,11 +20,11 @@
             android:text="@string/izena_graphics"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <com.github.mikephil.charting.charts.LineChart
+        <com.github.mikephil.charting.charts.BarChart
             android:layout_below="@id/graphics_title"
             android:id="@+id/chart"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="300dp" />
 
 
 
