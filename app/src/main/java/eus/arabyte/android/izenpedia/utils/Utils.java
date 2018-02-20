@@ -1,5 +1,9 @@
 package eus.arabyte.android.izenpedia.utils;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.content.ContextCompat;
+
 import java.text.NumberFormat;
 
 /**
@@ -11,6 +15,11 @@ public class Utils {
     private final static String EMPTY_STRING= "";
     private final static String NULL_STRING= "null";
 
+    private final static String RESOURCES_COLOR="color";
+    private final static String RESOURCES_STRING="string";
+
+    private Utils(){
+    }
 
     /**
      * Returns if the str is null or empty
@@ -64,6 +73,35 @@ public class Utils {
         }else{
             return NumberFormat.getNumberInstance(Constants.LOCALE_ES).format(i);
         }
+    }
+
+    /**
+     * Returns a String from the resources file by the id
+     *
+     * @param resources Resources
+     * @param packageName String
+     * @param aString String
+     *
+     * @return String
+     */
+    public static String getStringResourceByName(Resources resources, String packageName, String aString) {
+        int resId = resources.getIdentifier(aString, RESOURCES_STRING, packageName);
+        return resources.getString(resId);
+    }
+
+    /**
+     * Returns a String from the resources file by the id
+     *
+     * @param resources Resources
+     * @param packageName String
+     * @param aString String
+     *
+     * @return int
+     */
+    public static int getColorResourceByName(Resources resources, String packageName, String aString, Context context) {
+        int resId = resources.getIdentifier(aString, RESOURCES_COLOR, packageName);
+
+        return ContextCompat.getColor(context, resId);
     }
 
 }

@@ -39,4 +39,12 @@
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
     </array>
+
+    <color name="grapho_bizkaia">#2ecc71</color>
+    <color name="grapho_gipuzkoa">#f1c40f</color>
+    <color name="grapho_araba">#e74c3c</color>
+    <color name="grapho_navarra">#3498db</color>
+
+
+
 </resources>
