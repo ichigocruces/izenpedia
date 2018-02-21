@@ -13,9 +13,11 @@ public interface IzenaDAO {
     /**
      * Returns a list of the popular 'Izena'
      *
+     * @param gender String
+     *
      * @return List<Izena>
      */
-    List<Izena> getPopularIzenak();
+    List<Izena> getPopularIzenak(String gender);
 
     /**
      * Returns a list of the 'Izena' by gender

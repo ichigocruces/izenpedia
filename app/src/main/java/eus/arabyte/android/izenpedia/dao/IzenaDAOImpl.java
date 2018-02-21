@@ -31,42 +31,37 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
     /**
      * Returns a list of the popular 'Izena'
      *
+     * @param gender String
+     *
      * @return List<Izena>
      */
     @Override
-    public List<Izena> getPopularIzenak() {
+    public List<Izena> getPopularIzenak(String gender) {
         StringBuilder sb = new StringBuilder();
         /*
-        SELECT IZENA, SEXUA, GOGOKOA
-        FROM IZENAK
-        WHERE EUSTAT <= '100'
-        ORDER BY EUSTAT;
+        SELECT IZENA, EUSTAT, GOGOKOA
+        FROM V_EUSTAT_EMAKUMEAK/V_EUSTAT_GIZONAK;
          */
 
         sb.append(SELECT)
                 .append(IzenaEskema.IZENA).append(COMA)
-                .append(IzenaEskema.SEXUA).append(COMA)
+                .append(IzenaEskema.EUSTAT).append(COMA)
                 .append(IzenaEskema.GOGOKOA);
 
+        String view = IzenaEskema.VIEW_EUSTAT_EMAKUMEAK;
+        if (Constants.GIZONA.equals(gender)) {
+            view = IzenaEskema.VIEW_EUSTAT_GIZONAK;
+        }
         sb.append(FROM)
-                .append(IzenaEskema.VIEW_DATUAK);
+                .append(view);
 
-        //TODO: falta la query de verdad
-//        sb.append(WHERE)
-//                .append(IzenaEskema.EUSTAT).append(MENOR_IGUAL).append(Constants.POPULAR_MAX);
-
-        sb.append(ORDER_BY).append(IzenaEskema.EUSTAT);
-
-        sb.append(" LIMIT ").append(100);
-
-        return this.selecetListIzenak(sb.toString());
+        return this.selecetPopularListIzenak(sb.toString());
     }
 
     /**
      * Returns a list of the 'Izena' by gender
      *
      * @param sex String
-     *
      * @return List<Izena>
      */
     @Override
@@ -80,11 +75,11 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
 
         String tableName = IzenaEskema.TABLE_NAME;
 
-        if(sex!=null && !"".equals(sex.trim())){
-            if(Constants.EMAKUME.equals(sex)){
-                tableName=IzenaEskema.VIEW_EMAKUMEAK;
-            }else{
-                tableName=IzenaEskema.VIEW_GIZONAK;
+        if (sex != null && !"".equals(sex.trim())) {
+            if (Constants.EMAKUME.equals(sex)) {
+                tableName = IzenaEskema.VIEW_EMAKUMEAK;
+            } else {
+                tableName = IzenaEskema.VIEW_GIZONAK;
             }
 
         }
@@ -137,7 +132,6 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
      * Returns the object 'Izena' of the 'name' given
      *
      * @param name String
-     *
      * @return Izena
      */
     @Override
@@ -170,7 +164,7 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
         return this.selecetIzenak(sb.toString());
     }
 
-    private Izena selecetIzenak(String sql){
+    private Izena selecetIzenak(String sql) {
         List<Izena> izenaList = new ArrayList<Izena>();
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -188,27 +182,26 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 //Gogokoa
                 if (cursor.getString(4) == null) {
                     izena.setGogokoa(0);
-                }
-                else {
+                } else {
                     izena.setGogokoa(Integer.valueOf(cursor.getString(4)));
                 }
 
-                izena.setBatazbeste(cursor.getString(5)!=null?Double.valueOf(cursor.getString(5)):null);
-                izena.setEustat(cursor.getString(6)!=null?Integer.valueOf(cursor.getString(6)):null);
-                izena.setTotal(cursor.getString(7)!=null?Double.valueOf(cursor.getString(7)):null);
+                izena.setBatazbeste(cursor.getString(5) != null ? Double.valueOf(cursor.getString(5)) : null);
+                izena.setEustat(cursor.getString(6) != null ? Integer.valueOf(cursor.getString(6)) : null);
+                izena.setTotal(cursor.getString(7) != null ? Double.valueOf(cursor.getString(7)) : null);
 
                 izenaList.add(izena);
             } while (cursor.moveToNext());
         }
 
-        if(izenaList!=null && !izenaList.isEmpty()){
+        if (izenaList != null && !izenaList.isEmpty()) {
             return izenaList.get(0);
         }
 
         return null;
     }
 
-    private List<Izena> selecetListIzenak(String sql){
+    private List<Izena> selecetListIzenak(String sql) {
         List<Izena> izenaList = new ArrayList<Izena>();
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -224,8 +217,7 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 //Gogokoa
                 if (cursor.getString(2) == null) {
                     izena.setGogokoa(0);
-                }
-                else {
+                } else {
                     izena.setGogokoa(Integer.valueOf(cursor.getString(2)));
                 }
 
@@ -236,7 +228,7 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
         return izenaList;
     }
 
-    private List<Izena> selecetListIzenak(String sql, String sexua){
+    private List<Izena> selecetListIzenak(String sql, String sexua) {
         List<Izena> izenaList = new ArrayList<Izena>();
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -253,9 +245,35 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 //Gogokoa
                 if (cursor.getString(1) == null) {
                     izena.setGogokoa(0);
-                }
-                else {
+                } else {
                     izena.setGogokoa(Integer.valueOf(cursor.getString(1)));
+                }
+
+                izenaList.add(izena);
+            } while (cursor.moveToNext());
+        }
+
+        return izenaList;
+    }
+
+    private List<Izena> selecetPopularListIzenak(String sql) {
+        List<Izena> izenaList = new ArrayList<Izena>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Izena izena = new Izena();
+                izena.setIzena(cursor.getString(0));
+                izena.setEustat(cursor.getInt(1));
+                //Gogokoa
+                if (cursor.getString(2) == null) {
+                    izena.setGogokoa(0);
+                } else {
+                    izena.setGogokoa(Integer.valueOf(cursor.getString(2)));
                 }
 
                 izenaList.add(izena);

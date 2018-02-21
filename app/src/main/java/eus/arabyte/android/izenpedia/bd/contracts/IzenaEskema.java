@@ -12,6 +12,8 @@ public abstract class IzenaEskema implements BaseColumns {
     public static final String VIEW_GIZONAK ="V_ZERRENDA_GIZONAK";
     public static final String VIEW_GOGOKOAK ="V_ZERRENDA_GOGOKOAK";
     public static final String VIEW_DATUAK="V_DATUAK";
+    public static final String VIEW_EUSTAT_EMAKUMEAK="V_EUSTAT_EMAKUMEAK";
+    public static final String VIEW_EUSTAT_GIZONAK="V_EUSTAT_GIZONAK";
 
     public static final String ID = "_id";
     public static final String IZENA = "izena";
