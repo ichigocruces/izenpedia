@@ -11,14 +11,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_padding">
 
         <TextView
             android:id="@+id/graphics_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/izena_graphics"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:textAppearance="@android:style/TextAppearance.Material" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/chart_total"

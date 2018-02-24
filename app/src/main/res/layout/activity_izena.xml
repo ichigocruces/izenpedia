@@ -28,6 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/logo_euskaltzandia_margin"
                 android:background="@drawable/euskaltzaindia"
                 android:fitsSystemWindows="true"
                 android:scaleType="fitEnd"

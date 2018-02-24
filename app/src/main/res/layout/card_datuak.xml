@@ -11,25 +11,37 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_padding">
+
+        <TextView
+            android:id="@+id/datuak_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/izena_datuak"
+            android:textAppearance="@android:style/TextAppearance" />
 
         <RelativeLayout
             android:id="@+id/row_media"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/datuak_title">
 
-            <ImageView
-                android:id="@+id/image_media"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/contrast"/>
+            <TextView
+                android:id="@+id/izena_media_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/izena_media_label"/>
 
             <TextView
                 android:id="@+id/izena_media"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
-                android:layout_toEndOf="@id/image_media"/>
+                android:layout_below="@id/izena_media_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:hint="23"/>
 
         </RelativeLayout>
 
@@ -40,18 +52,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/row_media">
 
-            <ImageView
-                android:id="@+id/image_eustat"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/fire"/>
+            <TextView
+                android:id="@+id/izena_eustat_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/izena_eustat_label"/>
 
             <TextView
                 android:id="@+id/izena_eustat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
-                android:layout_toEndOf="@id/image_eustat"/>
+                android:layout_below="@id/izena_eustat_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:hint="2"/>
 
         </RelativeLayout>
 
@@ -62,18 +77,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/row_eustat">
 
-            <ImageView
-                android:id="@+id/image_total"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/sigma"/>
+            <TextView
+                android:id="@+id/izena_total_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/izena_total_label"/>
 
             <TextView
                 android:id="@+id/izena_total"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
-                android:layout_toEndOf="@id/image_total"/>
+                android:layout_below="@id/izena_total_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:hint="2000"/>
         </RelativeLayout>
 
 

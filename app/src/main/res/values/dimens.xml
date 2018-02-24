@@ -13,4 +13,7 @@
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
+
+    <dimen name="logo_euskaltzandia_margin">16dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
 </resources>

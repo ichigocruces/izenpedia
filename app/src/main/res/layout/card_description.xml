@@ -11,20 +11,22 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_padding">
 
         <TextView
             android:id="@+id/descripton_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/izena_descripcion"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:textAppearance="@android:style/TextAppearance" />
 
         <TextView
             android:id="@+id/izena_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/descripton_title"
+            android:textAppearance="@android:style/TextAppearance.Material"
             android:hint="Descripcion del nombre blalbla blalbl ablalblablal blablalbla blal blablalbla" />
 
     </RelativeLayout>

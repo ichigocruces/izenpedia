@@ -23,6 +23,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_toEndOf="@+id/holder_hizkuntza"
+            android:textAppearance="@android:style/TextAppearance.Material"
             android:hint="en castellano"/>
 
     </RelativeLayout>
