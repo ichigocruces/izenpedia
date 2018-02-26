@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/izena_descripcion"
-            android:textAppearance="@android:style/TextAppearance"
+            android:textAppearance="@style/CardTitle"
             android:padding="@dimen/card_padding"
             />
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/description_line"
             android:textAppearance="@android:style/TextAppearance.Material"
-            android:hint="Descripcion del nombre blalbla blalbl ablalb lablal blablal bla blal blab lalbla Descripcion del nombre blalbla blalbl ablalb lablal blablal bla blal blab lalbla Descripcion del nombre blalbla blalbl ablalb lablal blablal bla blal blab lalbla"
+            android:hint="Descripcion del nombre"
             android:padding="@dimen/card_padding"
             android:justificationMode="inter_word"/>
 

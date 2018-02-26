@@ -11,8 +11,8 @@
 
         <ImageView
             android:id="@+id/holder_hizkuntza"
-            android:layout_width="48.0dip"
-            android:layout_height="48.0dip"
+            android:layout_width="36.0dip"
+            android:layout_height="36.0dip"
             android:contentDescription="language icon"
             android:src="@drawable/es_icon" />
 

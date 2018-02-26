@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/izena_datuak"
-            android:textAppearance="@android:style/TextAppearance"
+            android:textAppearance="@style/CardTitle"
             android:padding="@dimen/card_padding" />
 
         <View
@@ -33,14 +33,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/datuak_line"
-            android:padding="@dimen/card_padding">
+            android:paddingStart="@dimen/card_padding"
+            android:paddingEnd="@dimen/card_padding"
+            android:paddingTop="@dimen/datuak_padding_small"
+            android:paddingBottom="@dimen/datuak_padding_small">
 
             <TextView
                 android:id="@+id/izena_media_label"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
-                android:text="@string/izena_media_label"/>
+                android:text="@string/izena_media_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/izena_media"
@@ -59,14 +64,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/row_media"
-            android:padding="@dimen/card_padding">
+            android:paddingStart="@dimen/card_padding"
+            android:paddingEnd="@dimen/card_padding"
+            android:paddingTop="@dimen/datuak_padding_small"
+            android:paddingBottom="@dimen/datuak_padding_small">
 
             <TextView
                 android:id="@+id/izena_eustat_label"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
-                android:text="@string/izena_eustat_label"/>
+                android:text="@string/izena_eustat_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/izena_eustat"
@@ -85,14 +95,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/row_eustat"
-            android:padding="@dimen/card_padding">
+            android:paddingStart="@dimen/card_padding"
+            android:paddingEnd="@dimen/card_padding"
+            android:paddingTop="@dimen/datuak_padding_small"
+            android:paddingBottom="@dimen/datuak_padding_small">
 
             <TextView
                 android:id="@+id/izena_total_label"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
-                android:text="@string/izena_total_label"/>
+                android:text="@string/izena_total_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/izena_total"
@@ -104,8 +119,6 @@
                 android:hint="2000"/>
         </RelativeLayout>
 
-
     </RelativeLayout>
-
 
 </android.support.v7.widget.CardView>
