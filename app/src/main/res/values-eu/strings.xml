@@ -56,5 +56,11 @@
     <string name="lh_gipuzkoa">Gipuzkoa</string>
     <string name="lh_araba">Araba</string>
     <string name="lh_nafarroa">Nafarroa</string>
+    <string name="izena_datuak">eu_Mas datos</string>
+    <string name="izena_media_label">eu_Media de edad</string>
+    <string name="izena_eustat_label">eu_Nombre más común según Eustat</string>
+    <string name="izena_total_label">eu_Número total de personas en el estado</string>
+    <string name="menu_izena_star">eu_Destacar</string>
+    <string name="menu_izena_share">eu_Compartir</string>
 
 </resources>

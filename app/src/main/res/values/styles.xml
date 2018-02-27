@@ -27,4 +27,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="IzenaDatuakLabel">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material</item>
+    </style>
+
 </resources>

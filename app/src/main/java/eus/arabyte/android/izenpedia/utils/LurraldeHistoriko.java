@@ -11,8 +11,8 @@ import java.util.Map;
 
 public enum LurraldeHistoriko {
     BIZKAIA (48, "lh_bizkaia", "grapho_bizkaia"),
-    ARABA (1, "lh_gipuzkoa", "grapho_araba"),
-    GIPUZKOA(20, "lh_araba", "grapho_gipuzkoa"),
+    ARABA (1, "lh_araba", "grapho_araba"),
+    GIPUZKOA(20, "lh_gipuzkoa", "grapho_gipuzkoa"),
     NAFARROA(31, "lh_nafarroa", "grapho_navarra");
 
     private final int id;

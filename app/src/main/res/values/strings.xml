@@ -45,8 +45,11 @@
     <string name="izena_datuak">Mas datos</string>
 
     <string name="izena_media_label">Media de edad</string>
-    <string name="izena_eustat_label">Posicion en EUSTAT</string>
-    <string name="izena_total_label">Total de habitantes</string>
+    <string name="izena_eustat_label">Nombre más común según Eustat</string>
+    <string name="izena_total_label">Número total de personas en el estado</string>
+
+    <string name="chart_lh_label">Por territorio historico</string>
+    <string name="chart_total_label">En Euskal Herria en total</string>
 
 
     <!-- preferences -->

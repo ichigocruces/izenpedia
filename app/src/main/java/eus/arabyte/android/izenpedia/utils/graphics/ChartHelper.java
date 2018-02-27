@@ -5,6 +5,8 @@ import android.content.res.Resources;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -32,6 +34,9 @@ import eus.arabyte.android.izenpedia.utils.formatter.IntegerFormatter;
 
 public class ChartHelper {
 
+    private static final float TEXT_SIZE_LEGEND = 14f;
+    private static final float TEXT_SIZE = 12f;
+
     private ChartHelper(){}
 
     public static void createTotalBarChart(BarChart chart, List<Meta> metaList){
@@ -43,15 +48,11 @@ public class ChartHelper {
         }
 
         //FIXME: el label esta a pinon
-        BarDataSet dataSet = new BarDataSet(entries, "BarDataSet");
-//            LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
-//            dataSet.setColor();
-//            dataSet.setValueTextColor();
-        dataSet.setValueTextSize(10f);
+        BarDataSet dataSet = new BarDataSet(entries, null);
+        dataSet.setValueTextSize(TEXT_SIZE);
         dataSet.setValueFormatter(new DecimalFormatter());
 
         BarData data = new BarData(dataSet);
-//            LineData lineData = new LineData(dataSet);
 
         //bar
         chart.setDrawValueAboveBar(true);
@@ -61,10 +62,27 @@ public class ChartHelper {
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IntegerFormatter());
+        //arregla los valores duplicados de la x
+        xAxis.setGranularity(1f);
         xAxis.setDrawGridLines(false);
+        xAxis.setTextSize(TEXT_SIZE);
 
-        YAxis yAxis = chart.getAxisLeft();
-        yAxis.setDrawGridLines(false);
+        YAxis yAxisRight = chart.getAxisRight();
+        yAxisRight.setDrawLabels(false);
+        yAxisRight.setDrawGridLines(false);
+
+        YAxis yAxisLeft = chart.getAxisLeft();
+        yAxisLeft.setTextSize(TEXT_SIZE);
+
+
+        // quitamos el label del chart
+        Description label = new Description();
+        label.setEnabled(false);
+        chart.setDescription(label);
+
+        // quitamos la leyenda (en este caso no tiene sentido)
+        Legend legend = chart.getLegend();
+        legend.setEnabled(false);
 
         chart.setData(data);
         chart.invalidate(); // refresh
@@ -99,7 +117,7 @@ public class ChartHelper {
             int color = Utils.getColorResourceByName(resources, packageName, lh.getColor(), context);
             setComp.setColor(color);
 
-            setComp.setValueTextSize(10f);
+            setComp.setValueTextSize(TEXT_SIZE);
             setComp.setValueFormatter(new IntegerFormatter());
 
             dataSets.add(setComp);
@@ -110,12 +128,27 @@ public class ChartHelper {
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IntegerFormatter());
-        xAxis.setDrawGridLines(false);
+        xAxis.setTextSize(TEXT_SIZE);
+        //arregla los valores duplicados de la x
+        xAxis.setGranularity(1f);
+        xAxis.setAvoidFirstLastClipping(true);
 
-        YAxis yAxis = chart.getAxisLeft();
-        yAxis.setDrawGridLines(false);
+        YAxis yAxisRight = chart.getAxisRight();
+        yAxisRight.setDrawLabels(false);
+        yAxisRight.setDrawGridLines(false);
+
+        YAxis yAxisLeft = chart.getAxisLeft();
+        yAxisLeft.setTextSize(TEXT_SIZE);
 
         LineData data = new LineData(dataSets);
+
+        Description label = new Description();
+        label.setEnabled(false);
+        chart.setDescription(label);
+
+        Legend legend = chart.getLegend();
+        legend.setTextSize(TEXT_SIZE_LEGEND);
+
         chart.setData(data);
         chart.invalidate(); // refresh
 
