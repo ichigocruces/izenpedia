@@ -45,7 +45,7 @@
     <string name="izena_datuak">Mas datos</string>
 
     <string name="izena_media_label">Media de edad</string>
-    <string name="izena_eustat_label">Nombre más común según Eustat</string>
+    <string name="izena_eustat_label">Puesto entre los nombres más comunes (Eustat)</string>
     <string name="izena_total_label">Número total de personas en el estado</string>
 
     <string name="chart_lh_label">Por territorio historico</string>
