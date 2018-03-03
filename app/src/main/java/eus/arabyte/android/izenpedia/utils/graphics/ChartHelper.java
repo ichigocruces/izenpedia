@@ -16,7 +16,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +46,6 @@ public class ChartHelper {
             entries.add(new BarEntry(meta.getUrtea(), meta.getZenbat()));
         }
 
-        //FIXME: el label esta a pinon
         BarDataSet dataSet = new BarDataSet(entries, null);
         dataSet.setValueTextSize(TEXT_SIZE);
         dataSet.setValueFormatter(new DecimalFormatter());
@@ -119,6 +117,7 @@ public class ChartHelper {
 
             setComp.setValueTextSize(TEXT_SIZE);
             setComp.setValueFormatter(new IntegerFormatter());
+            setComp.setLineWidth(3f);
 
             dataSets.add(setComp);
 

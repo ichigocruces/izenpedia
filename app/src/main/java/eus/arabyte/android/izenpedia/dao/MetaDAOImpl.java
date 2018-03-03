@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -111,7 +111,7 @@ public class MetaDAOImpl extends BasicDAO implements MetaDAO {
     }
 
     private Map<LurraldeHistoriko, List<Meta>> selectMapMeta(String sql) {
-        Map<LurraldeHistoriko, List<Meta>> mapList = new HashMap<>();
+        Map<LurraldeHistoriko, List<Meta>> mapList = new LinkedHashMap<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
