@@ -2,6 +2,7 @@ package eus.arabyte.android.izenpedia.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.fragments.BoysFragment;
@@ -22,6 +24,8 @@ import eus.arabyte.android.izenpedia.activity.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,26 +52,30 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            new AlertDialog.Builder(this)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle(R.string.alert_close_title)
-                    .setMessage(R.string.alert_close_message)
-                    .setPositiveButton(R.string.alert_close_ok, new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
+            // salir de la app
+            if (exit) {
+                finish();
+            } else {
+                Toast.makeText(this, "Press back again to exit",
+                        Toast.LENGTH_SHORT).show();
+                exit = true;
+                new CountDownTimer(3000,1000) {
 
-                    })
-                    .setNegativeButton(R.string.alert_close_no, null)
-                    .show();
+                    @Override
+                    public void onTick(long l) {
 
-//            super.onBackPressed();
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        exit = false;
+                    }
+                }.start();
+            }
         }
     }
 

@@ -60,8 +60,7 @@
     <string name="menu_izena_share">Compartir</string>
 
     <!-- alert -->
-    <string name="alert_close_title">Cerrar aplicacion</string>
-    <string name="alert_close_message">Quieres cerrar la aplicacion?</string>
+    <string name="alert_close_message">Pulsa de nuevo para salir</string>
     <string name="alert_close_ok">Si</string>
     <string name="alert_close_no">No</string>
 
