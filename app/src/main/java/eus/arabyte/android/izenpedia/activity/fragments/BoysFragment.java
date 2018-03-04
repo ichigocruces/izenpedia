@@ -28,7 +28,7 @@ public class BoysFragment extends BaseFragment {
         _title = R.string.nav_boys;
 
         izenaDAO = new IzenaDAOImpl(getActivity());
-        izenaAdapter = new IzenaAdapter(izenaDAO.getListIzenakByGender(Constants.GIZONA), ListType.BOYS);
+        izenaAdapter = new IzenaAdapter(izenaDAO.getListIzenakByGender(Constants.GIZONA), this);
 
     }
 

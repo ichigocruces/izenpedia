@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,15 +52,21 @@ import eus.arabyte.android.izenpedia.utils.graphics.ChartHelper;
 public class IzenaActivity extends AppCompatActivity {
 
     public static final String ARG_IZENA = "izena";
+    public static final String ARG_IZENA_POSITION = "position";
+    public static final String ARG_IZENA_OBJETCT = "izenaObject";
+
+    public static final int REQUEST = 200;
 
     private IzenaDAO izenaDAO;
     private IzenkideaDAO izenkideaDAO;
     private GogokoaDAO gogokoaDAO;
 
     private Preferences preferences;
-    private Izena izena;
 
     private IzenkideaAdapter izenkediaAdapter;
+
+    private Izena izena;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +82,15 @@ public class IzenaActivity extends AppCompatActivity {
         String argIzena = null;
         if(args!=null) {
             argIzena = args.getString(ARG_IZENA);
+            position = args.getInt(ARG_IZENA_POSITION);
+            izena = (Izena) args.getSerializable(ARG_IZENA_OBJETCT);
         }
+
+        Log.d("IzenaDetail", argIzena + " - " + position+ " - " + izena.toString());
 
         gogokoaDAO = new GogokoaDAOImpl(this);
         izenaDAO = new IzenaDAOImpl(this);
-        izena = izenaDAO.getIzena(argIzena);
+        //izena = izenaDAO.getIzena(argIzena);
         setTitle(izena.getIzena());
 
         // create description
@@ -120,9 +131,11 @@ public class IzenaActivity extends AppCompatActivity {
                 if(starMenu.isChecked()){
                     message=R.string.add_fav;
                     gogokoaDAO.addGogokoa(izena);
+                    izena.setGogokoa(Constants.FAV_SI);
                 }else{
                     message=R.string.rm_fav;
                     gogokoaDAO.removeGogokoa(izena);
+                    izena.setGogokoa(Constants.FAV_NO);
                 }
 
                 Snackbar snackbar = Snackbar
@@ -159,6 +172,18 @@ public class IzenaActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
+
+    @Override
+    public void finish() {
+        Log.d("Izena finish", "finish method");
+        // Prepare data intent
+        Intent data = new Intent();
+        data.putExtra(ARG_IZENA_OBJETCT, izena);
+        data.putExtra(ARG_IZENA_POSITION, position);
+        // Activity finished ok, return the data
+        setResult(RESULT_OK, data);
+        super.finish();
     }
 
     /**

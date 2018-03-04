@@ -6,24 +6,31 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import eus.arabyte.android.izenpedia.R;
+import eus.arabyte.android.izenpedia.activity.IzenaActivity;
 import eus.arabyte.android.izenpedia.activity.listeners.IzenaOnClickListener;
+import eus.arabyte.android.izenpedia.activity.listeners.OnRecyclerItemClickListener;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
+import eus.arabyte.android.izenpedia.model.Izena;
 import in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by ichigo on 23/01/18.
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements OnRecyclerItemClickListener<Izena> {
 
     protected IzenaAdapter izenaAdapter;
     protected IzenaDAO izenaDAO;
@@ -48,8 +55,6 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView =  inflater.inflate(this._layout, container, false);
         listIzenakView = rootView.findViewById(R.id.list_izenak);
-
-        izenaAdapter.setOnClickListener(new IzenaOnClickListener());
 
 
         listIzenakView.setAdapter(izenaAdapter);
@@ -83,6 +88,37 @@ public abstract class BaseFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // La lista debe refrescarse en el caso de que desmarque algun favorito
 
+        Log.d("BaseFragment", requestCode + " - " + resultCode);
+
+        if (resultCode == RESULT_OK && requestCode == IzenaActivity.REQUEST) {
+            if (data.hasExtra(IzenaActivity.ARG_IZENA_POSITION)) {
+                Izena izena = (Izena)data.getSerializableExtra(IzenaActivity.ARG_IZENA_OBJETCT);
+                int pos = data.getIntExtra(IzenaActivity.ARG_IZENA_POSITION, 0);
+                Log.d("onActivityResult", izena.toString() + " - " + pos);
+
+                izenaAdapter.setItem(pos, izena);
+            }
+        }
+
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position, Izena item) {
+        // do something
+        Log.d("BaseFragment", position + " - " + item.toString());
+
+        String idIzena = ((TextView)view.findViewById(R.id.holder_izena)).getText().toString();
+
+        Intent izenaIntent = new Intent(view.getContext(), IzenaActivity.class);
+
+        izenaIntent.putExtra(IzenaActivity.ARG_IZENA, idIzena);
+        izenaIntent.putExtra(IzenaActivity.ARG_IZENA_POSITION, position);
+        izenaIntent.putExtra(IzenaActivity.ARG_IZENA_OBJETCT, item);
+
+        //view.getContext().startActivity(izenaIntent);
+
+        startActivityForResult(izenaIntent, IzenaActivity.REQUEST);
     }
 
     @Override

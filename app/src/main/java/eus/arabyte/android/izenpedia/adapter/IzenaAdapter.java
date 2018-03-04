@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import eus.arabyte.android.izenpedia.R;
+import eus.arabyte.android.izenpedia.activity.listeners.OnRecyclerItemClickListener;
 import eus.arabyte.android.izenpedia.dao.GogokoaDAO;
 import eus.arabyte.android.izenpedia.dao.GogokoaDAOImpl;
 import eus.arabyte.android.izenpedia.model.Izena;
@@ -30,17 +31,18 @@ import in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
 public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHolder> implements Filterable, SectionIndexer {
     private GogokoaDAO gogokoaDAO;
 
-    private List<Izena> mDataSet= new ArrayList<>();
-    private List<Izena> mFileterdDataSet= new ArrayList<>();
+    private List<Izena> mDataSet = new ArrayList<>();
+    private List<Izena> mFileterdDataSet = new ArrayList<>();
     private ArrayList<Integer> mSectionPositions;
 
-    private View.OnClickListener onClickListener;
     private IzenaFilter mFilter = new IzenaFilter();
-
-    private ListType listType;
 
     private IndexFastScrollRecyclerView indexFastScrollRecyclerView;
 
+    private final OnRecyclerItemClickListener mItemClickListener;
+    private InternalClickListener mInternalClickListener;
+
+    /*
     public IzenaAdapter(List<Izena> data) {
         super();
         this.mDataSet.addAll(data);
@@ -48,22 +50,30 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
 
     }
 
-    public IzenaAdapter(List<Izena> data, ListType listType) {
-        this(data);
-        this.listType = listType;
-    }
+        public IzenaAdapter(List<Izena> data, ListType listType) {
+            this(data);
+            this.listType = listType;
+        }
 
-    public IzenaAdapter(List<Izena> data, View.OnClickListener onClickListener) {
-        this(data);
-        this.onClickListener = onClickListener;
+        public IzenaAdapter(List<Izena> data, View.OnClickListener onClickListener) {
+            this(data);
+            this.onClickListener = onClickListener;
+        }
+    */
+    public IzenaAdapter(List<Izena> data, OnRecyclerItemClickListener mItemClickListener) {
+        super();
+        this.mDataSet.addAll(data);
+        this.mFileterdDataSet.addAll(data);
+        this.mItemClickListener = mItemClickListener;
+        this.mInternalClickListener = new InternalClickListener();
     }
 
     @Override
     public IzenaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.izenak_item, parent, false);
         IzenaViewHolder izenaViewHolder = new IzenaViewHolder(v);
-        v.setOnClickListener(onClickListener);
-
+//        v.setOnClickListener(onClickListener);
+        v.setOnClickListener(mInternalClickListener);
         gogokoaDAO = new GogokoaDAOImpl(parent.getContext());
 
         return izenaViewHolder;
@@ -73,17 +83,7 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
     public void onBindViewHolder(IzenaViewHolder holder, int position) {
         final Izena izena = mFileterdDataSet.get(position);
 
-
-        //dependiendo del tipo de fragmento mostraremos la primera letra o el ranking
-        switch (this.listType){
-            case POPULAR:
-                //FIXME: poner el valor del EUSTAT
-                holder.holderIcon.setText(String.valueOf(position + 1));
-                break;
-            default:
-                holder.holderIcon.setText(String.valueOf(izena.getIzena().charAt(0)).toUpperCase());
-                break;
-        }
+        holder.holderIcon.setText(String.valueOf(izena.getIzena().charAt(0)).toUpperCase());
 
         //izena
         holder.holderIzena.setText(izena.getIzena());
@@ -91,7 +91,7 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         //Gogokoa
         if (izena.getGogokoa() == Constants.FAV_SI) {
             holder.img_Gogokoa.setChecked(true);
-        }else {
+        } else {
             holder.img_Gogokoa.setChecked(false);
         }
 
@@ -101,13 +101,13 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
             @Override
             public void onClick(View view) {
                 int message;
-                if(((CheckBox)view).isChecked()){
+                if (((CheckBox) view).isChecked()) {
                     izena.setGogokoa(Constants.FAV_SI);
-                    message=R.string.add_fav;
+                    message = R.string.add_fav;
                     gogokoaDAO.addGogokoa(izena);
-                }else{
+                } else {
                     izena.setGogokoa(Constants.FAV_NO);
-                    message=R.string.rm_fav;
+                    message = R.string.rm_fav;
                     gogokoaDAO.removeGogokoa(izena);
                 }
 
@@ -136,6 +136,15 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         return mFileterdDataSet.size();
     }
 
+    public Izena getItem(int position) {
+        return mFileterdDataSet.get(position);
+    }
+
+    public void setItem(int position, Izena izena){
+        mFileterdDataSet.set(position, izena);
+        notifyItemChanged(position);
+    }
+
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -145,11 +154,7 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
 
     }
 
-    public void setOnClickListener(View.OnClickListener onClickListener){
-        this.onClickListener = onClickListener;
-    }
-
-    public void clearFilter(){
+    public void clearFilter() {
         mFileterdDataSet.clear();
         mFileterdDataSet.addAll(mDataSet);
 
@@ -227,7 +232,7 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
             int count = list.size();
             final ArrayList<Izena> nlist = new ArrayList<>(count);
 
-            Izena filterableIzena ;
+            Izena filterableIzena;
 
             for (int i = 0; i < count; i++) {
                 filterableIzena = list.get(i);
@@ -249,4 +254,18 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         }
     }
 
+    private class InternalClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            if (indexFastScrollRecyclerView != null && mItemClickListener != null) {
+                // find the position of the item that was clicked
+                int position = indexFastScrollRecyclerView.getChildAdapterPosition(v);
+                Izena data = getItem(position);
+                // notify the main listener
+                mItemClickListener.onItemClick(v, position, data);
+            }
+        }
+
+    }
 }

@@ -101,6 +101,7 @@ public class Izena implements Serializable{
                 ", batazbeste=" + batazbeste +
                 ", Eustat=" + Eustat +
                 ", total=" + total +
+                ", memory=" + super.toString() +
                 '}';
     }
 }
