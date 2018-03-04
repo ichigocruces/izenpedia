@@ -1,6 +1,8 @@
 package eus.arabyte.android.izenpedia.activity.fragments;
 
 import android.content.Context;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
@@ -25,8 +27,14 @@ public class GirlsFragment extends BaseFragment {
 
         _layout = R.layout.izenak_list;
         _title = R.string.nav_girls;
+        _listType = ListType.GIRLS;
 
         izenaDAO = new IzenaDAOImpl(getActivity());
-        izenaAdapter = new IzenaAdapter(izenaDAO.getListIzenakByGender(Constants.EMAKUME), this);
+        izenaAdapter = new IzenaAdapter(izenaDAO.getListIzenakByGender(Constants.EMAKUME), this, _listType);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

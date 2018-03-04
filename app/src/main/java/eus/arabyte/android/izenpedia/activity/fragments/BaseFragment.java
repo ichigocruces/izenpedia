@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,11 +18,11 @@ import android.widget.TextView;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.IzenaActivity;
-import eus.arabyte.android.izenpedia.activity.listeners.IzenaOnClickListener;
 import eus.arabyte.android.izenpedia.activity.listeners.OnRecyclerItemClickListener;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
 import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import eus.arabyte.android.izenpedia.model.Izena;
+import eus.arabyte.android.izenpedia.utils.ListType;
 import in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView;
 
 import static android.app.Activity.RESULT_OK;
@@ -36,9 +37,9 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
     protected IzenaDAO izenaDAO;
     protected int _layout;
     protected int _title;
+    protected ListType _listType;
 
-    protected IndexFastScrollRecyclerView listIzenakView;
-
+    protected RecyclerView listIzenakView;
 
     public BaseFragment() {
         super();
@@ -60,18 +61,32 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
         listIzenakView.setAdapter(izenaAdapter);
         listIzenakView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-//        listIzenakView.setIndexTextSize(12);
-//        listIzenakView.setIndexBarColor();
-        listIzenakView.setIndexBarCornerRadius(0);
-        listIzenakView.setIndexBarTransparentValue((float) 0.4);
-        listIzenakView.setIndexbarMargin(0);
-//        listIzenakView.setIndexbarWidth(40);
-//        listIzenakView.setPreviewPadding(0);
-//        listIzenakView.setIndexBarTextColor("#FFFFFF");
+        switch (_listType){
+            case BOYS:case GIRLS:
+                IndexFastScrollRecyclerView mScrollRecyclerView = (IndexFastScrollRecyclerView)listIzenakView;
 
-//        listIzenakView.setIndexBarVisibility(true);
-//        listIzenakView.setIndexbarHighLateTextColor("#33334c");
-//        listIzenakView.setIndexBarHighLateTextVisibility(true);
+                mScrollRecyclerView.setIndexBarCornerRadius(0);
+                mScrollRecyclerView.setIndexBarTransparentValue((float) 0.4);
+                mScrollRecyclerView.setIndexbarMargin(0);
+
+
+//        mScrollRecyclerView.setIndexTextSize(12);
+//        mScrollRecyclerView.setIndexBarColor();
+
+//        mScrollRecyclerView.setIndexbarWidth(40);
+//        mScrollRecyclerView.setPreviewPadding(0);
+//        mScrollRecyclerView.setIndexBarTextColor("#FFFFFF");
+
+//        mScrollRecyclerView.setIndexBarVisibility(true);
+//        mScrollRecyclerView.setIndexbarHighLateTextColor("#33334c");
+//        mScrollRecyclerView.setIndexBarHighLateTextVisibility(true);
+
+                break;
+            default:
+
+                break;
+        }
+
 
         return rootView;
     }
@@ -126,6 +141,22 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
 
         super.onCreateOptionsMenu(menu, inflater);
 
+        switch (_listType){
+            case GIRLS:case BOYS:
+                this.createSearchOptionMenu(menu, inflater);
+                break;
+        }
+
+
+    }
+
+    /**
+     * Create the search option menu
+     *
+     * @param menu Menu
+     * @param inflater MenuInflater
+     */
+    private void createSearchOptionMenu(Menu menu, MenuInflater inflater){
         //limpiamos el menu
         menu.clear();
 
@@ -179,6 +210,5 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
                 return false;
             }
         });
-
     }
 }

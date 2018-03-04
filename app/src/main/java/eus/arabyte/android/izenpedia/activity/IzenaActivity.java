@@ -90,7 +90,7 @@ public class IzenaActivity extends AppCompatActivity {
 
         gogokoaDAO = new GogokoaDAOImpl(this);
         izenaDAO = new IzenaDAOImpl(this);
-        //izena = izenaDAO.getIzena(argIzena);
+        izena = izenaDAO.getIzena(argIzena);
         setTitle(izena.getIzena());
 
         // create description

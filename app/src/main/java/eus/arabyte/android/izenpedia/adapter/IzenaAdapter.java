@@ -32,47 +32,47 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
     private GogokoaDAO gogokoaDAO;
 
     private List<Izena> mDataSet = new ArrayList<>();
-    private List<Izena> mFileterdDataSet = new ArrayList<>();
-    private ArrayList<Integer> mSectionPositions;
 
+    private List<Izena> mFileterdDataSet = new ArrayList<>();
     private IzenaFilter mFilter = new IzenaFilter();
 
-    private IndexFastScrollRecyclerView indexFastScrollRecyclerView;
+    private RecyclerView recyclerView;
+    private ArrayList<Integer> mSectionPositions;
+    private boolean isFastScrollRecyclerView = false;
 
     private final OnRecyclerItemClickListener mItemClickListener;
     private InternalClickListener mInternalClickListener;
 
-    /*
-    public IzenaAdapter(List<Izena> data) {
-        super();
-        this.mDataSet.addAll(data);
-        this.mFileterdDataSet.addAll(data);
+    protected ListType listType;
 
-    }
-
-        public IzenaAdapter(List<Izena> data, ListType listType) {
-            this(data);
-            this.listType = listType;
-        }
-
-        public IzenaAdapter(List<Izena> data, View.OnClickListener onClickListener) {
-            this(data);
-            this.onClickListener = onClickListener;
-        }
-    */
-    public IzenaAdapter(List<Izena> data, OnRecyclerItemClickListener mItemClickListener) {
+    /**
+     * IzenaAdapter constructor
+     *
+     * @param data List<Izena>
+     * @param mItemClickListener OnRecyclerItemClickListener
+     */
+    public IzenaAdapter(List<Izena> data, OnRecyclerItemClickListener mItemClickListener, ListType listType) {
         super();
         this.mDataSet.addAll(data);
         this.mFileterdDataSet.addAll(data);
         this.mItemClickListener = mItemClickListener;
         this.mInternalClickListener = new InternalClickListener();
+        this.listType = listType;
     }
 
     @Override
     public IzenaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.izenak_item, parent, false);
+        int layout = R.layout.simple_izenak_item;
+
+        switch (this.listType){
+            case BOYS:case GIRLS:
+                layout = R.layout.izenak_item;
+                isFastScrollRecyclerView = true;
+                break;
+        }
+
+        View v = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         IzenaViewHolder izenaViewHolder = new IzenaViewHolder(v);
-//        v.setOnClickListener(onClickListener);
         v.setOnClickListener(mInternalClickListener);
         gogokoaDAO = new GogokoaDAOImpl(parent.getContext());
 
@@ -83,7 +83,12 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
     public void onBindViewHolder(IzenaViewHolder holder, int position) {
         final Izena izena = mFileterdDataSet.get(position);
 
-        holder.holderIcon.setText(String.valueOf(izena.getIzena().charAt(0)).toUpperCase());
+        switch (this.listType){
+            case BOYS:case GIRLS:
+                holder.holderIcon.setText(String.valueOf(izena.getIzena().charAt(0)).toUpperCase());
+                break;
+        }
+
 
         //izena
         holder.holderIzena.setText(izena.getIzena());
@@ -149,8 +154,7 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
-
-        this.indexFastScrollRecyclerView = (IndexFastScrollRecyclerView) recyclerView;
+        this.recyclerView = recyclerView;
 
     }
 
@@ -158,13 +162,22 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         mFileterdDataSet.clear();
         mFileterdDataSet.addAll(mDataSet);
 
-        this.indexFastScrollRecyclerView.setIndexBarVisibility(true);
+        if(isFastScrollRecyclerView){
+            IndexFastScrollRecyclerView scrollRecyclerView = (IndexFastScrollRecyclerView) this.recyclerView;
+            scrollRecyclerView.setIndexBarVisibility(true);
+        }
+
         notifyDataSetChanged();
     }
 
     @Override
     public Filter getFilter() {
-        this.indexFastScrollRecyclerView.setIndexBarVisibility(false);
+
+        if(isFastScrollRecyclerView){
+            IndexFastScrollRecyclerView scrollRecyclerView = (IndexFastScrollRecyclerView) this.recyclerView;
+            scrollRecyclerView.setIndexBarVisibility(false);
+        }
+
         return mFilter;
     }
 
@@ -258,9 +271,9 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
 
         @Override
         public void onClick(View v) {
-            if (indexFastScrollRecyclerView != null && mItemClickListener != null) {
+            if (recyclerView != null && mItemClickListener != null) {
                 // find the position of the item that was clicked
-                int position = indexFastScrollRecyclerView.getChildAdapterPosition(v);
+                int position = recyclerView.getChildAdapterPosition(v);
                 Izena data = getItem(position);
                 // notify the main listener
                 mItemClickListener.onItemClick(v, position, data);
