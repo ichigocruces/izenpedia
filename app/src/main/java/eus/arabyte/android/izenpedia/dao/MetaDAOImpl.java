@@ -63,26 +63,26 @@ public class MetaDAOImpl extends BasicDAO implements MetaDAO {
         WHERE IZENA = ?
         GROUP BY IZENA, URTEA
          */
-
+/*
         sb.append("SELECT IZENA, URTEA, sum(ZENBAT) " +
                 "        FROM V_META " +
                 "        WHERE IZENA = '" + izena.getIzena() + "'" +
                 "        GROUP BY IZENA, URTEA");
+*/
+        sb.append(SELECT)
+                .append(MetaEskema.IZENA).append(COMA)
+                .append(MetaEskema.URTEA).append(COMA)
+                .append(SUM).append(PARENTHESIS_OPEN)
+                .append(MetaEskema.ZENBAT).append(PARENTHESIS_CLOSE);
 
-//        sb.append(SELECT)
-//                .append(MetaEskema.IZENA).append(COMA)
-//                .append(MetaEskema.LH).append(COMA)
-//                .append(MetaEskema.URTEA).append(COMA)
-//                .append(MetaEskema.ZENBAT);
-//
-//        sb.append(FROM)
-//                .append(MetaEskema.VIEW_NAME);
-//
-//        sb.append(WHERE)
-//                .append(MetaEskema.IZENA)
-//                .append(IGUAL).append(COMILLA_SIMPLE).append(izena.getIzena()).append(COMILLA_SIMPLE);
-//
-//        sb.append(ORDER_BY).append(MetaEskema.LH).append(COMA).append(MetaEskema.URTEA);
+        sb.append(FROM)
+                .append(MetaEskema.VIEW_NAME);
+
+        sb.append(WHERE)
+                .append(MetaEskema.IZENA)
+                .append(EQUAL).append(SIMPLE_QUOTA).append(izena.getIzena()).append(SIMPLE_QUOTA);
+
+        sb.append(GROUP_BY).append(MetaEskema.IZENA).append(COMA).append(MetaEskema.URTEA);
 
         return this.selecetListMeta(sb.toString());
     }
@@ -91,7 +91,7 @@ public class MetaDAOImpl extends BasicDAO implements MetaDAO {
     public Map<LurraldeHistoriko, List<Meta>> getMapListLHMeta(Izena izena) {
         StringBuilder sb = new StringBuilder();
 
-                sb.append(SELECT)
+        sb.append(SELECT)
                 .append(MetaEskema.IZENA).append(COMA)
                 .append(MetaEskema.LH).append(COMA)
                 .append(MetaEskema.URTEA).append(COMA)
@@ -102,7 +102,7 @@ public class MetaDAOImpl extends BasicDAO implements MetaDAO {
 
         sb.append(WHERE)
                 .append(MetaEskema.IZENA)
-                .append(IGUAL).append(COMILLA_SIMPLE).append(izena.getIzena()).append(COMILLA_SIMPLE);
+                .append(EQUAL).append(SIMPLE_QUOTA).append(izena.getIzena()).append(SIMPLE_QUOTA);
 
         sb.append(ORDER_BY).append(MetaEskema.LH).append(COMA).append(MetaEskema.URTEA);
 
@@ -123,9 +123,9 @@ public class MetaDAOImpl extends BasicDAO implements MetaDAO {
                 int lhInt = cursor.getInt(1);
                 LurraldeHistoriko lh = LurraldeHistoriko.valueOf(lhInt);
 
-                List<Meta> metaList =mapList.get(lh);
+                List<Meta> metaList = mapList.get(lh);
 
-                if(metaList==null){
+                if (metaList == null) {
                     metaList = new ArrayList<>();
                     mapList.put(lh, metaList);
                 }

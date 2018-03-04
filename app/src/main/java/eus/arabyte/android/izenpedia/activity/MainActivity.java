@@ -49,6 +49,13 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
+    /**
+     * Controlamos si se pulsa el boton de atras:
+     * <ul>
+     *     <li>Si esta el menu de navegacion abierto, lo cerramos</li>
+     *     <li>Si no esta abierto, se pide confirmacion para salir (double click)</li>
+     * </ul>
+     */
     @Override
     public void onBackPressed() {
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
@@ -78,6 +85,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Cargamos el fragment que corresponda en funcion de item
+     *
+     * @param item MenuItem
+     * @return boolean
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -129,12 +142,17 @@ public class MainActivity extends AppCompatActivity
         startActivity(getIntent());
     }
 
+    /**
+     * Llama al super para forzar que invoque al fragment
+     *
+     * @param requestCode int
+     * @param resultCode int
+     * @param data Intent
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-//        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
-//        fragment.onActivityResult(requestCode,resultCode,data);
     }
 
 }

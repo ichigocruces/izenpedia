@@ -9,7 +9,7 @@ public enum Hizkuntza {
 
     private String hizkuntza;
 
-    private Hizkuntza(String hizkuntza){
+    Hizkuntza(String hizkuntza){
         this.hizkuntza = hizkuntza;
     }
 

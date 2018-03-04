@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,8 +34,20 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
 
     protected IzenaAdapter izenaAdapter;
     protected IzenaDAO izenaDAO;
+
+    /**
+     * set layout
+     */
     protected int _layout;
+
+    /**
+     * set title
+     */
     protected int _title;
+
+    /**
+     * set the list type
+     */
     protected ListType _listType;
 
     protected RecyclerView listIzenakView;
@@ -61,6 +72,7 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
         listIzenakView.setAdapter(izenaAdapter);
         listIzenakView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        //dependiendo del listado creamos el IndexFastScrollRecyclerView
         switch (_listType){
             case BOYS:case GIRLS:
                 IndexFastScrollRecyclerView mScrollRecyclerView = (IndexFastScrollRecyclerView)listIzenakView;
@@ -95,22 +107,24 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle(_title);
     }
 
+    /**
+     * Tratamos la respuesta del IzenaActivity
+     *
+     * @param requestCode int
+     * @param resultCode int
+     * @param data Intent
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // La lista debe refrescarse en el caso de que desmarque algun favorito
 
-        Log.d("BaseFragment", requestCode + " - " + resultCode);
-
         if (resultCode == RESULT_OK && requestCode == IzenaActivity.REQUEST) {
             if (data.hasExtra(IzenaActivity.ARG_IZENA_POSITION)) {
-                Izena izena = (Izena)data.getSerializableExtra(IzenaActivity.ARG_IZENA_OBJETCT);
+                Izena izena = (Izena)data.getSerializableExtra(IzenaActivity.ARG_IZENA_OBJECT);
                 int pos = data.getIntExtra(IzenaActivity.ARG_IZENA_POSITION, 0);
-                Log.d("onActivityResult", izena.toString() + " - " + pos);
-
                 izenaAdapter.setItem(pos, izena);
             }
         }
@@ -118,10 +132,16 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
 
     }
 
+    /**
+     * Iniciar IzenaActivity esperando un resultado
+     *
+     * @param view     that was clicked
+     * @param position of the clicked view
+     * @param item     the concrete data that is displayed through the clicked view
+     */
     @Override
     public void onItemClick(View view, int position, Izena item) {
-        // do something
-        Log.d("BaseFragment", position + " - " + item.toString());
+
 
         String idIzena = ((TextView)view.findViewById(R.id.holder_izena)).getText().toString();
 
@@ -129,13 +149,17 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
 
         izenaIntent.putExtra(IzenaActivity.ARG_IZENA, idIzena);
         izenaIntent.putExtra(IzenaActivity.ARG_IZENA_POSITION, position);
-        izenaIntent.putExtra(IzenaActivity.ARG_IZENA_OBJETCT, item);
-
-        //view.getContext().startActivity(izenaIntent);
+        izenaIntent.putExtra(IzenaActivity.ARG_IZENA_OBJECT, item);
 
         startActivityForResult(izenaIntent, IzenaActivity.REQUEST);
     }
 
+    /**
+     * Genera el menu dependiendo del tipo de listado
+     *
+     * @param menu Menu
+     * @param inflater MenuInflater
+     */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 

@@ -10,6 +10,9 @@ public interface Constants {
     String FROM = " FROM ";
     String WHERE = " WHERE ";
     String ORDER_BY = " ORDER BY ";
+    String GROUP_BY = " GROUP BY ";
+
+    String SUM = " SUM ";
 
     String UPDATE = " UPDATE ";
     String SET = " SET ";
@@ -31,14 +34,13 @@ public interface Constants {
     String REFERENCES = " REFERENCES ";
     String ON_DELETE_CASCADE = " ON DELETE CASCADE ";
 
-    String PARENTESIS_ABRIR = " ( ";
-    String PARENTESIS_CERRAR = " ) ";
     String COMA = " , ";
     String SPACE = " ";
-    String IGUAL = " = ";
-    String MAYOR_IGUAL = " >= ";
-    String MENOR_IGUAL = " <= ";
+    String EQUAL = " = ";
     String QUESTION_MARK = " ? ";
-    String COMILLA_SIMPLE = "'";
+    String SIMPLE_QUOTA = "'";
+    String PARENTHESIS_OPEN = " ( ";
+    String PARENTHESIS_CLOSE = " ) ";
+    
 
 }

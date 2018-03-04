@@ -38,11 +38,19 @@ public class ChartHelper {
 
     private ChartHelper(){}
 
-    public static void createTotalBarChart(BarChart chart, List<Meta> metaList){
+    /**
+     * Crea y personaliza el grafico de barras
+     *
+     * @param chart BarChart
+     * @param metaList List<Meta>
+     */
+    public static void createTotalBarChart(BarChart chart,
+                                           List<Meta> metaList){
+
         List<BarEntry> entries = new ArrayList<>();
 
         for (Meta meta : metaList) {
-            // turn your data into Entry objects
+            // turn your data into BarEntry objects
             entries.add(new BarEntry(meta.getUrtea(), meta.getZenbat()));
         }
 
@@ -52,8 +60,7 @@ public class ChartHelper {
 
         BarData data = new BarData(dataSet);
 
-        //bar
-        chart.setDrawValueAboveBar(true);
+        chart.setDrawValueAboveBar(true); // mostrar valores encima de las barras
         chart.setFitBars(true); // make the x-axis fit exactly all bars
 
         //general
@@ -62,16 +69,17 @@ public class ChartHelper {
         xAxis.setValueFormatter(new IntegerFormatter());
         //arregla los valores duplicados de la x
         xAxis.setGranularity(1f);
+
         xAxis.setDrawGridLines(false);
         xAxis.setTextSize(TEXT_SIZE);
 
+        // eliminamos la linea Y de la derecha
         YAxis yAxisRight = chart.getAxisRight();
         yAxisRight.setDrawLabels(false);
         yAxisRight.setDrawGridLines(false);
 
         YAxis yAxisLeft = chart.getAxisLeft();
         yAxisLeft.setTextSize(TEXT_SIZE);
-
 
         // quitamos el label del chart
         Description label = new Description();
@@ -87,6 +95,15 @@ public class ChartHelper {
 
     }
 
+    /**
+     * Crea y personaliza el grafico de lineas
+     *
+     * @param chart LineChart
+     * @param mapListLH Map<LurraldeHistoriko,List<Meta>>
+     * @param resources Resources
+     * @param packageName String
+     * @param context Context
+     */
     public static void createLHLineChart(LineChart chart,
                                          Map<LurraldeHistoriko,List<Meta>> mapListLH,
                                          Resources resources,
@@ -132,6 +149,7 @@ public class ChartHelper {
         xAxis.setGranularity(1f);
         xAxis.setAvoidFirstLastClipping(true);
 
+        // eliminamos la linea Y de la derecha
         YAxis yAxisRight = chart.getAxisRight();
         yAxisRight.setDrawLabels(false);
         yAxisRight.setDrawGridLines(false);
@@ -141,10 +159,12 @@ public class ChartHelper {
 
         LineData data = new LineData(dataSets);
 
+        //eliminamos la descripcion del grafico
         Description label = new Description();
         label.setEnabled(false);
         chart.setDescription(label);
 
+        //modificamos la leyenda
         Legend legend = chart.getLegend();
         legend.setTextSize(TEXT_SIZE_LEGEND);
 

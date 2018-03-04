@@ -120,8 +120,8 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 .append(IzenaEskema.VIEW_GOGOKOAK);
 
         sb.append(WHERE)
-                .append(IzenaEskema.GOGOKOA).append(IGUAL)
-                .append(COMILLA_SIMPLE).append(Constants.FAV_SI).append(COMILLA_SIMPLE);
+                .append(IzenaEskema.GOGOKOA).append(EQUAL)
+                .append(SIMPLE_QUOTA).append(Constants.FAV_SI).append(SIMPLE_QUOTA);
 
         sb.append(ORDER_BY).append(IzenaEskema.IZENA);
 
@@ -158,8 +158,8 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 .append(IzenaEskema.VIEW_DATUAK);
 
         sb.append(WHERE)
-                .append(IzenaEskema.IZENA).append(IGUAL)
-                .append(COMILLA_SIMPLE).append(name).append(COMILLA_SIMPLE);
+                .append(IzenaEskema.IZENA).append(EQUAL)
+                .append(SIMPLE_QUOTA).append(name).append(SIMPLE_QUOTA);
 
         return this.selecetIzenak(sb.toString());
     }

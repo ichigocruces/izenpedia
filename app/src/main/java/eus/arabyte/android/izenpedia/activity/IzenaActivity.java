@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,13 +17,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -42,18 +35,16 @@ import eus.arabyte.android.izenpedia.model.Izena;
 import eus.arabyte.android.izenpedia.model.Izenkidea;
 import eus.arabyte.android.izenpedia.model.Meta;
 import eus.arabyte.android.izenpedia.utils.Constants;
-import eus.arabyte.android.izenpedia.utils.formatter.DecimalFormatter;
 import eus.arabyte.android.izenpedia.utils.LurraldeHistoriko;
 import eus.arabyte.android.izenpedia.utils.Preferences;
 import eus.arabyte.android.izenpedia.utils.Utils;
-import eus.arabyte.android.izenpedia.utils.formatter.IntegerFormatter;
 import eus.arabyte.android.izenpedia.utils.graphics.ChartHelper;
 
 public class IzenaActivity extends AppCompatActivity {
 
     public static final String ARG_IZENA = "izena";
     public static final String ARG_IZENA_POSITION = "position";
-    public static final String ARG_IZENA_OBJETCT = "izenaObject";
+    public static final String ARG_IZENA_OBJECT = "izenaObject";
 
     public static final int REQUEST = 200;
 
@@ -77,16 +68,14 @@ public class IzenaActivity extends AppCompatActivity {
 
         preferences = Preferences.getInstance(this);
 
-        // cargar los datos
+        // cargar los datos del Izena seleccionado en el listado
         Bundle args = getIntent().getExtras();
         String argIzena = null;
         if(args!=null) {
             argIzena = args.getString(ARG_IZENA);
             position = args.getInt(ARG_IZENA_POSITION);
-            izena = (Izena) args.getSerializable(ARG_IZENA_OBJETCT);
+            izena = (Izena) args.getSerializable(ARG_IZENA_OBJECT);
         }
-
-        Log.d("IzenaDetail", argIzena + " - " + position+ " - " + izena.toString());
 
         gogokoaDAO = new GogokoaDAOImpl(this);
         izenaDAO = new IzenaDAOImpl(this);
@@ -104,6 +93,13 @@ public class IzenaActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Creamos el menu
+     *
+     * @param menu Menu
+     *
+     * @return boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -112,6 +108,15 @@ public class IzenaActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Despues de crear el menu, lo modificamos:
+     * - marcamos si es favorito o no
+     * - anyadimos el listener para actualizar el campo
+     *
+     * @param menu Menu
+     *
+     * @return boolean
+     */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem menuItem = menu.findItem(R.id.action_star);
@@ -150,7 +155,16 @@ public class IzenaActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-        @Override
+    /**
+     * Anyadimos la logica cuando se seleccionan las opciones de menu
+     * <ul>
+     *     <li>Compartir: genera el texto a compartir</li>
+     * </ul>
+     *
+     * @param item MenuItem
+     * @return boolean
+     */
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
@@ -174,12 +188,14 @@ public class IzenaActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Respuesta para actualizar el listado
+     *
+     */
     @Override
     public void finish() {
-        Log.d("Izena finish", "finish method");
-        // Prepare data intent
         Intent data = new Intent();
-        data.putExtra(ARG_IZENA_OBJETCT, izena);
+        data.putExtra(ARG_IZENA_OBJECT, izena);
         data.putExtra(ARG_IZENA_POSITION, position);
         // Activity finished ok, return the data
         setResult(RESULT_OK, data);

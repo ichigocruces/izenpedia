@@ -50,7 +50,7 @@ public class IzenkideaDAOImpl extends BasicDAO implements IzenkideaDAO {
 
         sb.append(WHERE)
                 .append(IzenkideaEskema.IZENA)
-                .append(IGUAL).append(COMILLA_SIMPLE).append(izena.getIzena()).append(COMILLA_SIMPLE);
+                .append(EQUAL).append(SIMPLE_QUOTA).append(izena.getIzena()).append(SIMPLE_QUOTA);
 
         sb.append(ORDER_BY).append(IzenkideaEskema.HIZKUNTZA);
 

@@ -40,7 +40,7 @@ public class GogokoaDAOImpl extends BasicDAO implements GogokoaDAO {
 
         //where clause
         StringBuilder sb = new StringBuilder();
-        sb.append(GogokoaEskema.IZENA).append(IGUAL).append(QUESTION_MARK);
+        sb.append(GogokoaEskema.IZENA).append(EQUAL).append(QUESTION_MARK);
 
         //params
         String[] params = new String[1];
