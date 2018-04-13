@@ -22,9 +22,9 @@ import java.util.List;
 import java.util.Map;
 
 import eus.arabyte.android.izenpedia.model.Meta;
+import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.LurraldeHistoriko;
 import eus.arabyte.android.izenpedia.utils.Utils;
-import eus.arabyte.android.izenpedia.utils.formatter.DecimalFormatter;
 import eus.arabyte.android.izenpedia.utils.formatter.IntegerFormatter;
 
 /**
@@ -56,7 +56,7 @@ public class ChartHelper {
 
         BarDataSet dataSet = new BarDataSet(entries, null);
         dataSet.setValueTextSize(TEXT_SIZE);
-        dataSet.setValueFormatter(new DecimalFormatter());
+        dataSet.setValueFormatter(new IntegerFormatter());
 
         BarData data = new BarData(dataSet);
 
@@ -94,6 +94,77 @@ public class ChartHelper {
         chart.invalidate(); // refresh
 
     }
+
+    /**
+     * Crea y personaliza el grafico de lineas
+     *
+     * @param chart LineChart
+     * @param metaList List<Meta>
+     */
+    public static void createTotalLineChart(LineChart chart,
+                                            List<Meta> metaList,
+                                            Resources resources,
+                                            String packageName,
+                                            Context context){
+
+        if(chart==null){
+            return;
+        }
+
+        List<ILineDataSet> dataSets = new ArrayList<>();
+        //por cada territorio, recuperamos los datos
+
+            List<Entry> entries = new ArrayList<>();
+
+            for (Meta meta: metaList) {
+                entries.add(new Entry(meta.getUrtea(), meta.getZenbat()));
+            }
+
+            LineDataSet setComp = new LineDataSet(entries, null);
+            setComp.setAxisDependency(YAxis.AxisDependency.LEFT);
+
+            int color = Utils.getColorResourceByName(resources, packageName, Constants.COLOR_PRIMARY_LIGHT_NAME, context);
+            setComp.setColor(color);
+
+            setComp.setValueTextSize(TEXT_SIZE);
+            setComp.setValueFormatter(new IntegerFormatter());
+            setComp.setLineWidth(3f);
+
+            dataSets.add(setComp);
+
+        //general
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setValueFormatter(new IntegerFormatter());
+        xAxis.setTextSize(TEXT_SIZE);
+        //arregla los valores duplicados de la x
+        xAxis.setGranularity(1f);
+        xAxis.setAvoidFirstLastClipping(true);
+
+        // eliminamos la linea Y de la derecha
+        YAxis yAxisRight = chart.getAxisRight();
+        yAxisRight.setDrawLabels(false);
+        yAxisRight.setDrawGridLines(false);
+
+        YAxis yAxisLeft = chart.getAxisLeft();
+        yAxisLeft.setTextSize(TEXT_SIZE);
+
+        LineData data = new LineData(dataSets);
+
+        //eliminamos la descripcion del grafico
+        Description label = new Description();
+        label.setEnabled(false);
+        chart.setDescription(label);
+
+        // quitamos la leyenda (en este caso no tiene sentido)
+        Legend legend = chart.getLegend();
+        legend.setEnabled(false);
+
+        chart.setData(data);
+        chart.invalidate(); // refresh
+
+    }
+
 
     /**
      * Crea y personaliza el grafico de lineas

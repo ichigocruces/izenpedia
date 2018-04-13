@@ -15,7 +15,7 @@ public class Izena implements Serializable{
     private Integer gogokoa;
     private Double batazbeste;
     private Integer eustat;
-    private Double total;
+    private Integer total;
     private Boolean meta;
     private Boolean azalpena;
 
@@ -83,11 +83,11 @@ public class Izena implements Serializable{
         this.eustat = eustat;
     }
 
-    public Double getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 

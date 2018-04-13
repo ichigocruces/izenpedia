@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import eus.arabyte.android.izenpedia.bd.contracts.IzenaEskema;
 import eus.arabyte.android.izenpedia.model.Izena;
@@ -206,11 +205,11 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 String meta= cursor.getString(7);
                 izena.setMeta(Utils.isBlank(meta) ? null: Utils.getBooleanFromInt(meta));
 
-                // meta
+                // azalpena
                 String azalpena= cursor.getString(8);
                 izena.setAzalpena(Utils.isBlank(azalpena) ? null: Utils.getBooleanFromInt(azalpena));
 
-                izena.setTotal(cursor.getString(9) != null ? Double.valueOf(cursor.getString(9)) : null);
+                izena.setTotal(cursor.getString(9) != null ? Integer.valueOf(cursor.getString(9)) : null);
 
                 izenaList.add(izena);
             } while (cursor.moveToNext());
@@ -223,33 +222,6 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
         return null;
     }
 
-//    private List<Izena> selecetListIzenak(String sql) {
-//        List<Izena> izenaList = new ArrayList<Izena>();
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery(sql, null);
-//
-//        // looping through all rows and adding to list
-//        if (cursor.moveToFirst()) {
-//            do {
-//                Izena izena = new Izena();
-//                izena.setIzena(cursor.getString(0));
-//                izena.setSexua(cursor.getString(1));
-//
-//                //Gogokoa
-//                if (cursor.getString(2) == null) {
-//                    izena.setGogokoa(0);
-//                } else {
-//                    izena.setGogokoa(Integer.valueOf(cursor.getString(2)));
-//                }
-//                izena.setMeta(cursor.getString(7) != null ? Double.valueOf(cursor.getString(7)) : null);
-//
-//                izenaList.add(izena);
-//            } while (cursor.moveToNext());
-//        }
-//
-//        return izenaList;
-//    }
 
     private List<Izena> selecetListIzenak(String sql, String sexua) {
         List<Izena> izenaList = new ArrayList<Izena>();
@@ -297,33 +269,5 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
 
         return izenaList;
     }
-
-//    private List<Izena> selecetPopularListIzenak(String sql) {
-//        List<Izena> izenaList = new ArrayList<Izena>();
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery(sql, null);
-//
-//
-//        // looping through all rows and adding to list
-//        if (cursor.moveToFirst()) {
-//            do {
-//                Izena izena = new Izena();
-//                izena.setIzena(cursor.getString(0));
-//                izena.setEustat(cursor.getInt(1));
-//                //Gogokoa
-//                if (cursor.getString(2) == null) {
-//                    izena.setGogokoa(0);
-//                } else {
-//                    izena.setGogokoa(Integer.valueOf(cursor.getString(2)));
-//                }
-//                izena.setMeta(cursor.getString(7) != null ? Double.valueOf(cursor.getString(7)) : null);
-//
-//                izenaList.add(izena);
-//            } while (cursor.moveToNext());
-//        }
-//
-//        return izenaList;
-//    }
 
 }

@@ -71,11 +71,17 @@
                 android:layout_gravity="center|start"
                 android:text="@string/chart_total_label" />
 
-            <com.github.mikephil.charting.charts.BarChart
+            <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chart_total"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_below="@id/chart_lh" />
+                android:layout_below="@id/chart_total_label"/>
+
+            <!--<com.github.mikephil.charting.charts.BarChart-->
+                <!--android:id="@+id/chart_total"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="300dp"-->
+                <!--android:layout_below="@id/chart_lh" />-->
 
         </LinearLayout>
 

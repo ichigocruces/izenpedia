@@ -252,7 +252,7 @@ public class IzenaActivity extends AppCompatActivity {
         }else {
             String batazbeste = Utils.presentDoubleToDecimalFormat(izena.getBatazbeste());
             String eustat = Utils.presentIntegerToString(izena.getEustat());
-            String total = Utils.presentDoubleToDecimalFormat(izena.getTotal());
+            String total = Utils.presentIntegerToString(izena.getTotal());
 
             if(!Utils.isBlank(batazbeste)){
                 ((TextView) this.findViewById(R.id.izena_media)).setText(batazbeste);
@@ -287,8 +287,9 @@ public class IzenaActivity extends AppCompatActivity {
             this.findViewById(R.id.card_graphics).setVisibility(View.GONE);
 
         }else{
-            BarChart totalChart = findViewById(R.id.chart_total);
-            ChartHelper.createTotalBarChart(totalChart, metaList);
+//            BarChart totalChart = findViewById(R.id.chart_total);
+            LineChart totalChart = findViewById(R.id.chart_total);
+            ChartHelper.createTotalLineChart(totalChart, metaList, getResources(), getPackageName(), this);
         }
 
         Map<LurraldeHistoriko,List<Meta>> mapListLH = metaDAO.getMapListLHMeta(izena);
