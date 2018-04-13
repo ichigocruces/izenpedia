@@ -14,8 +14,10 @@ public class Izena implements Serializable{
     private String izena, sexua, azalpenaEs, azalpenaEu;
     private Integer gogokoa;
     private Double batazbeste;
-    private Integer Eustat;
+    private Integer eustat;
     private Double total;
+    private Boolean meta;
+    private Boolean azalpena;
 
     public Integer getId() {
         return id;
@@ -74,11 +76,11 @@ public class Izena implements Serializable{
     }
 
     public Integer getEustat() {
-        return Eustat;
+        return eustat;
     }
 
     public void setEustat(Integer eustat) {
-        Eustat = eustat;
+        this.eustat = eustat;
     }
 
     public Double getTotal() {
@@ -87,6 +89,22 @@ public class Izena implements Serializable{
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public Boolean getMeta() {
+        return meta;
+    }
+
+    public void setMeta(Boolean meta) {
+        this.meta = meta;
+    }
+
+    public Boolean getAzalpena() {
+        return azalpena;
+    }
+
+    public void setAzalpena(Boolean azalpena) {
+        this.azalpena = azalpena;
     }
 
     @Override
@@ -99,9 +117,10 @@ public class Izena implements Serializable{
                 ", azalpenaEu='" + azalpenaEu + '\'' +
                 ", gogokoa=" + gogokoa +
                 ", batazbeste=" + batazbeste +
-                ", Eustat=" + Eustat +
+                ", eustat=" + eustat +
                 ", total=" + total +
-                ", memory=" + super.toString() +
+                ", meta=" + meta +
+                ", azalpena=" + azalpena +
                 '}';
     }
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
@@ -86,6 +87,32 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         switch (this.listType){
             case BOYS:case GIRLS:
                 holder.holderIcon.setText(String.valueOf(izena.getIzena().charAt(0)).toUpperCase());
+
+                //deskribapena
+                if(izena.getAzalpena()!=null && izena.getAzalpena()){
+                    holder.imgDescription.setVisibility(View.VISIBLE);
+                }else{
+                    holder.imgDescription.setVisibility(View.INVISIBLE);
+                }
+
+                //Eustat
+                if(izena.getEustat()!=null){
+                    holder.imgEustatLabel.setText(String.valueOf(izena.getEustat()));
+                    holder.imgEustat.setVisibility(View.VISIBLE);
+                    holder.imgEustatLabel.setVisibility(View.VISIBLE);
+                }else{
+                    holder.imgEustatLabel.setText(null);
+                    holder.imgEustat.setVisibility(View.INVISIBLE);
+                    holder.imgEustatLabel.setVisibility(View.INVISIBLE);
+                }
+
+                //graphics
+                if(izena.getMeta()!=null && izena.getMeta()){
+                    holder.imgGraphics.setVisibility(View.VISIBLE);
+                }else{
+                    holder.imgGraphics.setVisibility(View.INVISIBLE);
+                }
+
                 break;
         }
 
@@ -95,13 +122,13 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
 
         //Gogokoa
         if (izena.getGogokoa() == Constants.FAV_SI) {
-            holder.img_Gogokoa.setChecked(true);
+            holder.imgGogokoa.setChecked(true);
         } else {
-            holder.img_Gogokoa.setChecked(false);
+            holder.imgGogokoa.setChecked(false);
         }
 
         // cuando se pincha
-        holder.img_Gogokoa.setOnClickListener(new View.OnClickListener() {
+        holder.imgGogokoa.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -216,15 +243,21 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
      */
     public static class IzenaViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
-        TextView holderIzena, holderIcon;
-        CheckBox img_Gogokoa;
+        TextView holderIzena, holderIcon, imgEustatLabel;
+        CheckBox imgGogokoa;
+        ImageView imgDescription, imgEustat, imgGraphics;
 
         IzenaViewHolder(View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.card_view);
             holderIcon = itemView.findViewById(R.id.holder_icon);
             holderIzena = itemView.findViewById(R.id.holder_izena);
-            img_Gogokoa = itemView.findViewById(R.id.holder_gogokoa);
+            imgGogokoa = itemView.findViewById(R.id.holder_gogokoa);
+
+            imgDescription = itemView.findViewById(R.id.img_description);
+            imgEustat = itemView.findViewById(R.id.img_eustat);
+            imgGraphics = itemView.findViewById(R.id.img_graphics);
+            imgEustatLabel = itemView.findViewById(R.id.img_eustat_label);
         }
     }
 

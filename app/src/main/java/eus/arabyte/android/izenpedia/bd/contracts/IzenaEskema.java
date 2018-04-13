@@ -24,6 +24,8 @@ public abstract class IzenaEskema implements BaseColumns {
     public static final String BATAZBESTE = "batazbeste";
     public static final String EUSTAT = "eustat";
     public static final String TOTAL = "total";
+    public static final String META = "meta";
+    public static final String AZALPENA = "azalpena";
 
 
 }

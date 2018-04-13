@@ -17,4 +17,7 @@ public class Constants {
 
     public static final int FAV_SI = 1;
     public static final int FAV_NO = 0;
+
+    public static final int NUM_1 = 1;
+    public static final int NUM_0 = 0;
 }

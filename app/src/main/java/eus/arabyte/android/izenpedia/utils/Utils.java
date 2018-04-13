@@ -104,4 +104,23 @@ public class Utils {
         return ContextCompat.getColor(context, resId);
     }
 
+    /**
+     *
+     * @param value String
+     *
+     * @return String
+     */
+    public static Boolean getBooleanFromInt(String value){
+        if(isBlank(value)){
+            return false;
+        }else{
+            int intValue = Integer.parseInt(value);
+            if(intValue==Constants.NUM_1){
+                return true;
+            }
+            return false;
+        }
+
+    }
+
 }
