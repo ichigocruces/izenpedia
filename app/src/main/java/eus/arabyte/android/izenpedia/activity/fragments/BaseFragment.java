@@ -56,12 +56,28 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
         super();
     }
 
+    /**
+     * OnCreate method
+     *
+     * @param savedInstanceState Bundle
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
+    /**
+     * Método que se invoca cuando se crea la vista princial.
+     * Asignamos el adapter, el layout.
+     * Dependiendo del listado creamos el IndexFastScrollRecyclerView
+     *
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     *
+     * @return View
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -81,18 +97,6 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
                 mScrollRecyclerView.setIndexBarTransparentValue((float) 0.4);
                 mScrollRecyclerView.setIndexbarMargin(0);
 
-
-//        mScrollRecyclerView.setIndexTextSize(12);
-//        mScrollRecyclerView.setIndexBarColor();
-
-//        mScrollRecyclerView.setIndexbarWidth(40);
-//        mScrollRecyclerView.setPreviewPadding(0);
-//        mScrollRecyclerView.setIndexBarTextColor("#FFFFFF");
-
-//        mScrollRecyclerView.setIndexBarVisibility(true);
-//        mScrollRecyclerView.setIndexbarHighLateTextColor("#33334c");
-//        mScrollRecyclerView.setIndexBarHighLateTextVisibility(true);
-
                 break;
             default:
 
@@ -103,7 +107,12 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
         return rootView;
     }
 
-
+    /**
+     * Método al que se invoca cuando se ha creado la vista
+     *
+     * @param view View
+     * @param savedInstanceState Bundle
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

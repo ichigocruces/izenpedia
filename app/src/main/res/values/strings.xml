@@ -65,6 +65,27 @@
     <string name="alert_close_no">No</string>
 
 
+    <!-- About activity -->
+    <string name="version_label">No</string>
+    <string name="changelog_label">Historial de cambios</string>
+    <string name="rate_label">Valoración</string>
+    <string name="rate_text">Si te ha gustado la aplicación, por favor danos tu valoración.</string>
+    <string name="licence_label">Licencia</string>
+
+    <!-- inigo -->
+    <string name="inigo_name">Iñigo Angulo de la Calle</string>
+    <string name="inigo_description">Descripción</string>
+
+
+    <!-- ibai -->
+    <string name="ibai_name">Ibai Llona Berenguer</string>
+    <string name="ibai_description">Descripción</string>
+
+    <string name="linkedin">LINKEDIN</string>
+    <string name="github">GITHUB</string>
+    <string name="role_developer">Desarrollador</string>
+    <string name="role_analyst">Analista</string>
+
     <!-- LH -->
     <string name="lh_bizkaia">Bizkaia</string>
     <string name="lh_gipuzkoa">Gipuzkoa</string>

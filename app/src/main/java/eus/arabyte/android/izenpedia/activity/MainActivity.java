@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import eus.arabyte.android.izenpedia.R;
+import eus.arabyte.android.izenpedia.activity.fragments.AboutFragment;
 import eus.arabyte.android.izenpedia.activity.fragments.BoysFragment;
 import eus.arabyte.android.izenpedia.activity.fragments.FavsFragment;
 import eus.arabyte.android.izenpedia.activity.fragments.GirlsFragment;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -52,13 +53,13 @@ public class MainActivity extends AppCompatActivity
     /**
      * Controlamos si se pulsa el boton de atras:
      * <ul>
-     *     <li>Si esta el menu de navegacion abierto, lo cerramos</li>
-     *     <li>Si no esta abierto, se pide confirmacion para salir (double click)</li>
+     * <li>Si esta el menu de navegacion abierto, lo cerramos</li>
+     * <li>Si no esta abierto, se pide confirmacion para salir (double click)</li>
      * </ul>
      */
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -66,10 +67,10 @@ public class MainActivity extends AppCompatActivity
             if (exit) {
                 finish();
             } else {
-                Toast.makeText(this, "Press back again to exit",
+                Toast.makeText(this, R.string.alert_close_message,
                         Toast.LENGTH_SHORT).show();
                 exit = true;
-                new CountDownTimer(3000,1000) {
+                new CountDownTimer(3000, 1000) {
 
                     @Override
                     public void onTick(long l) {
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             fragment = new SettingsFragment();
         } else if (id == R.id.nav_about) {
-
+            fragment = new AboutFragment();
         }
 
         //replacing the fragment
@@ -131,13 +132,6 @@ public class MainActivity extends AppCompatActivity
      * Restart the activity to reload the language
      */
     public void restartActivity() {
-        /*
-        Fragment fragment = new SettingsFragment();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.content_frame, fragment);
-        ft.commit();
-        */
-
         finish();
         startActivity(getIntent());
     }
@@ -146,8 +140,8 @@ public class MainActivity extends AppCompatActivity
      * Llama al super para forzar que invoque al fragment
      *
      * @param requestCode int
-     * @param resultCode int
-     * @param data Intent
+     * @param resultCode  int
+     * @param data        Intent
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
