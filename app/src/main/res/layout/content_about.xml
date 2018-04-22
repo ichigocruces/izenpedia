@@ -394,7 +394,7 @@
                         android:layout_weight="0.5"
                         android:background="@android:color/transparent"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:text="@string/github" />
+                        android:text="@string/github"/>
 
 
                 </LinearLayout>

@@ -16,15 +16,15 @@
     <string name="euskara">Euskara</string>
 
     <!-- NAV -->
-    <string name="nav_popular">Popular</string>
-    <string name="nav_boys">Chico</string>
-    <string name="nav_girls">Chica</string>
+    <string name="nav_popular">Populares</string>
+    <string name="nav_boys">Chicos</string>
+    <string name="nav_girls">Chicas</string>
     <string name="nav_favs">Favoritos</string>
     <string name="nav_settings">Preferencias</string>
     <string name="nav_about">Información</string>
 
-    <string name="neskak">Niña</string>
-    <string name="mutilak">Niño</string>
+    <string name="neskak">Chicas</string>
+    <string name="mutilak">Chicos</string>
     <string name="guztiak">Todos/as</string>
     <string name="gogokoak">Favoritos</string>
 
@@ -35,21 +35,22 @@
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_close">Cerrar</string>
 
+    <!-- Favoritos -->
     <string name="add_fav">Anadido a favoritos</string>
     <string name="rm_fav">Eliminado de favoritos</string>
 
     <string name="izena">Nombre</string>
-    <string name="izena_descripcion">Descripcion</string>
+    <string name="izena_descripcion">Descripción</string>
     <string name="izena_languages">En otros idiomas</string>
-    <string name="izena_graphics">Estadisticas</string>
-    <string name="izena_datuak">Mas datos</string>
+    <string name="izena_graphics">Estadísticas</string>
+    <string name="izena_datuak">Más datos</string>
 
     <string name="izena_media_label">Media de edad</string>
-    <string name="izena_eustat_label">Puesto entre los nombres más comunes (Eustat)</string>
-    <string name="izena_total_label">Número total de personas en el estado</string>
+    <string name="izena_eustat_label">Puesto entre los más populares (Eustat)</string>
+    <string name="izena_total_label">Número total de personas en el Estado</string>
 
-    <string name="chart_lh_label">Por territorio historico</string>
-    <string name="chart_total_label">En Euskal Herria en total</string>
+    <string name="chart_lh_label">Por Territorio Histórico</string>
+    <string name="chart_total_label">En Euskal Herria</string>
 
 
     <!-- preferences -->
@@ -61,7 +62,7 @@
 
     <!-- alert -->
     <string name="alert_close_message">Pulsa de nuevo para salir</string>
-    <string name="alert_close_ok">Si</string>
+    <string name="alert_close_ok">Sí</string>
     <string name="alert_close_no">No</string>
 
 

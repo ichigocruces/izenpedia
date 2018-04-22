@@ -3,50 +3,50 @@
     <string name="app_name">Izendegia</string>
     <string name="title_activity_welcome">Euskal izenak</string>
 
-    <!-- Intro -->
     <!-- Intro 1 -->
     <string name="slide_1_title">Hizkuntza</string>
     <string name="slide_1_desc">Zure hizkuntza aukeratu</string>
 
     <!-- Intro 3 -->
     <string name="slide_3_title">Euskal izenak</string>
-    <string name="slide_3_desc1">Gure umeentzat izen bat bilatzea zeregin zaila eta interesgarria da. </string>
-    <string name="slide_3_desc2">Ondoren ikusiko duzun izenen zerrenda Euskaltzaindiak ofizialki baimentzen dituenak dira</string>
+    <string name="slide_3_desc1">Gure umeentzat izen bat bilatzea zeregin zaila eta interesgarria da. Goza ezazu izenen esanahia ezagutzen</string>
+    <string name="slide_3_desc2">Ondorengo izenen zerrenda Euskaltzaindiak ofizialki baimentzen dituenak dira</string>
 
     <string name="gaztelania">Castellano</string>
     <string name="euskara">Euskara</string>
 
     <!-- NAV -->
-    <string name="nav_popular">Popular</string>
-    <string name="nav_boys">Mutila</string>
-    <string name="nav_girls">Neska</string>
+    <string name="nav_popular">Popularrak</string>
+    <string name="nav_boys">Mutilak</string>
+    <string name="nav_girls">Neskak</string>
     <string name="nav_favs">Gogokoak</string>
-    <string name="nav_settings">Maitasun</string>
-    <string name="nav_about">Informazio</string>
+    <string name="nav_settings">Aukerak</string>
+    <string name="nav_about">Informazioa</string>
 
-
-    <string name="mutilak">Mutila</string>
-    <string name="neskak">Neska</string>
+    <string name="neskak">Neskak</string>
+    <string name="mutilak">Mutilak</string>
     <string name="guztiak">Guztiak</string>
     <string name="gogokoak">Gogokoak</string>
 
     <!-- actions -->
     <string name="action_search">Bilatu</string>
-    <string name="next">HURRENGOA</string>
+    <string name="next">JARRAITU</string>
     <string name="start">ULERTUTA</string>
     <string name="navigation_drawer_open">Ireki</string>
     <string name="navigation_drawer_close">Itxi</string>
 
+    <!-- Favoritos -->
+    <string name="add_fav">Gogokoetara gehituta</string>
+    <string name="rm_fav">Gogokoetatik kenduta</string>
+
     <!-- Preferencias -->
-    <string name="preferences">eu_Preferencias</string>
+    <string name="preferences">Aukerak</string>
     <string name="preferences_language">Hizkuntza</string>
-    <string name="add_fav">eu_Anyadido a favoritos</string>
-    <string name="rm_fav">eu_Eliminado de favoritos</string>
     <string name="izena">Izena</string>
     <string name="izena_descripcion">Deskribapena</string>
-    <string name="izena_languages">eu_en otros idiomas</string>
-    <string name="izena_graphics">eu_Estadisticas</string>
-    <string name="alert_close_message">eu_Pulsa de nuevo para salir</string>
+    <string name="izena_languages">Beste hizkuntzetan</string>
+    <string name="izena_graphics">Estatistikak</string>
+    <string name="alert_close_message">Irtetzeko, berriz sakatu</string>
     <string name="alert_close_ok">Bai</string>
     <string name="alert_close_no">Ez</string>
 
@@ -55,11 +55,11 @@
     <string name="lh_gipuzkoa">Gipuzkoa</string>
     <string name="lh_araba">Araba</string>
     <string name="lh_nafarroa">Nafarroa</string>
-    <string name="izena_datuak">eu_Mas datos</string>
-    <string name="izena_media_label">eu_Media de edad</string>
-    <string name="izena_eustat_label">eu_Puesto entre los nombres más comunes (Eustat)</string>
-    <string name="izena_total_label">eu_Número total de personas en el estado</string>
-    <string name="menu_izena_star">eu_Destacar</string>
-    <string name="menu_izena_share">eu_Compartir</string>
+    <string name="izena_datuak">Datu gehiago</string>
+    <string name="izena_media_label">Batazbesteko adina</string>
+    <string name="izena_eustat_label">Postua popularren artean (Eustat)</string>
+    <string name="izena_total_label">Pertsona kopurua Estatuan</string>
+    <string name="menu_izena_star">Azpimarratu</string>
+    <string name="menu_izena_share">Elkarbanatu</string>
 
 </resources>
