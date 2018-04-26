@@ -88,34 +88,33 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
             case BOYS:case GIRLS:
                 holder.holderIcon.setText(String.valueOf(izena.getIzena().charAt(0)).toUpperCase());
 
-                //deskribapena
-                if(izena.getAzalpena()!=null && izena.getAzalpena()){
-                    holder.imgDescription.setVisibility(View.VISIBLE);
-                }else{
-                    holder.imgDescription.setVisibility(View.INVISIBLE);
-                }
-
-                //Eustat
-                if(izena.getEustat()!=null){
-                    holder.imgEustatLabel.setText(String.valueOf(izena.getEustat()));
-                    holder.imgEustat.setVisibility(View.VISIBLE);
-                    holder.imgEustatLabel.setVisibility(View.VISIBLE);
-                }else{
-                    holder.imgEustatLabel.setText(null);
-                    holder.imgEustat.setVisibility(View.INVISIBLE);
-                    holder.imgEustatLabel.setVisibility(View.INVISIBLE);
-                }
-
-                //graphics
-                if(izena.getMeta()!=null && izena.getMeta()){
-                    holder.imgGraphics.setVisibility(View.VISIBLE);
-                }else{
-                    holder.imgGraphics.setVisibility(View.INVISIBLE);
-                }
-
                 break;
         }
 
+        //deskribapena
+        if(izena.getAzalpena()!=null && izena.getAzalpena()){
+            holder.imgDescription.setVisibility(View.VISIBLE);
+        }else{
+            holder.imgDescription.setVisibility(View.INVISIBLE);
+        }
+
+        //Eustat
+        if(izena.getEustat()!=null){
+            holder.imgEustatLabel.setText(String.valueOf(izena.getEustat()));
+            holder.imgEustat.setVisibility(View.VISIBLE);
+            holder.imgEustatLabel.setVisibility(View.VISIBLE);
+        }else{
+            holder.imgEustatLabel.setText(null);
+            holder.imgEustat.setVisibility(View.INVISIBLE);
+            holder.imgEustatLabel.setVisibility(View.INVISIBLE);
+        }
+
+        //graphics
+        if(izena.getMeta()!=null && izena.getMeta()){
+            holder.imgGraphics.setVisibility(View.VISIBLE);
+        }else{
+            holder.imgGraphics.setVisibility(View.INVISIBLE);
+        }
 
         //izena
         holder.holderIzena.setText(izena.getIzena());

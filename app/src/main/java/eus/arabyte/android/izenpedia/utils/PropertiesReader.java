@@ -20,6 +20,8 @@ public class PropertiesReader {
     private static final String IBAI_LINKEDIN = "ibai.linkedin";
     private static final String IBAI_GITHUB = "ibai.github";
 
+
+
     private PropertiesReader() {
         super();
     }
@@ -68,6 +70,5 @@ public class PropertiesReader {
     public String getIbaiGithub() {
         return propertiesReader.getProperty(IBAI_GITHUB);
     }
-
 
 }
