@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.fragments.AboutFragment;
+import eus.arabyte.android.izenpedia.activity.fragments.ArabyteFragment;
 import eus.arabyte.android.izenpedia.activity.fragments.BoysFragment;
 import eus.arabyte.android.izenpedia.activity.fragments.FavsFragment;
 import eus.arabyte.android.izenpedia.activity.fragments.GirlsFragment;
@@ -113,6 +114,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new SettingsFragment();
         } else if (id == R.id.nav_about) {
             fragment = new AboutFragment();
+        } else if (id == R.id.nav_arabyte) {
+            fragment = new ArabyteFragment();
         }
 
         //replacing the fragment

@@ -19,9 +19,9 @@ import eus.arabyte.android.izenpedia.utils.Utils;
 /**
  * Created by ichigo on 15/4/18.
  */
-public class AboutFragment extends Fragment implements View.OnClickListener {
+public class ArabyteFragment extends Fragment implements View.OnClickListener {
 
-    public AboutFragment() {
+    public ArabyteFragment() {
     }
 
     @Override
@@ -32,15 +32,19 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.content_about, container, false);
+        View rootView = inflater.inflate(R.layout.content_arabyte, container, false);
 
-        String versionName = BuildConfig.VERSION_NAME;
+        Button urlButton = rootView.findViewById(R.id.inigo_linkedin);
+        urlButton.setOnClickListener(this);
 
-        TextView versionText = rootView.findViewById(R.id.version_text);
-        versionText.setText(versionName);
+        urlButton = rootView.findViewById(R.id.inigo_github);
+        urlButton.setOnClickListener(this);
 
-        TextView urlText = rootView.findViewById(R.id.rate_text);
-        urlText.setOnClickListener(this);
+        urlButton = rootView.findViewById(R.id.ibai_linkedin);
+        urlButton.setOnClickListener(this);
+
+        urlButton = rootView.findViewById(R.id.ibai_github);
+        urlButton.setOnClickListener(this);
 
         return rootView;
 
@@ -71,6 +75,18 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
         PropertiesReader propertiesReader = PropertiesReader.getInstance(getContext());
 
         switch (view.getId()) {
+            case R.id.inigo_linkedin:
+                url = propertiesReader.getInigoLinkedin();
+                break;
+            case R.id.inigo_github:
+                url = propertiesReader.getInigoGithub();
+                break;
+            case R.id.ibai_linkedin:
+                url = propertiesReader.getIbaiLinkedin();
+                break;
+            case R.id.ibai_github:
+                url = propertiesReader.getIbaiGithub();
+                break;
             case R.id.rate_text:
                 url = propertiesReader.getUrlGoogleplay();
                 break;
