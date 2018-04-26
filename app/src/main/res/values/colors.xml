@@ -45,5 +45,6 @@
     <color name="grapho_araba">#CB9838</color>
     <color name="grapho_navarra">#BF0404</color>
 
+    <color name="list_background">#ededed</color>
 
 </resources>
