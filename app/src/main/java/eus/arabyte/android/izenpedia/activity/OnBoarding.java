@@ -27,6 +27,7 @@ import java.util.Locale;
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.Preferences;
+import eus.arabyte.android.izenpedia.utils.Utils;
 
 public class OnBoarding extends AppCompatActivity {
 
@@ -58,9 +59,9 @@ public class OnBoarding extends AppCompatActivity {
 
         setContentView(R.layout.activity_on_boarding);
 
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnNext = (Button) findViewById(R.id.btn_next);
+        viewPager = findViewById(R.id.view_pager);
+        dotsLayout = findViewById(R.id.layoutDots);
+        btnNext = findViewById(R.id.btn_next);
 
         // layouts of all welcome sliders
         // add few more layouts if you want
@@ -182,10 +183,20 @@ public class OnBoarding extends AppCompatActivity {
             if(position==0){
                 RadioButton radioLanguage;
 
-                if(Constants.EU.equals(preferences.getHizkuntza())){
+                String hizkuntza = preferences.getHizkuntza();
+
+                //primera vez que se carga, las preferencias están vacías
+                if(Utils.isBlank(hizkuntza)){
+                    Locale current = getResources().getConfiguration().locale;
+                    hizkuntza = current.getLanguage();
+                }
+
+                if(Constants.EU.equals(hizkuntza)){
                     radioLanguage = view.findViewById(R.id.btn_EUS);
+                    preferences.setHizkuntza(Constants.EU);
                 }else{
                     radioLanguage = view.findViewById(R.id.btn_ES);
+                    preferences.setHizkuntza(Constants.ES);
                 }
                 if(radioLanguage!=null){
                     radioLanguage.setChecked(true);

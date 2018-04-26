@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="#C5CAE9"
-    android:foreground="?attr/selectableItemBackground">
+    android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -66,6 +66,15 @@
                     />
 
                 <ImageView
+                    android:id="@+id/img_graphics"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/chart_line_variant"
+                    android:layout_marginEnd="@dimen/datuak_padding_small"
+                    android:visibility="invisible"
+                    />
+
+                <ImageView
                     android:id="@+id/img_eustat"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
@@ -79,15 +88,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="@dimen/datuak_padding_small"
                     android:text="11"
-                    android:visibility="invisible"
-                    />
-
-                <ImageView
-                    android:id="@+id/img_graphics"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/chart_line_variant"
-                    android:layout_marginEnd="@dimen/datuak_padding_small"
                     android:visibility="invisible"
                     />
 
