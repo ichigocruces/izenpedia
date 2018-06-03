@@ -26,7 +26,7 @@
             <RelativeLayout
                 android:id="@+id/ibai_layout"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="170dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -60,56 +60,6 @@
                     android:text="@string/ibai_name"
                     android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/ibai_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ibai_name"
-                    android:gravity="center"
-                    android:text="@string/ibai_description"
-                    android:textSize="14sp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/ibai_role"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ibai_description"
-                    android:gravity="center"
-                    android:text="@string/role_analyst"
-                    android:textSize="14sp"
-                    android:textStyle="italic" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ibai_role"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <Button
-                        android:id="@+id/ibai_linkedin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_weight="0.5"
-                        android:background="@android:color/transparent"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:text="@string/linkedin" />
-
-                    <Button
-                        android:id="@+id/ibai_github"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_weight="0.5"
-                        android:background="@android:color/transparent"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:text="@string/github" />
-
-
-                </LinearLayout>
-
             </RelativeLayout>
 
 
@@ -128,7 +78,7 @@
             <RelativeLayout
                 android:id="@+id/inigo_layout"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="200dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -162,30 +112,11 @@
                     android:text="@string/inigo_name"
                     android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/inigo_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/inigo_name"
-                    android:gravity="center"
-                    android:text="@string/inigo_description"
-                    android:textSize="14sp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/inigo_role"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/inigo_description"
-                    android:gravity="center"
-                    android:text="@string/role_developer"
-                    android:textSize="14sp"
-                    android:textStyle="italic" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/inigo_role"
+                    android:layout_below="@+id/inigo_name"
                     android:orientation="horizontal"
                     android:weightSum="1">
 
