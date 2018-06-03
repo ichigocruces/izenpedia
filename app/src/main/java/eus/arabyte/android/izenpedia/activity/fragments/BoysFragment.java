@@ -4,6 +4,7 @@ import android.content.Context;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
+import eus.arabyte.android.izenpedia.dao.GogokoaDAOImpl;
 import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
 import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.ListType;
@@ -27,9 +28,10 @@ public class BoysFragment extends BaseFragment {
         _layout = R.layout.izenak_list;
         _title = R.string.nav_boys;
         _listType = ListType.BOYS;
+        _params = Constants.GIZONA;
 
         izenaDAO = new IzenaDAOImpl(getActivity());
-        izenaAdapter = new IzenaAdapter(izenaDAO.getListIzenakByGender(Constants.GIZONA), this, _listType);
+        izenaAdapter = new IzenaAdapter(this, _listType, new GogokoaDAOImpl(context));
 
     }
 

@@ -1,5 +1,6 @@
 package eus.arabyte.android.izenpedia.adapter;
 
+import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.listeners.OnRecyclerItemClickListener;
 import eus.arabyte.android.izenpedia.dao.GogokoaDAO;
 import eus.arabyte.android.izenpedia.dao.GogokoaDAOImpl;
+import eus.arabyte.android.izenpedia.dao.IzenaDAO;
 import eus.arabyte.android.izenpedia.model.Izena;
 import eus.arabyte.android.izenpedia.utils.Constants;
 import eus.arabyte.android.izenpedia.utils.ListType;
@@ -49,16 +51,27 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
     /**
      * IzenaAdapter constructor
      *
-     * @param data List<Izena>
      * @param mItemClickListener OnRecyclerItemClickListener
      */
-    public IzenaAdapter(List<Izena> data, OnRecyclerItemClickListener mItemClickListener, ListType listType) {
+    public IzenaAdapter(OnRecyclerItemClickListener mItemClickListener, ListType listType, GogokoaDAO gogokoaDAO) {
         super();
-        this.mDataSet.addAll(data);
-        this.mFileterdDataSet.addAll(data);
         this.mItemClickListener = mItemClickListener;
         this.mInternalClickListener = new InternalClickListener();
         this.listType = listType;
+
+        this.gogokoaDAO = gogokoaDAO;
+
+    }
+
+    /**
+     *
+     * @param data List<Izena>
+     */
+    public void setListItems(List<Izena> data){
+        this.mDataSet.addAll(data);
+        this.mFileterdDataSet.addAll(data);
+        notifyDataSetChanged();
+
     }
 
     @Override
@@ -75,7 +88,6 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         View v = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         IzenaViewHolder izenaViewHolder = new IzenaViewHolder(v);
         v.setOnClickListener(mInternalClickListener);
-        gogokoaDAO = new GogokoaDAOImpl(parent.getContext());
 
         return izenaViewHolder;
     }
@@ -313,4 +325,5 @@ public class IzenaAdapter extends RecyclerView.Adapter<IzenaAdapter.IzenaViewHol
         }
 
     }
+
 }

@@ -1,6 +1,9 @@
 package eus.arabyte.android.izenpedia.activity.fragments;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +16,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.List;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.activity.IzenaActivity;
@@ -50,7 +57,11 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
      */
     protected ListType _listType;
 
+    protected String _params;
+
     protected RecyclerView listIzenakView;
+
+    private LinearLayout progressBarLayout;
 
     public BaseFragment() {
         super();
@@ -65,6 +76,7 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
     }
 
     /**
@@ -84,6 +96,7 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
         View rootView =  inflater.inflate(this._layout, container, false);
         listIzenakView = rootView.findViewById(R.id.list_izenak);
 
+        progressBarLayout = getActivity().findViewById(R.id.progressBarLayout);
 
         listIzenakView.setAdapter(izenaAdapter);
         listIzenakView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -103,6 +116,7 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
                 break;
         }
 
+        new SearchIzenakAsyncTask(getActivity()).execute(_listType, izenaDAO, _params);
 
         return rootView;
     }
@@ -243,5 +257,56 @@ public abstract class BaseFragment extends Fragment implements OnRecyclerItemCli
                 return false;
             }
         });
+    }
+
+
+    private class SearchIzenakAsyncTask extends AsyncTask<Object, Void, List<Izena>> {
+
+
+        public SearchIzenakAsyncTask(Context ctx) {
+        }
+
+        /*
+        Runs on the UI thread before doInBackground
+     */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBarLayout.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected List<Izena> doInBackground(Object... params) {
+
+            List<Izena> izenaList= null;
+
+            if(params!=null && params.length>0){
+                ListType listType = (ListType)params[0];
+                IzenaDAO izenaDAO = (IzenaDAO)params[1];
+                String param = (String)params[2];
+
+                switch (listType){
+                    case BOYS:case GIRLS:
+                        return izenaDAO.getListIzenakByGender(param);
+
+                    case FAVS:
+                        return izenaDAO.getStartedIzenak();
+
+                    case POPULAR:
+                        return  izenaDAO.getPopularIzenak(param);
+                }
+
+            }
+
+            return izenaList;
+        }
+
+        @Override
+        protected void onPostExecute(List<Izena> izenaList) {
+            super.onPostExecute(izenaList);
+            izenaAdapter.setListItems(izenaList);
+
+            progressBarLayout.setVisibility(View.GONE);
+        }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import eus.arabyte.android.izenpedia.R;
 import eus.arabyte.android.izenpedia.adapter.IzenaAdapter;
+import eus.arabyte.android.izenpedia.dao.GogokoaDAOImpl;
 import eus.arabyte.android.izenpedia.dao.IzenaDAOImpl;
 import eus.arabyte.android.izenpedia.utils.ListType;
 
@@ -27,7 +28,7 @@ public class FavsFragment extends BaseFragment {
         _listType = ListType.FAVS;
 
         izenaDAO = new IzenaDAOImpl(getActivity());
-        izenaAdapter = new IzenaAdapter(izenaDAO.getStartedIzenak(), this, _listType);
+        izenaAdapter = new IzenaAdapter(this, _listType, new GogokoaDAOImpl(context));
 
     }
 
