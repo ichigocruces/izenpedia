@@ -36,9 +36,6 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
 
         String versionName = BuildConfig.VERSION_NAME;
 
-        TextView versionText = rootView.findViewById(R.id.version_text);
-        versionText.setText(versionName);
-
         TextView urlText = rootView.findViewById(R.id.rate_text);
         urlText.setOnClickListener(this);
 

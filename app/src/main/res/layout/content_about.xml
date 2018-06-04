@@ -14,35 +14,14 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:padding="@dimen/activity_padding"
-            android:layout_width="fill_parent"
-            android:layout_height="72.0dip">
-
-            <ImageView
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
-
-            <TextView
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="@dimen/activity_padding"
-                android:paddingRight="@dimen/activity_padding"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name" />
-
-        </LinearLayout>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/card_description"
+            android:id="@+id/card_leyenda"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="2dp"
             app:cardPreventCornerOverlap="false"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:foreground="?android:attr/selectableItemBackground">
 
             <LinearLayout
@@ -63,23 +42,23 @@
                         android:layout_gravity="start|center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/information" />
+                        android:text="@string/legend" />
 
                 </LinearLayout>
 
 
                 <LinearLayout
-                    android:id="@+id/app_version"
+                    android:id="@+id/icon_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:minHeight="48dp">
 
                     <ImageView
-                        android:id="@+id/version_icon"
+                        android:id="@+id/icon_description_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/information_outline" />
+                        android:src="@drawable/sort_variant" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -87,21 +66,21 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/version_label"
+                            android:id="@+id/icon_description_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:gravity="center_vertical"
-                            android:text="@string/version_label"
+                            android:text="@string/description"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                         <TextView
-                            android:id="@+id/version_text"
+                            android:id="@+id/icon_description_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:gravity="center_vertical"
-                            android:hint="1.0"
+                            android:text="@string/description_explain"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
                     </LinearLayout>
@@ -109,17 +88,17 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/app_date"
+                    android:id="@+id/icon_chart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
+                    android:gravity="center|top"
                     android:minHeight="48dp">
 
                     <ImageView
-                        android:id="@+id/date_icon"
+                        android:id="@+id/icon_chart_img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/file_chart" />
+                        android:src="@drawable/chart_line_variant" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -128,26 +107,88 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/date_label"
+                            android:id="@+id/icon_chart_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:gravity="center_vertical"
-                            android:text="Datos"
+                            android:text="@string/stadistics"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
                         <TextView
-                            android:id="@+id/date_text"
+                            android:id="@+id/icon_chart_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:gravity="center_vertical"
-                            android:text="Las estadísticas se corresponden a datos del 2016"
+                            android:text="@string/stadistics_explain"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/icon_eustat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="48dp">
+
+                    <ImageView
+                        android:id="@+id/icon_eustat_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/fire_grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/icon_eustat_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/eustat"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                        <TextView
+                            android:id="@+id/icon_eustat_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/eustat_explain"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
                     </LinearLayout>
 
                 </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="2dp"
+            app:cardPreventCornerOverlap="false"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_padding">
 
                 <LinearLayout
                     android:id="@+id/app_rate"
@@ -194,147 +235,6 @@
 
         </android.support.v7.widget.CardView>
 
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_leyenda"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="2dp"
-            app:cardPreventCornerOverlap="false"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:foreground="?android:attr/selectableItemBackground">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/activity_padding">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:padding="1.0dip"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                        android:textColor="#505050"
-                        android:layout_gravity="start|center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Leyenda" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/icon_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:minHeight="48dp">
-
-                    <ImageView
-                        android:id="@+id/icon_description_img"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/sort_variant" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/icon_description_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:gravity="center_vertical"
-                            android:text="Descripción"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-                        <TextView
-                            android:id="@+id/icon_description_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:gravity="center_vertical"
-                            android:text="El nombre tiene una descripción"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/icon_chart"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:minHeight="48dp">
-
-                    <ImageView
-                        android:id="@+id/icon_chart_img"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/chart_line_variant" />
-
-                    <TextView
-                        android:id="@+id/icon_chart_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:gravity="center_vertical"
-                        android:text="Estadísticas"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/icon_eustat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:minHeight="48dp">
-
-                    <ImageView
-                        android:id="@+id/icon_eustat_img"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/fire_grey" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/icon_eustat_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:gravity="center_vertical"
-                            android:text="Posición en el EUSTAT"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-                        <TextView
-                            android:id="@+id/icon_eustat_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:gravity="center_vertical"
-                            android:text="Ranking del nombre en el listado del EUSTAT"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

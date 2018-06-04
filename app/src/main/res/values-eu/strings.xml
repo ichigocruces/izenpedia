@@ -22,7 +22,7 @@
     <string name="nav_favs">Gogokoak</string>
     <string name="nav_settings">Aukerak</string>
     <string name="nav_about">Informazioa</string>
-    <string name="nav_arabyte">Arabyte</string>
+    <string name="nav_acercade">eu_Acerca de</string>
 
     <string name="neskak">Neskak</string>
     <string name="mutilak">Mutilak</string>
@@ -50,6 +50,19 @@
     <string name="alert_close_message">Irtetzeko, berriz sakatu</string>
     <string name="alert_close_ok">Bai</string>
     <string name="alert_close_no">Ez</string>
+
+    <!-- About activity -->
+    <string name="information">eu_Información</string>
+    <string name="rate_label">eu_Valoración</string>
+    <string name="rate_text">eu_Si te ha gustado la aplicación, por favor danos tu valoración.</string>
+    <string name="legend">eu_Leyenda</string>
+    <string name="description">eu_Descripción</string>
+    <string name="description_explain">eu_Indica que el nombre tiene una descripción.</string>
+    <string name="stadistics">eu_Estadísticas</string>
+    <string name="stadistics_explain">eu_Fuente: INE \nFecha de publicación: 2018/05\nEl INE solo muestra estadísticas de nombres cuya frecuencia es mayor o igual a 20 personas en todo el estado. Además solo se contabilizan por territorio si la frecuencia es mayor de 5 personas. </string>
+    <string name="eustat">eu_Posición en el EUSTAT</string>
+    <string name="eustat_explain">eu_Fuente: EUSTAT \nFecha de publicación: 2018/04/18</string>
+
 
     <!-- LH -->
     <string name="lh_bizkaia">Bizkaia</string>

@@ -22,7 +22,7 @@
     <string name="nav_favs">Favoritos</string>
     <string name="nav_settings">Preferencias</string>
     <string name="nav_about">Información</string>
-    <string name="nav_arabyte">Arabyte</string>
+    <string name="nav_acercade">Acerca de</string>
 
     <string name="neskak">Chicas</string>
     <string name="mutilak">Chicos</string>
@@ -69,9 +69,16 @@
 
     <!-- About activity -->
     <string name="information">Información</string>
-    <string name="version_label">Versión</string>
     <string name="rate_label">Valoración</string>
     <string name="rate_text">Si te ha gustado la aplicación, por favor danos tu valoración.</string>
+    <string name="legend">Leyenda</string>
+    <string name="description">Descripción</string>
+    <string name="description_explain">Indica que el nombre tiene una descripción.</string>
+    <string name="stadistics">Estadísticas</string>
+    <string name="stadistics_explain">Fuente: INE \nFecha de publicación: 2018/05\nEl INE solo muestra estadísticas de nombres cuya frecuencia es mayor o igual a 20 personas en todo el estado. Además solo se contabilizan por territorio si la frecuencia es mayor de 5 personas. </string>
+    <string name="eustat">Posición en el EUSTAT</string>
+    <string name="eustat_explain">Fuente: EUSTAT \nFecha de publicación: 2018/04/18</string>
+
 
     <!-- inigo -->
     <string name="inigo_name">Iñigo Angulo de la Calle</string>
