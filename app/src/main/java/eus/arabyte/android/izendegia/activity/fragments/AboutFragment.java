@@ -34,7 +34,7 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.content_about, container, false);
 
-        String versionName = BuildConfig.VERSION_NAME;
+//        String versionName = BuildConfig.VERSION_NAME;
 
         TextView urlText = rootView.findViewById(R.id.rate_text);
         urlText.setOnClickListener(this);
