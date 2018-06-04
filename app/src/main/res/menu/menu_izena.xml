@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="eus.arabyte.android.izenpedia.activity.IzenaActivity">
+    tools:context="eus.arabyte.android.izendegia.activity.IzenaActivity">
     <item
         android:checkable="true"
         android:id="@+id/action_star"

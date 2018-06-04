@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="eus.arabyte.android.izenpedia.activity.IzenaActivity"
+    tools:context="eus.arabyte.android.izendegia.activity.IzenaActivity"
     android:background="@color/list_background">
 
     <android.support.design.widget.AppBarLayout
