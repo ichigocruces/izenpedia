@@ -37,7 +37,7 @@
     <string name="navigation_drawer_close">Cerrar</string>
 
     <!-- Favoritos -->
-    <string name="add_fav">Anadido a favoritos</string>
+    <string name="add_fav">Añadido a favoritos</string>
     <string name="rm_fav">Eliminado de favoritos</string>
 
     <string name="izena">Nombre</string>
@@ -79,6 +79,8 @@
     <string name="eustat">Posición en el EUSTAT</string>
     <string name="eustat_explain">Fuente: EUSTAT \nFecha de publicación: 2018/04/18</string>
 
+    <string name="app_url_label">Más información en la web</string>
+    <string name="app_url_text">Visita nuestra web!!!</string>
 
     <!-- inigo -->
     <string name="inigo_name">Iñigo Angulo de la Calle</string>

@@ -51,8 +51,9 @@
                     android:id="@+id/icon_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
+
                     android:minHeight="48dp">
+                    <!--android:gravity="center_vertical"-->
 
                     <ImageView
                         android:id="@+id/icon_description_img"
@@ -91,8 +92,8 @@
                     android:id="@+id/icon_chart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center|top"
                     android:minHeight="48dp">
+                    <!--android:gravity="center|top"-->
 
                     <ImageView
                         android:id="@+id/icon_chart_img"
@@ -133,8 +134,9 @@
                     android:id="@+id/icon_eustat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:minHeight="48dp">
+
+                    <!--android:gravity="center_vertical"-->
 
                     <ImageView
                         android:id="@+id/icon_eustat_img"
@@ -194,8 +196,8 @@
                     android:id="@+id/app_rate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:minHeight="48dp">
+                    <!--android:gravity="center_vertical"-->
 
                     <ImageView
                         android:id="@+id/rate_icon"
@@ -225,6 +227,48 @@
                             android:layout_marginStart="5dp"
                             android:gravity="center_vertical"
                             android:text="@string/rate_text"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/app_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp">
+
+                    <!--android:gravity="center_vertical"-->
+
+                    <ImageView
+                        android:id="@+id/app_url_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/web" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/app_url_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/app_url_label"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                        <TextView
+                            android:id="@+id/app_url_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/app_url_text"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
                     </LinearLayout>

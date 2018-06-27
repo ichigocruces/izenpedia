@@ -1,6 +1,5 @@
 package eus.arabyte.android.izendegia.adapter;
 
-import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -20,8 +19,6 @@ import java.util.List;
 import eus.arabyte.android.izendegia.R;
 import eus.arabyte.android.izendegia.activity.listeners.OnRecyclerItemClickListener;
 import eus.arabyte.android.izendegia.dao.GogokoaDAO;
-import eus.arabyte.android.izendegia.dao.GogokoaDAOImpl;
-import eus.arabyte.android.izendegia.dao.IzenaDAO;
 import eus.arabyte.android.izendegia.model.Izena;
 import eus.arabyte.android.izendegia.utils.Constants;
 import eus.arabyte.android.izendegia.utils.ListType;
