@@ -1,13 +1,13 @@
 package eus.arabyte.android.izendegia.utils;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class UtilsTest {
 
     @Test
-    public void isBlank(){
+    public void isBlank() {
         assertEquals(true, Utils.isBlank(null));
         assertEquals(true, Utils.isBlank(""));
         assertEquals(true, Utils.isBlank("  "));
@@ -18,7 +18,7 @@ public class UtilsTest {
     }
 
     @Test
-    public void presentDoubleToDecimalFormat(){
+    public void presentDoubleToDecimalFormat() {
         assertEquals("", Utils.presentDoubleToDecimalFormat(null));
         assertEquals("0,00", Utils.presentDoubleToDecimalFormat(0.0));
         assertEquals("10,00", Utils.presentDoubleToDecimalFormat(10.0));
@@ -31,7 +31,7 @@ public class UtilsTest {
     }
 
     @Test
-    public void presentIntegerToString(){
+    public void presentIntegerToString() {
         assertEquals("", Utils.presentIntegerToString(null));
         assertEquals("0", Utils.presentIntegerToString(0));
         assertEquals("10", Utils.presentIntegerToString(10));
@@ -42,7 +42,7 @@ public class UtilsTest {
 
 
     @Test
-    public void getBooleanFromInt(){
+    public void getBooleanFromInt() {
         assertEquals(false, Utils.getBooleanFromInt(null));
         assertEquals(false, Utils.getBooleanFromInt(""));
         assertEquals(false, Utils.getBooleanFromInt("  "));

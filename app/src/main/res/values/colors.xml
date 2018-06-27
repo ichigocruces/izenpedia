@@ -47,4 +47,7 @@
 
     <color name="list_background">#ededed</color>
 
+
+    <color name="test">#000</color>
+
 </resources>
