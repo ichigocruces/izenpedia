@@ -18,6 +18,7 @@
     <dimen name="logo_euskaltzandia_margin">16dp</dimen>
     <dimen name="card_padding">12dp</dimen>
     <dimen name="datuak_padding_small">8dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
 
     <dimen name="card_title_size">16sp</dimen>
     <dimen name="izenak_icons_size">18dp</dimen>

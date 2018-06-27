@@ -19,6 +19,7 @@ public class PropertiesReader {
     private static final String INIGO_GITHUB = "inigo.github";
     private static final String IBAI_LINKEDIN = "ibai.linkedin";
     private static final String IBAI_GITHUB = "ibai.github";
+    private static final String URL_IZENPEDIA = "url.izenpedia";
 
 
 
@@ -69,6 +70,10 @@ public class PropertiesReader {
 
     public String getIbaiGithub() {
         return propertiesReader.getProperty(IBAI_GITHUB);
+    }
+
+    public String getUrlIzenpedia() {
+        return propertiesReader.getProperty(URL_IZENPEDIA);
     }
 
 }

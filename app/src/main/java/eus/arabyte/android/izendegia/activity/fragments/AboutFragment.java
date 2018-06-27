@@ -8,10 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
-import eus.arabyte.android.izendegia.BuildConfig;
 import eus.arabyte.android.izendegia.R;
 import eus.arabyte.android.izendegia.utils.PropertiesReader;
 import eus.arabyte.android.izendegia.utils.Utils;
@@ -36,8 +34,11 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
 
 //        String versionName = BuildConfig.VERSION_NAME;
 
-        TextView urlText = rootView.findViewById(R.id.rate_text);
+        LinearLayout urlText = rootView.findViewById(R.id.app_rate);
         urlText.setOnClickListener(this);
+
+        LinearLayout urlIzenpedia = rootView.findViewById(R.id.app_url);
+        urlIzenpedia.setOnClickListener(this);
 
         return rootView;
 
@@ -68,8 +69,11 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
         PropertiesReader propertiesReader = PropertiesReader.getInstance(getContext());
 
         switch (view.getId()) {
-            case R.id.rate_text:
+            case R.id.app_rate:
                 url = propertiesReader.getUrlGoogleplay();
+                break;
+            case R.id.app_url:
+                url = propertiesReader.getUrlIzenpedia();
                 break;
             default:
                 break;

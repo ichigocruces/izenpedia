@@ -40,8 +40,8 @@ public class ArabyteFragment extends Fragment implements View.OnClickListener {
         urlButton = rootView.findViewById(R.id.inigo_github);
         urlButton.setOnClickListener(this);
 
-//        urlButton = rootView.findViewById(R.id.ibai_linkedin);
-//        urlButton.setOnClickListener(this);
+        urlButton = rootView.findViewById(R.id.ibai_linkedin);
+        urlButton.setOnClickListener(this);
 //
 //        urlButton = rootView.findViewById(R.id.ibai_github);
 //        urlButton.setOnClickListener(this);
@@ -81,15 +81,12 @@ public class ArabyteFragment extends Fragment implements View.OnClickListener {
             case R.id.inigo_github:
                 url = propertiesReader.getInigoGithub();
                 break;
-//            case R.id.ibai_linkedin:
-//                url = propertiesReader.getIbaiLinkedin();
-//                break;
+            case R.id.ibai_linkedin:
+                url = propertiesReader.getIbaiLinkedin();
+                break;
 //            case R.id.ibai_github:
 //                url = propertiesReader.getIbaiGithub();
 //                break;
-            case R.id.rate_text:
-                url = propertiesReader.getUrlGoogleplay();
-                break;
             default:
                 break;
 
