@@ -86,15 +86,12 @@
     <string name="inigo_name">Iñigo Angulo de la Calle</string>
     <string name="inigo_description">Descripción</string>
 
-
     <!-- ibai -->
     <string name="ibai_name">Ibai Llona Berenguer</string>
     <string name="ibai_description">Descripción</string>
 
     <string name="linkedin">LINKEDIN</string>
     <string name="github">GITHUB</string>
-    <string name="role_developer">Desarrollador</string>
-    <string name="role_analyst">Analista</string>
 
     <!-- LH -->
     <string name="lh_bizkaia">Bizkaia</string>
