@@ -47,7 +47,6 @@ public class UtilsTest {
         assertEquals(false, Utils.getBooleanFromInt(""));
         assertEquals(false, Utils.getBooleanFromInt("  "));
 
-        //FIXME: eso va a cascar
         assertEquals(false, Utils.getBooleanFromInt("is not blank"));
         assertEquals(true, Utils.getBooleanFromInt("1"));
         assertEquals(false, Utils.getBooleanFromInt("0"));

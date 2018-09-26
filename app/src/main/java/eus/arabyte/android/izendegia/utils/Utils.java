@@ -86,6 +86,9 @@ public class Utils {
      * @return String
      */
     public static String getStringResourceByName(Resources resources, String packageName, String aString) {
+        if(resources==null || packageName == null || Utils.isBlank(aString)){
+            throw new IllegalArgumentException();
+        }
         int resId = resources.getIdentifier(aString, RESOURCES_STRING, packageName);
         return resources.getString(resId);
     }
@@ -100,6 +103,9 @@ public class Utils {
      * @return int
      */
     public static int getColorResourceByName(Resources resources, String packageName, String aString, Context context) {
+        if(resources==null || packageName == null || Utils.isBlank(aString)){
+            throw new IllegalArgumentException();
+        }
         int resId = resources.getIdentifier(aString, RESOURCES_COLOR, packageName);
 
         return ContextCompat.getColor(context, resId);

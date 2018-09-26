@@ -173,6 +173,12 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
         return this.selecetIzenak(sb.toString());
     }
 
+    /**
+     * Returns a Izena according to the sql
+     *
+     * @param sql String
+     * @return Izena
+     */
     private Izena selecetIzenak(String sql) {
         List<Izena> izenaList = new ArrayList<Izena>();
 
@@ -222,7 +228,13 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
         return null;
     }
 
-
+    /**
+     * Returns a list of Izena according to the sexua and sql
+     *
+     * @param sql String
+     * @param sexua String
+     * @return List<Izena>
+     */
     private List<Izena> selecetListIzenak(String sql, String sexua) {
         List<Izena> izenaList = new ArrayList<Izena>();
 
@@ -252,7 +264,7 @@ public class IzenaDAOImpl extends BasicDAO implements IzenaDAO {
                 String eustat = cursor.getString(3);
                 izena.setEustat(Utils.isBlank(eustat) ? null:Integer.parseInt(eustat));
 
-                // meta
+                // azalpena
                 String azalpena= cursor.getString(4);
                 izena.setAzalpena(Utils.isBlank(azalpena) ? null: Utils.getBooleanFromInt(azalpena));
 

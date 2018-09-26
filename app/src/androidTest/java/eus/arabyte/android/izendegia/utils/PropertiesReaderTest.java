@@ -7,6 +7,7 @@ import android.support.test.filters.SdkSuppress;
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -17,10 +18,15 @@ import static org.junit.Assert.assertEquals;
 @SdkSuppress(minSdkVersion = 21)
 public class PropertiesReaderTest {
 
+    private Context context;
+
+    @Before
+    public void setup() {
+        context = InstrumentationRegistry.getTargetContext();
+    }
+
     @Test
     public void getProperty() {
-        Context context = InstrumentationRegistry.getContext();
-
         PropertiesReader propertiesReader = PropertiesReader.getInstance(context);
 
         assertEquals(null, propertiesReader.getProperty(null));

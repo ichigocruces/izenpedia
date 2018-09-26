@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new SettingsFragment();
         } else if (id == R.id.nav_about) {
             fragment = new AboutFragment();
-        } else if (id == R.id.nav_arabyte) {
-            fragment = new ArabyteFragment();
+//        } else if (id == R.id.nav_arabyte) {
+//            fragment = new ArabyteFragment();
         }
 
         //replacing the fragment

@@ -36,9 +36,11 @@
             android:icon="@drawable/information_outline"
             android:title="@string/nav_about" />
 
+        <!--
         <item
             android:id="@+id/nav_arabyte"
             android:title="@string/nav_acercade" />
+            -->
     </group>
 
 </menu>

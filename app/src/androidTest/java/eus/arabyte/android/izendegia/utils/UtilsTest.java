@@ -6,6 +6,7 @@ import android.support.test.filters.SdkSuppress;
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,24 +17,30 @@ import static org.junit.Assert.assertEquals;
 @SdkSuppress(minSdkVersion = 21)
 public class UtilsTest {
 
-    @Test
-    public void getStringResourceByName() {
-//        assertEquals(null, Utils.getStringResourceByName(null, null, null));
+    private Context context;
 
-        Context context = InstrumentationRegistry.getContext();
-
-        assertEquals("test", Utils.getStringResourceByName(context.getResources(), context.getPackageName(), "test"));
-
+    @Before
+    public void setup() {
+        context = InstrumentationRegistry.getTargetContext();
     }
 
+    @Test
+    public void getStringResourceByName() {
+        assertEquals("test", Utils.getStringResourceByName(context.getResources(), context.getPackageName(), "test"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void getStringResourceByNullName() {
+        assertEquals(null, Utils.getStringResourceByName(null, null, null));
+    }
 
     @Test
     public void getColorResourceByName() {
-//        assertEquals(null, Utils.getColorResourceByName(null, null, null, null));
-
-        Context context = InstrumentationRegistry.getContext();
-
         assertEquals("#000", Utils.getColorResourceByName(context.getResources(), context.getPackageName(), "test", context));
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void getColorResourceByNullName() {
+        assertEquals(null, Utils.getColorResourceByName(null, null, null, null));
     }
 }

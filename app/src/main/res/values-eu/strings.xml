@@ -22,7 +22,7 @@
     <string name="nav_favs">Gogokoak</string>
     <string name="nav_settings">Aukerak</string>
     <string name="nav_about">Informazioa</string>
-    <string name="nav_acercade">Zeri buruz</string>
+    <string name="nav_acercade">Honi buruz</string>
 
     <string name="neskak">Neskak</string>
     <string name="mutilak">Mutilak</string>
@@ -50,34 +50,35 @@
     <string name="izena_eustat_label">Postua popularren artean (Eustat)</string>
     <string name="izena_total_label">Pertsona kopurua Estatuan</string>
 
-    <string name="chart_lh_label">eu_Por Territorio Histórico</string>
+    <string name="chart_lh_label">Lurralde Historikoetan</string>
     <string name="chart_total_label">Euskal Herrian</string>
 
     <!-- Preferencias -->
     <string name="preferences">Aukerak</string>
     <string name="preferences_language">Hizkuntza</string>
 
-    <string name="menu_izena_star">Azpimarratu</string>
+    <string name="menu_izena_star">Nabarmendu</string>
     <string name="menu_izena_share">Elkarbanatu</string>
 
+    <!-- alert -->
     <string name="alert_close_message">Irtetzeko, berriz sakatu</string>
     <string name="alert_close_ok">Bai</string>
     <string name="alert_close_no">Ez</string>
 
     <!-- About activity -->
-    <string name="information">eu_Información</string>
-    <string name="rate_label">eu_Valoración</string>
-    <string name="rate_text">eu_Si te ha gustado la aplicación, por favor danos tu valoración.</string>
-    <string name="legend">eu_Leyenda</string>
-    <string name="description">eu_Descripción</string>
-    <string name="description_explain">eu_Indica que el nombre tiene una descripción.</string>
-    <string name="stadistics">eu_Estadísticas</string>
-    <string name="stadistics_explain">eu_Fuente: INE \nFecha de publicación: 2018/05\nEl INE solo muestra estadísticas de nombres cuya frecuencia es mayor o igual a 20 personas en todo el estado. Además solo se contabilizan por territorio si la frecuencia es mayor de 5 personas. </string>
-    <string name="eustat">eu_Posición en el EUSTAT</string>
-    <string name="eustat_explain">eu_Fuente: EUSTAT \nFecha de publicación: 2018/04/18</string>
+    <string name="information">Informazioa</string>
+    <string name="rate_label">Balorazioa</string>
+    <string name="rate_text">Aplikazioa zure gustukoa izan bada, mesedez, zure balorazioa helarazi.</string>
+    <string name="legend">Ikonografia</string>
+    <string name="description">Esanahia</string>
+    <string name="description_explain">Izenak Euskaltzaindian deskribapen labur bat duela adierazten du.</string>
+    <string name="stadistics">Estatistikak</string>
+    <string name="stadistics_explain">Iturria: INE \nArgitalpen-data: 2018/05\nEl INE solo muestra estadísticas de nombres cuya frecuencia es mayor o igual a 20 personas en todo el estado. Además solo se contabilizan por territorio si la frecuencia es mayor de 5 personas. </string>
+    <string name="eustat">EUSTATen duen posizioa</string>
+    <string name="eustat_explain">Iturria: EUSTAT \nArgitalpen-data: 2018/04/18</string>
 
-    <string name="app_url_label">eu_Más información en la web</string>
-    <string name="app_url_text">eu_Visita nuestra web!!!</string>
+    <string name="app_url_label">Aplikazioaren mantenuarekin lagundu</string>
+    <string name="app_url_text">Baliagarria izan bazaizu eta aplikazioaren mantenuarekin lagundu nahi izanez gero, gure Web orrian egin dezakezu.\nwww.arabyte.eus</string>
 
     <!-- inigo -->
     <string name="inigo_name">Iñigo Angulo de la Calle</string>

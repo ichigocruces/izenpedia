@@ -53,8 +53,7 @@
     <string name="chart_lh_label">Por Territorio Histórico</string>
     <string name="chart_total_label">En Euskal Herria</string>
 
-
-    <!-- preferences -->
+    <!-- Preferencias -->
     <string name="preferences">Preferencias</string>
     <string name="preferences_language">Idioma</string>
 
@@ -66,21 +65,20 @@
     <string name="alert_close_ok">Sí</string>
     <string name="alert_close_no">No</string>
 
-
     <!-- About activity -->
     <string name="information">Información</string>
     <string name="rate_label">Valoración</string>
     <string name="rate_text">Si te ha gustado la aplicación, por favor danos tu valoración.</string>
-    <string name="legend">Leyenda</string>
-    <string name="description">Descripción</string>
-    <string name="description_explain">Indica que el nombre tiene una descripción.</string>
+    <string name="legend">Iconografía</string>
+    <string name="description">Significado</string>
+    <string name="description_explain">Indica que el nombre tiene una breve descripción en Euskaltzaindia.</string>
     <string name="stadistics">Estadísticas</string>
     <string name="stadistics_explain">Fuente: INE \nFecha de publicación: 2018/05\nEl INE solo muestra estadísticas de nombres cuya frecuencia es mayor o igual a 20 personas en todo el estado. Además solo se contabilizan por territorio si la frecuencia es mayor de 5 personas. </string>
     <string name="eustat">Posición en el EUSTAT</string>
     <string name="eustat_explain">Fuente: EUSTAT \nFecha de publicación: 2018/04/18</string>
 
-    <string name="app_url_label">Más información en la web</string>
-    <string name="app_url_text">Visita nuestra web!!!</string>
+    <string name="app_url_label">Ayúdanos a mantener la aplicación</string>
+    <string name="app_url_text">Si te ha resultado útil y quieres ayudar al mantenimiento de la aplicación, puedes hacerlo en nuestra Web.\nwww.arabyte.eus</string>
 
     <!-- inigo -->
     <string name="inigo_name">Iñigo Angulo de la Calle</string>

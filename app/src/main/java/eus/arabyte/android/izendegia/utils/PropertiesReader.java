@@ -35,6 +35,9 @@ public class PropertiesReader {
     }
 
     public String getProperty(String key) {
+        if(Utils.isBlank(key)){
+            return null;
+        }
         String value = null;
         try {
             InputStream is = context.getAssets().open(APP_FILENAME);
