@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.Properties;
 
 public class PropertiesReader {
@@ -19,7 +20,8 @@ public class PropertiesReader {
     private static final String INIGO_GITHUB = "inigo.github";
     private static final String IBAI_LINKEDIN = "ibai.linkedin";
     private static final String IBAI_GITHUB = "ibai.github";
-    private static final String URL_IZENPEDIA = "url.izenpedia";
+    private static final String URL_IZENPEDIA_ES = "url.izenpedia.es";
+    private static final String URL_IZENPEDIA_EU = "url.izenpedia.eu";
 
 
 
@@ -75,8 +77,11 @@ public class PropertiesReader {
         return propertiesReader.getProperty(IBAI_GITHUB);
     }
 
-    public String getUrlIzenpedia() {
-        return propertiesReader.getProperty(URL_IZENPEDIA);
+    public String getUrlIzenpedia(Locale locale) {
+        if(Constants.LOCALE_ES.equals(locale)){
+            return propertiesReader.getProperty(URL_IZENPEDIA_ES);
+        }
+        return propertiesReader.getProperty(URL_IZENPEDIA_EU);
     }
 
 }

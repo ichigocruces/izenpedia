@@ -73,7 +73,7 @@
     <string name="description">Esanahia</string>
     <string name="description_explain">Izenak Euskaltzaindian deskribapen labur bat duela adierazten du.</string>
     <string name="stadistics">Estatistikak</string>
-    <string name="stadistics_explain">Iturria: INE \nArgitalpen-data: 2018/05\nEl INE solo muestra estadísticas de nombres cuya frecuencia es mayor o igual a 20 personas en todo el estado. Además solo se contabilizan por territorio si la frecuencia es mayor de 5 personas. </string>
+    <string name="stadistics_explain">Iturria: INE \nArgitalpen-data: 2018/05\nINEk estatu osoan 20 pertsona baino gehiago dituzten izenen estatistikak bakarrik erakusten ditu. Gainera, lurralde historikoetan, maiztasuna 5 pertsonatik gorakoa bada soilik erakusten dira.</string>
     <string name="eustat">EUSTATen duen posizioa</string>
     <string name="eustat_explain">Iturria: EUSTAT \nArgitalpen-data: 2018/04/18</string>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Izendegia</string>
+    <string name="app_name_lowercase">izendegia</string>
     <string name="title_activity_welcome">Euskal izenak</string>
 
     <!-- Intro 1 -->

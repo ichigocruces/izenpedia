@@ -73,7 +73,7 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
                 url = propertiesReader.getUrlGoogleplay();
                 break;
             case R.id.app_url:
-                url = propertiesReader.getUrlIzenpedia();
+                url = propertiesReader.getUrlIzenpedia(getResources().getConfiguration().locale);
                 break;
             default:
                 break;

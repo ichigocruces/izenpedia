@@ -11,10 +11,6 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="120dp"
-            android:src="@drawable/logo_euskaltzaindia" />
 
         <TextView
             android:layout_width="wrap_content"
