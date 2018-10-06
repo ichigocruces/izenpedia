@@ -26,6 +26,7 @@ import java.util.Locale;
 
 import eus.arabyte.android.izendegia.R;
 import eus.arabyte.android.izendegia.utils.Constants;
+import eus.arabyte.android.izendegia.utils.LocaleManager;
 import eus.arabyte.android.izendegia.utils.Preferences;
 import eus.arabyte.android.izendegia.utils.Utils;
 
@@ -48,6 +49,7 @@ public class OnBoarding extends AppCompatActivity {
         // Checking for first time launch - before calling setContentView()
         preferences = Preferences.getInstance(this);
         if (!preferences.isFirstTimeLaunch()) {
+            LocaleManager.setLocale(this, preferences.getHizkuntza());
             launchHomeScreen();
             finish();
         }
@@ -183,13 +185,8 @@ public class OnBoarding extends AppCompatActivity {
             if(position==0){
                 RadioButton radioLanguage;
 
-                String hizkuntza = preferences.getHizkuntza();
-
-                //primera vez que se carga, las preferencias están vacías
-                if(Utils.isBlank(hizkuntza)){
-                    Locale current = getResources().getConfiguration().locale;
-                    hizkuntza = current.getLanguage();
-                }
+                Locale current = getResources().getConfiguration().locale;
+                String hizkuntza = current.getLanguage();
 
                 if(Constants.EU.equals(hizkuntza)){
                     radioLanguage = view.findViewById(R.id.btn_EUS);
