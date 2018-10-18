@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group
+        android:id="@+id/menu_list_izenak"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_popular"
+            android:icon="@drawable/fire"
+            android:title="@string/nav_popular" />
+        <item
+            android:id="@+id/nav_boys"
+            android:icon="@drawable/gender_male"
+            android:title="@string/nav_boys" />
+        <item
+            android:id="@+id/nav_girls"
+            android:icon="@drawable/gender_female"
+            android:title="@string/nav_girls" />
+        <item
+            android:id="@+id/nav_favs"
+            android:icon="@drawable/heart"
+            android:title="@string/nav_favs" />
+
+    </group>
+
+    <group
+        android:id="@+id/menu_options"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/account_settings_variant"
+            android:title="@string/nav_settings" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/information_outline"
+            android:title="@string/nav_about" />
+
+        <!--
+        <item
+            android:id="@+id/nav_arabyte"
+            android:title="@string/nav_acercade" />
+            -->
+    </group>
+
+</menu>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_datuak"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/datuak_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/izena_datuak"
+            android:textAppearance="@style/CardTitle"
+            android:padding="@dimen/card_padding" />
+
+        <View
+            android:id="@+id/datuak_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_below="@id/datuak_title"
+            android:background="?android:attr/dividerHorizontal" />
+
+        <RelativeLayout
+            android:id="@+id/row_media"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/datuak_line"
+            android:paddingStart="@dimen/card_padding"
+            android:paddingEnd="@dimen/card_padding"
+            android:paddingTop="@dimen/datuak_padding_small"
+            android:paddingBottom="@dimen/datuak_padding_small">
+
+            <TextView
+                android:id="@+id/izena_media_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/izena_media_label"
+                style="@style/IzenaDatuakLabel"/>
+
+            <TextView
+                android:id="@+id/izena_media"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_below="@id/izena_media_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:hint="23"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/row_eustat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row_media"
+            android:paddingStart="@dimen/card_padding"
+            android:paddingEnd="@dimen/card_padding"
+            android:paddingTop="@dimen/datuak_padding_small"
+            android:paddingBottom="@dimen/datuak_padding_small">
+
+            <TextView
+                android:id="@+id/izena_eustat_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/izena_eustat_label"
+                style="@style/IzenaDatuakLabel"/>
+
+            <TextView
+                android:id="@+id/izena_eustat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_below="@id/izena_eustat_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:hint="2"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/row_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row_eustat"
+            android:paddingStart="@dimen/card_padding"
+            android:paddingEnd="@dimen/card_padding"
+            android:paddingTop="@dimen/datuak_padding_small"
+            android:paddingBottom="@dimen/datuak_padding_small">
+
+            <TextView
+                android:id="@+id/izena_total_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/izena_total_label"
+                style="@style/IzenaDatuakLabel"/>
+
+            <TextView
+                android:id="@+id/izena_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_below="@id/izena_total_label"
+                android:textAppearance="@android:style/TextAppearance.Material"
+                android:hint="2000"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

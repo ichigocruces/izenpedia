@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Izendegia</string>
+    <string name="title_activity_welcome">Euskal izenak</string>
+
+    <!-- Intro 1 -->
+    <string name="slide_1_title">Hizkuntza</string>
+    <string name="slide_1_desc">Zure hizkuntza aukeratu</string>
+
+    <!-- Intro 3 -->
+    <string name="slide_3_title">Euskal izenak</string>
+    <string name="slide_3_desc1">Gure umeentzat izen bat bilatzea zeregin zaila eta interesgarria da. Goza ezazu izenen esanahia ezagutzen</string>
+    <string name="slide_3_desc2">Ondorengo izenen zerrenda Euskaltzaindiak ofizialki baimentzen dituenak dira</string>
+
+    <string name="gaztelania">Castellano</string>
+    <string name="euskara">Euskara</string>
+
+    <!-- NAV -->
+    <string name="nav_popular">Popularrak</string>
+    <string name="nav_boys">Mutilak</string>
+    <string name="nav_girls">Neskak</string>
+    <string name="nav_favs">Gogokoak</string>
+    <string name="nav_settings">Aukerak</string>
+    <string name="nav_about">Informazioa</string>
+    <string name="nav_acercade">Honi buruz</string>
+
+    <string name="neskak">Neskak</string>
+    <string name="mutilak">Mutilak</string>
+    <string name="guztiak">Guztiak</string>
+    <string name="gogokoak">Gogokoak</string>
+
+    <!-- actions -->
+    <string name="action_search">Bilatu</string>
+    <string name="next">JARRAITU</string>
+    <string name="start">ULERTUTA</string>
+    <string name="navigation_drawer_open">Ireki</string>
+    <string name="navigation_drawer_close">Itxi</string>
+
+    <!-- Favoritos -->
+    <string name="add_fav">Gogokoetara gehituta</string>
+    <string name="rm_fav">Gogokoetatik kenduta</string>
+
+    <string name="izena">Izena</string>
+    <string name="izena_descripcion">Deskribapena</string>
+    <string name="izena_languages">Beste hizkuntzetan</string>
+    <string name="izena_graphics">Estatistikak</string>
+    <string name="izena_datuak">Datu gehiago</string>
+
+    <string name="izena_media_label">Batazbesteko adina</string>
+    <string name="izena_eustat_label">Postua popularren artean (Eustat)</string>
+    <string name="izena_total_label">Pertsona kopurua Estatuan</string>
+
+    <string name="chart_lh_label">Lurralde Historikoetan</string>
+    <string name="chart_total_label">Euskal Herrian</string>
+
+    <!-- Preferencias -->
+    <string name="preferences">Aukerak</string>
+    <string name="preferences_language">Hizkuntza</string>
+
+    <string name="menu_izena_star">Nabarmendu</string>
+    <string name="menu_izena_share">Elkarbanatu</string>
+
+    <!-- alert -->
+    <string name="alert_close_message">Irtetzeko, berriz sakatu</string>
+    <string name="alert_close_ok">Bai</string>
+    <string name="alert_close_no">Ez</string>
+
+    <!-- About activity -->
+    <string name="information">Informazioa</string>
+    <string name="rate_label">Balorazioa</string>
+    <string name="rate_text">Aplikazioa zure gustukoa izan bada, mesedez, zure balorazioa helarazi.</string>
+    <string name="legend">Ikonografia</string>
+    <string name="description">Esanahia</string>
+    <string name="description_explain">Izenak Euskaltzaindian deskribapen labur bat duela adierazten du.</string>
+    <string name="stadistics">Estatistikak</string>
+    <string name="stadistics_explain">Iturria: INE \nArgitalpen-data: 2018/05\nINEk estatu osoan 20 pertsona baino gehiago dituzten izenen estatistikak bakarrik erakusten ditu. Gainera, lurralde historikoetan, maiztasuna 5 pertsonatik gorakoa bada soilik erakusten dira.</string>
+    <string name="eustat">EUSTATen duen posizioa</string>
+    <string name="eustat_explain">Iturria: EUSTAT \nArgitalpen-data: 2018/04/18</string>
+
+    <string name="app_url_label">Aplikazioaren mantenuarekin lagundu</string>
+    <string name="app_url_text">Baliagarria izan bazaizu eta aplikazioaren mantenuarekin lagundu nahi izanez gero, gure Web orrian egin dezakezu.\nwww.arabyte.eus</string>
+
+    <!-- inigo -->
+    <string name="inigo_name">Iñigo Angulo de la Calle</string>
+    <string name="inigo_description">Deskribapena</string>
+
+    <!-- ibai -->
+    <string name="ibai_name">Ibai Llona Berenguer</string>
+    <string name="ibai_description">Deskribapena</string>
+
+    <string name="linkedin">LINKEDIN</string>
+    <string name="github">GITHUB</string>
+
+    <!-- LH -->
+    <string name="lh_bizkaia">Bizkaia</string>
+    <string name="lh_gipuzkoa">Gipuzkoa</string>
+    <string name="lh_araba">Araba</string>
+    <string name="lh_nafarroa">Nafarroa</string>
+
+    <string name="test">test</string>
+
+</resources>

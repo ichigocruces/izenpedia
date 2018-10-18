@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#496600</color>
+    <color name="colorPrimaryDark">#203b00</color>
+    <color name="colorPrimaryLight">#789435</color>
+    <color name="colorAccent">#CDDC39</color>
+
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#496600</color>
+    <color name="bg_screen2">#496600</color>
+    <color name="bg_screen3">#496600</color>
+    <color name="bg_screen4">#c873f4</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#233004</color>
+    <color name="dot_dark_screen2">#233004</color>
+    <color name="dot_dark_screen3">#233004</color>
+    <color name="dot_dark_screen4">#233004</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#ffffff</color>
+    <color name="dot_light_screen2">#ffffff</color>
+    <color name="dot_light_screen3">#ffffff</color>
+    <color name="dot_light_screen4">#ffffff</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+
+    <color name="grapho_bizkaia">#50BA00</color>
+    <color name="grapho_gipuzkoa">#004B8C</color>
+    <color name="grapho_araba">#CB9838</color>
+    <color name="grapho_navarra">#BF0404</color>
+
+    <color name="list_background">#ededed</color>
+
+
+    <color name="test">#000</color>
+
+</resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_graphics"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/graphics_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/card_padding"
+            android:text="@string/izena_graphics"
+            android:textAppearance="@style/CardTitle" />
+
+        <View
+            android:id="@+id/graphics_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_below="@id/graphics_title"
+            android:background="?android:attr/dividerHorizontal" />
+
+        <LinearLayout
+            android:id="@+id/chart_lh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            android:layout_below="@id/graphics_line"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                android:id="@+id/chart_lh_label"
+                style="@style/IzenaDatuakLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/chart_lh_label" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart_lh"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@id/chart_lh_label"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/chart_total_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            android:layout_below="@id/chart_lh_layout"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                android:id="@+id/chart_total_label"
+                style="@style/IzenaDatuakLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:text="@string/chart_total_label" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chart_total"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@id/chart_total_label"/>
+
+            <!--<com.github.mikephil.charting.charts.BarChart-->
+                <!--android:id="@+id/chart_total"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="300dp"-->
+                <!--android:layout_below="@id/chart_lh" />-->
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_languages"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginBottom="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/languages_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/izena_languages"
+            android:textAppearance="@style/CardTitle"
+            android:padding="@dimen/card_padding"/>
+
+        <View
+            android:id="@+id/languages_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_below="@id/languages_title"
+            android:background="?android:attr/dividerHorizontal" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_izenkideak"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/languages_line"
+            android:padding="@dimen/card_padding"
+            />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

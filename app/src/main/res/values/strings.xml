@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Izendegia</string>
+    <string name="app_name_lowercase">izendegia</string>
+    <string name="title_activity_welcome">Euskal izenak</string>
+
+    <!-- Intro 1 -->
+    <string name="slide_1_title">Idioma</string>
+    <string name="slide_1_desc">Selecciona tu idioma</string>
+
+    <!-- Intro 3 -->
+    <string name="slide_3_title">Nombres vascos</string>
+    <string name="slide_3_desc1">Buscar un nombre para nuestros/as pequeños/as es una tarea complicada pero a la vez interesante. Disfruta descubriendo el significado de los nombres</string>
+    <string name="slide_3_desc2">La lista de nombres que encontrarás a continuación son los oficiales de Euskaltzaindia</string>
+
+    <string name="gaztelania">Gaztelania</string>
+    <string name="euskara">Euskara</string>
+
+    <!-- NAV -->
+    <string name="nav_popular">Populares</string>
+    <string name="nav_boys">Chicos</string>
+    <string name="nav_girls">Chicas</string>
+    <string name="nav_favs">Favoritos</string>
+    <string name="nav_settings">Preferencias</string>
+    <string name="nav_about">Información</string>
+    <string name="nav_acercade">Acerca de</string>
+
+    <string name="neskak">Chicas</string>
+    <string name="mutilak">Chicos</string>
+    <string name="guztiak">Todos/as</string>
+    <string name="gogokoak">Favoritos</string>
+
+    <!-- actions -->
+    <string name="action_search">Buscar</string>
+    <string name="next">SIGUIENTE</string>
+    <string name="start">ENTENDIDO</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Cerrar</string>
+
+    <!-- Favoritos -->
+    <string name="add_fav">Añadido a favoritos</string>
+    <string name="rm_fav">Eliminado de favoritos</string>
+
+    <string name="izena">Nombre</string>
+    <string name="izena_descripcion">Descripción</string>
+    <string name="izena_languages">En otros idiomas</string>
+    <string name="izena_graphics">Estadísticas</string>
+    <string name="izena_datuak">Más datos</string>
+
+    <string name="izena_media_label">Media de edad</string>
+    <string name="izena_eustat_label">Puesto entre los más populares (Eustat)</string>
+    <string name="izena_total_label">Número total de personas en el Estado</string>
+
+    <string name="chart_lh_label">Por Territorio Histórico</string>
+    <string name="chart_total_label">En Euskal Herria</string>
+
+    <!-- Preferencias -->
+    <string name="preferences">Preferencias</string>
+    <string name="preferences_language">Idioma</string>
+
+    <string name="menu_izena_star">Destacar</string>
+    <string name="menu_izena_share">Compartir</string>
+
+    <!-- alert -->
+    <string name="alert_close_message">Pulsa de nuevo para salir</string>
+    <string name="alert_close_ok">Sí</string>
+    <string name="alert_close_no">No</string>
+
+    <!-- About activity -->
+    <string name="information">Información</string>
+    <string name="rate_label">Valoración</string>
+    <string name="rate_text">Si te ha gustado la aplicación, por favor danos tu valoración.</string>
+    <string name="legend">Iconografía</string>
+    <string name="description">Significado</string>
+    <string name="description_explain">Indica que el nombre tiene una breve descripción en Euskaltzaindia.</string>
+    <string name="stadistics">Estadísticas</string>
+    <string name="stadistics_explain">Fuente: INE \nFecha de publicación: 2018/05\nEl INE solo muestra estadísticas de nombres cuya frecuencia es mayor o igual a 20 personas en todo el estado. Además solo se contabilizan por territorio si la frecuencia es mayor de 5 personas. </string>
+    <string name="eustat">Posición en el EUSTAT</string>
+    <string name="eustat_explain">Fuente: EUSTAT \nFecha de publicación: 2018/04/18</string>
+
+    <string name="app_url_label">Ayúdanos a mantener la aplicación</string>
+    <string name="app_url_text">Si te ha resultado útil y quieres ayudar al mantenimiento de la aplicación, puedes hacerlo en nuestra Web.\nwww.arabyte.eus</string>
+
+    <!-- inigo -->
+    <string name="inigo_name">Iñigo Angulo de la Calle</string>
+    <string name="inigo_description">Descripción</string>
+
+    <!-- ibai -->
+    <string name="ibai_name">Ibai Llona Berenguer</string>
+    <string name="ibai_description">Descripción</string>
+
+    <string name="linkedin">LINKEDIN</string>
+    <string name="github">GITHUB</string>
+
+    <!-- LH -->
+    <string name="lh_bizkaia">Bizkaia</string>
+    <string name="lh_gipuzkoa">Gipuzkoa</string>
+    <string name="lh_araba">Araba</string>
+    <string name="lh_nafarroa">Navarra</string>
+
+    <string name="test">test</string>
+
+</resources>
